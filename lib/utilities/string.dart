@@ -1,4 +1,8 @@
 class CS {
-  String igli = "IGLI";
-  static String igliFinancial = "IGLI Financial";
+  static const String igliFinancial = "Igli Financial";
+}
+
+class MCS {
+  //api
+  static const String lastNameRequired = 'please enter last name';
 }
