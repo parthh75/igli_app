@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:igli_financial/more/more_main.dart';
+import 'package:igli_financial/more/myprofile.dart';
 import 'package:igli_financial/utilities/string.dart';
 
 void main() {
@@ -18,7 +20,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      // home: MyHomePage(),
+      home: ProfileScreen(),
     );
   }
 }
@@ -39,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  int _selectedIndex = 0;
+  int _selectedIndex = 3;
   static const List<Widget> _widgetOptions = <Widget>[
     Text('Home Page',
         style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
@@ -47,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
         style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
     Text('Payments',
         style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('More', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    MoreScreen()
   ];
 
   void _onItemTapped(int index) {
