@@ -68,7 +68,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                    SizedBox(
                      width: 150,
                      height: 40,
-                     child: OutlinedButton(onPressed: () {
+                     child: OutlinedButton(
+                         style: OutlinedButton.styleFrom(
+                             shape: RoundedRectangleBorder(
+                               borderRadius: BorderRadius.circular(30),
+                             )
+                         ),
+                         onPressed: () {
                        setState(() {
 
                          isButton=false;
@@ -79,7 +85,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         width: 150,
                         height: 40,
                         child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                            style: ElevatedButton.styleFrom(
+backgroundColor: Colors.blue,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                )
+                            ),
                             onPressed: () {
 
                         }, child: const Text("Save")),
