@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:igli_financial/view/more_main.dart';
+import 'package:igli_financial/view/more/more_main.dart';
 
 import '../utilities/colors.dart';
 

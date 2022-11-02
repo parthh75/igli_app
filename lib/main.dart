@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/utilities/string.dart';
 import 'package:igli_financial/view/main_screen.dart';
+import 'package:igli_financial/view/more/myprofile.dart';
 import 'package:igli_financial/view/splash_screen.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
@@ -74,6 +75,7 @@ class _MyHomeState extends State<MyHome> {
 
   @override
   Widget build(BuildContext context) {
-    return const SplashScreen();
+    // return const SplashScreen();
+    return const ProfileScreen();
   }
 }

@@ -55,10 +55,6 @@ dependencies:
   pin_code_fields: ^7.3.0
   cached_network_image: ^3.2.0
   image_picker: ^0.8.4+11
-  flutter_login_facebook: ^1.4.1
-  firebase_core: ^1.16.0
-  firebase_auth: ^3.3.17
-  firebase_messaging: ^11.3.0
   google_sign_in: ^5.2.4
   sign_in_with_apple: ^3.3.0
   hexcolor: ^2.0.7

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/utilities/string.dart';
-import 'package:igli_financial/view/myprofile.dart';
+import 'package:igli_financial/view/more/myprofile.dart';
 
-import '../utilities/colors.dart';
-import 'contactus_screen.dart';
+import '../../utilities/colors.dart';
+import '../contactus_screen.dart';
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen({Key? key}) : super(key: key);
