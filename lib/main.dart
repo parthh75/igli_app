@@ -58,12 +58,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int _selectedIndex = 3;
   static const List<Widget> _widgetOptions = <Widget>[
-    Text('Home Page',
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('My Services',
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('Payments',
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    Text('Home Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    Text('My Services', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    Text('Payments', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
     MoreScreen()
   ];
 
