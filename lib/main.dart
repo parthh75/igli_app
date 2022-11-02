@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:igli_financial/more/more_main.dart';
-import 'package:igli_financial/more/myprofile.dart';
 import 'package:igli_financial/utilities/string.dart';
+import 'package:igli_financial/view/main_screen.dart';
+import 'package:igli_financial/view/splash_screen.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+import 'package:responsive_framework/responsive_wrapper.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 Map<int, Color> color = {
-  50: Color.fromRGBO(0, 64, 134, .1),
-  100: Color.fromRGBO(0, 64, 134, .2),
-  200: Color.fromRGBO(0, 64, 134, .3),
-  300: Color.fromRGBO(0, 64, 134, .4),
-  400: Color.fromRGBO(0, 64, 134, .5),
-  500: Color.fromRGBO(0, 64, 134, .6),
-  600: Color.fromRGBO(0, 64, 134, .7),
-  700: Color.fromRGBO(0, 64, 134, .8),
-  800: Color.fromRGBO(0, 64, 134, .9),
-  900: Color.fromRGBO(0, 64, 134, 1),
+  50: const Color.fromRGBO(0, 64, 134, .1),
+  100: const Color.fromRGBO(0, 64, 134, .2),
+  200: const Color.fromRGBO(0, 64, 134, .3),
+  300: const Color.fromRGBO(0, 64, 134, .4),
+  400: const Color.fromRGBO(0, 64, 134, .5),
+  500: const Color.fromRGBO(0, 64, 134, .6),
+  600: const Color.fromRGBO(0, 64, 134, .7),
+  700: const Color.fromRGBO(0, 64, 134, .8),
+  800: const Color.fromRGBO(0, 64, 134, .9),
+  900: const Color.fromRGBO(0, 64, 134, 1),
 };
 MaterialColor colorCustom = MaterialColor(0xFF004086, color);
 
@@ -28,122 +30,50 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: CS.igliFinancial,
       theme: ThemeData(
         primarySwatch: colorCustom,
       ),
+      builder: (context, widget) => ResponsiveWrapper.builder(BouncingScrollWrapper.builder(context, widget!),
+          maxWidth: 1200,
+          minWidth: 420,
+          defaultScale: true,
+          breakpoints: [
+            const ResponsiveBreakpoint.resize(420, name: MOBILE),
+            const ResponsiveBreakpoint.autoScale(800, name: TABLET),
+            const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
+            const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
+            const ResponsiveBreakpoint.autoScale(2460, name: "4K"),
+          ],
+          background: Container(color: Colors.white)),
       debugShowCheckedModeBanner: false,
-      // home: MyHomePage(),
-      home: ProfileScreen(),
+      home: MyHome(),
+      // home: const ProfileScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({super.key});
+class MyHome extends StatefulWidget {
+  MyHome();
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _MyHomeState createState() => _MyHomeState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _MyHomeState extends State<MyHome> {
+  @override
+  void initState() {
+    Future.delayed(const Duration(seconds: 3), () async {
+      Get.off(() => const MainScreen());
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
+      // Navigator.push(context,MaterialPageRoute(builder: (context) =>GetStarted() ));
     });
-  }
-
-  int _selectedIndex = 3;
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text('Home Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('My Services', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('Payments', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    MoreScreen()
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              decoration: const BoxDecoration(boxShadow: [
-                BoxShadow(
-                  color: Colors.grey,
-                  offset: Offset(
-                    0.0,
-                    1.0,
-                  ),
-                  blurRadius: 5.0,
-                  spreadRadius: 0.05,
-                ), //BoxShadow
-                BoxShadow(
-                  color: Colors.white,
-                  offset: Offset(0.0, 0.0),
-                  blurRadius: 0.0,
-                  spreadRadius: 0.0,
-                ),
-              ]),
-              height: 50,
-              width: Get.width,
-              child: Row(
-                children: [
-                  Image.asset("assets/image/igliLogo.png", height: 30, width: 180, fit: BoxFit.fill).paddingOnly(left: 15),
-                  const Spacer(),
-                  const Icon(
-                    Icons.calendar_month,
-                    color: Colors.black,
-                  ),
-                  const Icon(
-                    Icons.messenger_outline_sharp,
-                    color: Colors.black,
-                  ).paddingOnly(left: 15, right: 15),
-                  const Icon(
-                    Icons.notifications_none,
-                    color: Colors.black,
-                  ).paddingOnly(right: 15),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Center(
-                child: _widgetOptions.elementAt(_selectedIndex),
-              ),
-            )
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home', backgroundColor: Colors.green),
-        BottomNavigationBarItem(icon: Icon(Icons.note_alt_outlined), label: 'My Services', backgroundColor: Colors.yellow),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.payment),
-          label: 'Payments',
-          backgroundColor: Colors.blue,
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.more_vert),
-          label: 'More',
-          backgroundColor: Colors.blue,
-        ),
-      ], type: BottomNavigationBarType.fixed, currentIndex: _selectedIndex, selectedItemColor: Colors.blue, iconSize: 25, onTap: _onItemTapped, elevation: 5),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        backgroundColor: Colors.green,
-        child: const Icon(Icons.whatsapp, size: 35),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    return const SplashScreen();
   }
 }
