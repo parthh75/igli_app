@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:igli_financial/utilities/colors.dart';
 import 'package:igli_financial/utilities/string.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -27,7 +26,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.account_circle, size: 25, color: colorPrimary),
+                      const Icon(Icons.account_circle, size: 25, color: Colors.blue),
                       const SizedBox(
                         width: 10,
                       ),
@@ -97,6 +96,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               width: 150,
                               height: 40,
                               child: OutlinedButton(
+                                  style: OutlinedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                  )),
                                   onPressed: () {
                                     setState(() {
                                       isButton = false;
@@ -107,7 +110,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             SizedBox(
                               width: 150,
                               height: 40,
-                              child: ElevatedButton(style: ElevatedButton.styleFrom(backgroundColor: Colors.blue), onPressed: () {}, child: const Text("Save")),
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.blue,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(30),
+                                      )),
+                                  onPressed: () {},
+                                  child: const Text("Save")),
                             ),
                           ],
                         ).paddingOnly(bottom: 20, top: 10)
