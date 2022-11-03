@@ -14,6 +14,7 @@ class _ContactUsState extends State<ContactUs> {
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
+
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
