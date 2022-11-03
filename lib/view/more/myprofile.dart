@@ -13,10 +13,18 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  TextEditingController nameController=TextEditingController();
+  TextEditingController dobController=TextEditingController();
+  TextEditingController addressController=TextEditingController();
+  TextEditingController pinCodeController=TextEditingController();
+  TextEditingController cityNameController=TextEditingController();
+  TextEditingController stateNameController=TextEditingController();
+  TextEditingController addEmailController=TextEditingController();
   String? gender;
   bool isButton = false;
   bool isAddAddressButton = false;
   bool isKYCButton = false;
+  bool isAddEmailAddressButton = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,14 +57,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     CS.dEmail,
                     style: const TextStyle(fontWeight: FontWeight.normal, color: Colors.grey),
                   )),
-                  Text(CS.fullName).paddingOnly(top: 20),
-                  TextFormField(onTap: () {
+                  TextFormField(
+                      decoration: InputDecoration(
+                        labelText:CS.fullName,labelStyle: const TextStyle(fontSize: 15)
+                      ),
+                      controller: nameController,
+                      onTap: () {
                     setState(() {
                       isButton = true;
                     });
                   }),
-                  Text(CS.dob).paddingOnly(top: 20),
-                  TextFormField(),
+                  TextFormField(
+                    decoration: InputDecoration(
+                     labelText:CS.dob,labelStyle: const TextStyle(fontSize: 15)
+                    ),
+                      controller: dobController,
+                      onTap: () {
+                        setState(() {
+                          isButton = true;
+                        });
+                      }
+                  ),
                   Text(
                     CS.gender,
                   ).paddingOnly(top: 20),
@@ -143,11 +164,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                   const Text("Address as mentioned in the address proof",style: TextStyle(fontSize: 12,color: Colors.grey,fontWeight: FontWeight.normal),).paddingOnly(left: 32,top: 2),
-                  isAddAddressButton? const TextField(decoration: InputDecoration(labelText: "Address Line")).paddingOnly(top: 20):const SizedBox(),
-                  isAddAddressButton?const TextField(decoration: InputDecoration(labelText: "Pincode")):const SizedBox(),
-                  isAddAddressButton?const TextField(decoration: InputDecoration(labelText: "City/Town/Locality/village")):const SizedBox(),
-                  isAddAddressButton?const TextField(decoration: InputDecoration(labelText: "State")):const SizedBox(),
-                  isAddAddressButton?const SizedBox():Center(
+                  isAddAddressButton?  TextField(
+                    controller: addressController,
+                    decoration: const InputDecoration(
+                      labelText: "Address Line",
+                      labelStyle: TextStyle(fontSize: 15),),).paddingOnly(top: 20):const SizedBox(),
+                  isAddAddressButton? TextField(
+                      controller:pinCodeController,
+                      decoration: const InputDecoration(
+                          labelText: "Pincode",
+                          labelStyle: TextStyle(fontSize: 15))):const SizedBox(),
+                  isAddAddressButton? TextField(
+                    controller: cityNameController,
+                      decoration: const InputDecoration(labelText: "City/Town/Locality/village",labelStyle: TextStyle(fontSize: 15))):const SizedBox(),
+                  isAddAddressButton? TextField(
+                    controller: stateNameController,
+                      decoration: const InputDecoration(labelText: "State",labelStyle: TextStyle(fontSize: 15))):const SizedBox(),
+                  isAddAddressButton? const SizedBox():Center(
                     child: SizedBox(
                       width: 200,
                       height: 40,
@@ -217,11 +250,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Container(
                   height: 50,
                 width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.only(top: 15,bottom: 15),
+                margin:  EdgeInsets.only(top: 15,bottom: isAddEmailAddressButton?0:20),
                 padding: const EdgeInsets.only(top: 15,left: 10),
                 color: color26569a.withOpacity(0.1),
                   child: Text(CS.dEmail),
                 ),
+                  isAddEmailAddressButton?  TextField(
+                    controller: addEmailController,
+                    decoration: const InputDecoration(
+                      labelText: "Add Email",
+                      labelStyle: TextStyle(fontSize: 15),),).paddingOnly(top: 10,bottom: 20):const SizedBox(),
                   Center(
                     child: SizedBox(
                       width: 200,
@@ -233,7 +271,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               )),
                           onPressed: () {
                             setState(() {
-                              isButton = false;
+                              isAddEmailAddressButton =true;
                             });
                           },
                           child: Text("+ ${CS.addEmail}",style: const TextStyle(fontWeight: FontWeight.w600),),),
@@ -294,7 +332,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: SizedBox(
                       width: 200,
                       height: 40,
-                      child: ElevatedButton(
+                      child: OutlinedButton(
                         style: OutlinedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
@@ -321,7 +359,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ],
                   ),
                   const Text("Identification number as mention in the ID proof",style: TextStyle(fontSize: 12,color: Colors.grey,fontWeight: FontWeight.normal),).paddingOnly(left: 32,top: 2),
-                  isKYCButton? const TextField(decoration: InputDecoration(labelText: "Aadhar No.",labelStyle: TextStyle(fontSize: 15),),).paddingOnly(top: 20):const SizedBox(),
                   isKYCButton? const TextField(decoration: InputDecoration(labelText: "Aadhar No.",labelStyle: TextStyle(fontSize: 15),),).paddingOnly(top: 20):const SizedBox(),
                   isKYCButton?const TextField(decoration: InputDecoration(labelText: "PAN No.",labelStyle: TextStyle(fontSize: 15),),):const SizedBox(),
 
@@ -356,7 +393,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 )),
                             onPressed: () {
                               setState(() {
-                                isAddAddressButton = false;
+                                isKYCButton = false;
                               });
                             },
                             child: Text(CS.cancle)),
