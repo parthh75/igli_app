@@ -49,33 +49,33 @@ class MyApp extends StatelessWidget {
           ],
           background: Container(color: Colors.white)),
       debugShowCheckedModeBanner: false,
-      home: MyHome(),
+      home: ProfileScreen(),
       // home: const ProfileScreen(),
     );
   }
 }
 
-class MyHome extends StatefulWidget {
-  MyHome();
+// class MyHome extends StatefulWidget {
+//   MyHome();
+//
+//   @override
+//   _MyHomeState createState() => _MyHomeState();
+// }
 
-  @override
-  _MyHomeState createState() => _MyHomeState();
-}
-
-class _MyHomeState extends State<MyHome> {
-  @override
-  void initState() {
-    Future.delayed(const Duration(seconds: 3), () async {
-      Get.off(() => const MainScreen());
-
-      // Navigator.push(context,MaterialPageRoute(builder: (context) =>GetStarted() ));
-    });
-    super.initState();
-  }
+// class _MyHomeState extends State<MyHome> {
+//   @override
+//   void initState() {
+//     Future.delayed(const Duration(seconds: 3), () async {
+//       Get.off(() => const MainScreen());
+//
+//       // Navigator.push(context,MaterialPageRoute(builder: (context) =>GetStarted() ));
+//     });
+//     super.initState();
+//   }
 
   @override
   Widget build(BuildContext context) {
     // return const SplashScreen();
     return const ProfileScreen();
   }
-}
+// }
