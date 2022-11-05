@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
           ],
           background: Container(color: Colors.white)),
       debugShowCheckedModeBanner: false,
-      home: ProfileScreen(),
+      home: MainScreen(),
       // home: const ProfileScreen(),
     );
   }
