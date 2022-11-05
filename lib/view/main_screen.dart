@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/view/more/more_main.dart';
+import 'package:igli_financial/view/more/myServices.dart';
 
 import '../utilities/colors.dart';
+import 'more/payment.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -19,8 +21,8 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 3;
   static const List<Widget> _widgetOptions = <Widget>[
     Text('Home Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('My Services', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('Payments', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    MyServicesScreen(),
+    PaymentsScreen(),
     MoreScreen()
   ];
 

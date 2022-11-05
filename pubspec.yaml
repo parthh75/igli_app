@@ -70,6 +70,7 @@ dependencies:
   provider: ^6.0.2
   flutter_typeahead: ^3.2.4
   package_info_plus: ^1.4.3
+  tab_indicator_styler: ^2.0.0
 
 
 dev_dependencies:
