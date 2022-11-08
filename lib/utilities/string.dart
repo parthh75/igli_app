@@ -2,6 +2,8 @@ class CS {
   String igli = "IGLI";
   static String igliFinancial = "IGLI Financial";
 
+  static String save = "Save";
+  static String changes = "Changes";
   static const String welcome = "Welcome";
   static const String letsLoginForExplore = "Let’s login for explore continues";
   static const String emailAdd = "Email Address";
@@ -33,15 +35,24 @@ class CS {
   static String female = "Female";
   static String other = "Other";
   static String gender = "Gender";
+  static String add = "Add";
   static String cancle = "Cancle";
   static String view = "View";
+  static String verify = "Verify";
   static String kyc = "KYC";
+  static String send = "Send";
+  static String enter = "Enter";
+  static String otp = "OTP";
+  static String oldPassword = "Old Password";
+  static String newPassword = "New Password";
+  static String confirmPassword = "Confirm Password";
+  static String password = "Paassword";
   // static String password = "Paassword";
   static String cPassword = "Change Paassword";
   static String addEmail = "Add e-mail";
   static String addNumber = "Add Number";
   static String emailAddress = "Email Address";
-  static String mobileAddress = "Mobile Number";
+  static String mobileNumber = "Mobile Number";
   static String myBusiness = "My Business";
   static String myAddress = "My Address";
   static String ourServices = "Our Services";
