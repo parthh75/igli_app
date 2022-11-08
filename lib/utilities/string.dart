@@ -20,7 +20,6 @@ class CS {
   static const String newPass = "New Password";
   static const String confirmNewPass = "Confirm New Password";
   static const String done = "Done";
-  static const String save = "Save";
   static const String finish = "Finish";
   static const String preview = "Preview";
   static const String yes = "Yes";
@@ -46,7 +45,7 @@ class CS {
   static String oldPassword = "Old Password";
   static String newPassword = "New Password";
   static String confirmPassword = "Confirm Password";
-  static String password = "Paassword";
+  // static String password = "Paassword";
   // static String password = "Paassword";
   static String cPassword = "Change Paassword";
   static String addEmail = "Add e-mail";
