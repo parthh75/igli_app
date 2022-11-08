@@ -36,7 +36,7 @@ class CS {
   static String cancle = "Cancle";
   static String view = "View";
   static String kyc = "KYC";
-  static String password = "Paassword";
+  // static String password = "Paassword";
   static String cPassword = "Change Paassword";
   static String addEmail = "Add e-mail";
   static String addNumber = "Add Number";
