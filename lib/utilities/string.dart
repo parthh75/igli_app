@@ -33,6 +33,17 @@ class CS {
   static String female = "Female";
   static String other = "Other";
   static String gender = "Gender";
+  static String cancle = "Cancle";
+  static String view = "View";
+  static String kyc = "KYC";
+  static String password = "Paassword";
+  static String cPassword = "Change Paassword";
+  static String addEmail = "Add e-mail";
+  static String addNumber = "Add Number";
+  static String emailAddress = "Email Address";
+  static String mobileAddress = "Mobile Number";
+  static String myBusiness = "My Business";
+  static String myAddress = "My Address";
   static String ourServices = "Our Services";
   static String fullName = "Full Name";
   static String dob = "Date of Birth";
