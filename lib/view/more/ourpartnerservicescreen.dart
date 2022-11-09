@@ -40,8 +40,8 @@ class _OurPartnerServiceScreenState extends State<OurPartnerServiceScreen> {
                       height: 2,
                       color: color9C9DA0,
                     ),
-                    Text("Significance"),
-                    Text(
+                    const Text("Significance"),
+                    const Text(
                         "Rent out premium office spaces folr your business or company at affordable prices."),
                     commonElevatedButton(
                         title: "Request call back",
