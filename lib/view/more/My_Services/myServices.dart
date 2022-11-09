@@ -16,7 +16,6 @@ class _MyServicesScreenState extends State<MyServicesScreen> {
     Tab(child: Text("Renewal").paddingSymmetric(horizontal: 20)),
     Tab(child: Text("Completed").paddingSymmetric(horizontal: 20)),
     Tab(child: Text("Colsed").paddingSymmetric(horizontal: 20)),
-
   ];
 
   List<Widget> tabsContent = [
@@ -31,7 +30,6 @@ class _MyServicesScreenState extends State<MyServicesScreen> {
     return DefaultTabController(
       length: tabs.length,
       child: Scaffold(
-
         backgroundColor: colorFFFFFF,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,17 +41,14 @@ class _MyServicesScreenState extends State<MyServicesScreen> {
                 height: 40,
                 color: colorFFFFFF,
                 child: TabBar(
-
                   indicatorColor: Colors.black,
                   isScrollable: true,
                   tabs: tabs,
                   labelColor: colorFFFFFF,
-                  indicator: BoxDecoration(borderRadius: BorderRadius.circular(100),color: colorPrimary),
+                  indicator: BoxDecoration(borderRadius: BorderRadius.circular(100), color: colorPrimary),
                   indicatorPadding: EdgeInsets.symmetric(horizontal: 10),
-                  unselectedLabelColor:colorPrimary ,
+                  unselectedLabelColor: colorPrimary,
                   //labelStyle: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),
-
-
                 ),
               ),
             ),
@@ -69,7 +64,6 @@ class _MyServicesScreenState extends State<MyServicesScreen> {
   }
 }
 
-
 class OngoingTab extends StatefulWidget {
   const OngoingTab({Key? key}) : super(key: key);
 
@@ -80,14 +74,9 @@ class OngoingTab extends StatefulWidget {
 class _OngoingTabState extends State<OngoingTab> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: ElevatedButton(
-      onPressed: (){Get.to(AllServices());},
-      child: Text("Explore Services"),
-      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(colorPrimary)),
-    ));
+    return Center(child: Text("Ongoing"));
   }
 }
-
 
 class RenewalTab extends StatefulWidget {
   const RenewalTab({Key? key}) : super(key: key);
@@ -99,7 +88,10 @@ class RenewalTab extends StatefulWidget {
 class _RenewalTabState extends State<RenewalTab> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Container(child: Text("Renewal"),));
+    return Center(
+        child: Container(
+      child: Text("Renewal"),
+    ));
   }
 }
 
@@ -113,7 +105,10 @@ class CompletedTab extends StatefulWidget {
 class _CompletedTabState extends State<CompletedTab> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Container(child: Text("Completed"),));
+    return Center(
+        child: Container(
+      child: Text("Completed"),
+    ));
   }
 }
 
@@ -127,6 +122,9 @@ class ClosedTab extends StatefulWidget {
 class _ClosedTabState extends State<ClosedTab> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Container(child: Text("Closed"),));
+    return Center(
+        child: Container(
+      child: Text("Closed"),
+    ));
   }
 }
