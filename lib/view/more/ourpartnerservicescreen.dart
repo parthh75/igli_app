@@ -19,7 +19,9 @@ class _OurPartnerServiceScreenState extends State<OurPartnerServiceScreen> {
       body: Card(
         child: ListTile(
           title: const Text(
-            "Oyo WorkSpaces", style: TextStyle(fontWeight: FontWeight.normal),),
+            "Oyo WorkSpaces",
+            style: TextStyle(fontWeight: FontWeight.normal),
+          ),
           trailing: const Icon(Icons.navigate_next),
           onTap: () {
             showModalBottomSheet(
@@ -30,9 +32,8 @@ class _OurPartnerServiceScreenState extends State<OurPartnerServiceScreen> {
                     Row(
                       children: [
                         const Text("Oyo WorkSpaces"),
-                        IconButton(onPressed: () {
-
-                        }, icon: const Icon(Icons.close)),
+                        IconButton(
+                            onPressed: () {}, icon: const Icon(Icons.close)),
                       ],
                     ),
                     Container(
@@ -45,11 +46,11 @@ class _OurPartnerServiceScreenState extends State<OurPartnerServiceScreen> {
                     commonElevatedButton(
                         title: "Request call back",
                         buttonColor: color26569a,
-                        buttonBottomPadding: 50
-                    ),
+                        buttonBottomPadding: 50),
                   ],
                 );
-              },);
+              },
+            );
           },
         ),
       ).paddingAll(10),
