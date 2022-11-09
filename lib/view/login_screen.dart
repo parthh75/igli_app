@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/view/main_screen.dart';
@@ -83,13 +82,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 60.0,
                 ),
-                Text(
-                  CS.emailAdd,
-                  style: themeData.textTheme.subtitle1?.copyWith(color: colors000000),
-                ),
-                CommonTextField(
+                commonTextFormField(
                   textEditingController: emailController,
                   hintText: "Enter email",
+                  headText: CS.emailAdd,
+                  textFieldHeight: 50,
                   preFixIcon: Image.asset(
                     "assets/image/mail.png",
                     scale: 3.5,
@@ -101,24 +98,21 @@ class _LoginScreenState extends State<LoginScreen> {
                       return "Enter valid email address!";
                     }
                   },
-                  underlineInputBorder: const UnderlineInputBorder(),
                 ),
                 const SizedBox(
                   height: 20.0,
                 ),
-                Text(
-                  CS.password,
-                  style: themeData.textTheme.subtitle1?.copyWith(color: colors000000),
-                ),
-                CommonTextField(
+                commonTextFormField(
                     textEditingController: password,
                     hintText: "Enter password",
                     isPassword: true,
+                    textStyle: themeData.textTheme.subtitle1?.copyWith(color: colors000000),
+                    headText: CS.password,
+                    textFieldHeight: 50,
                     preFixIcon: Image.asset(
                       "assets/image/keyboard.png",
                       scale: 3.5,
                     ),
-                    underlineInputBorder: const UnderlineInputBorder(),
                     validationFunction: (String value) {
                       if (value.isEmpty) {
                         return "Password can't be empty";
@@ -130,12 +124,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    /*Obx(() {
-                      return GetCheckBoxRow(
-                          text: CS.rememberMe,
-                          value:
-                              AuthenticationController.it.isRememberMeSelected);
-                    }),*/
+                    // Obx(() {
+                    //   return GetCheckBoxRow(text: CS.rememberMe, value: AuthenticationController.it.isRememberMeSelected);
+                    // }),
                     const SizedBox(),
                     GestureDetector(
                       onTap: () {

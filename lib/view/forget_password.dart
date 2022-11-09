@@ -64,11 +64,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 const SizedBox(
                   height: 60.0,
                 ),
-                Text(
-                  CS.emailAdd,
-                  style: themeData.textTheme.subtitle2?.copyWith(color: colors000000),
-                ),
-                CommonTextField(
+                commonTextFormField(
                   validationFunction: (String value) {
                     if (value.isEmpty) {
                       return "Email can't be empty";
@@ -78,11 +74,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   },
                   textEditingController: controller,
                   hintText: "Enter email",
+                  headText: CS.emailAdd,
                   preFixIcon: Image.asset(
                     "assets/image/mail.png",
                     scale: 3.5,
                   ),
-                  underlineInputBorder: UnderlineInputBorder(),
                 ),
                 const SizedBox(
                   height: 30.0,

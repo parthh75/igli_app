@@ -19,12 +19,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   int _selectedIndex = 3;
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text('Home Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    MyServicesScreen(),
-    PaymentsScreen(),
-    MoreScreen()
-  ];
+  static const List<Widget> _widgetOptions = [Text('Home Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)), MyServicesScreen(), PaymentsScreen(), MoreScreen()];
 
   void _onItemTapped(int index) {
     setState(() {
