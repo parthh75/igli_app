@@ -35,8 +35,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: colorCustom,
       ),
-      builder: (context, widget) => ResponsiveWrapper.builder(
-          BouncingScrollWrapper.builder(context, widget!),
+      builder: (context, widget) => ResponsiveWrapper.builder(BouncingScrollWrapper.builder(context, widget!),
           maxWidth: 1200,
           minWidth: 420,
           defaultScale: true,
@@ -66,7 +65,7 @@ class MyHomeState extends State<MyHome> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () async {
-      Get.off(() =>const LoginScreen());
+      Get.off(() => const LoginScreen());
     });
     super.initState();
   }

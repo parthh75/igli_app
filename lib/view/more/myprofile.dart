@@ -92,8 +92,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             firstDate: DateTime(1950),
                             lastDate: DateTime.now(),
                           ).then((value) => {
-                                dobController.text =
-                                    DateFormat.yMd().format(value!).toString(),
+                                // dobController.text = DateFormat.yMd().format(value!).toString(),
                               });
                         },
                       );
@@ -293,10 +292,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             showModalBottomSheet(
                               context: context,
                               constraints: const BoxConstraints(maxHeight: 400),
-                              shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(20),
-                                      topLeft: Radius.circular(20))),
+                              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20))),
                               builder: (context) {
                                 return Column(
                                   children: [
@@ -311,13 +307,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     Container(
                                         width: 70,
                                         height: 70,
-                                        margin:
-                                            const EdgeInsets.only(bottom: 20),
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(35),
-                                            color:
-                                                color26569a.withOpacity(0.1)),
+                                        margin: const EdgeInsets.only(bottom: 20),
+                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(35), color: color26569a.withOpacity(0.1)),
                                         child: Icon(
                                           Icons.attach_email,
                                           size: 40,
@@ -325,9 +316,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         )),
                                     Text(
                                       '${CS.add} ${CS.emailId}',
-                                      style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
+                                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                                     ),
                                     commonTextField(
                                       controller: enterEmailIdController,
@@ -347,40 +336,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           Get.back();
                                           showModalBottomSheet(
                                             context: context,
-                                            constraints: const BoxConstraints(
-                                                maxHeight: 400),
-                                            shape: const RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.only(
-                                                    topRight:
-                                                        Radius.circular(20),
-                                                    topLeft:
-                                                        Radius.circular(20))),
+                                            constraints: const BoxConstraints(maxHeight: 400),
+                                            shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20))),
                                             builder: (context) {
                                               return Column(
                                                 children: [
                                                   Align(
-                                                    alignment:
-                                                        Alignment.topRight,
+                                                    alignment: Alignment.topRight,
                                                     child: IconButton(
                                                         onPressed: () {
                                                           Get.back();
                                                         },
-                                                        icon: const Icon(
-                                                            Icons.close)),
+                                                        icon: const Icon(Icons.close)),
                                                   ),
                                                   Container(
                                                       width: 70,
                                                       height: 70,
-                                                      margin:
-                                                          const EdgeInsets.only(
-                                                              bottom: 20),
-                                                      decoration: BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(35),
-                                                          color: color26569a
-                                                              .withOpacity(
-                                                                  0.1)),
+                                                      margin: const EdgeInsets.only(bottom: 20),
+                                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(35), color: color26569a.withOpacity(0.1)),
                                                       child: Icon(
                                                         Icons.attach_email,
                                                         size: 40,
@@ -388,33 +361,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                       )),
                                                   Text(
                                                     'Verify ${CS.emailId}',
-                                                    style: const TextStyle(
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                                                   ),
                                                   const Text(
                                                     'Enter The OTP Sent to',
-                                                    style: TextStyle(
-                                                        fontSize: 15,
-                                                        fontWeight:
-                                                            FontWeight.normal),
+                                                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
                                                   ).paddingOnly(top: 10),
                                                   Text(
                                                     enterEmailIdController.text,
-                                                    style: const TextStyle(
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                                                   ),
-                                                  commonElevatedButton(
-                                                      height: 50,
-                                                      title: CS.verify,
-                                                      buttonColor: colorBec3c8,
-                                                      onTap: () {}),
+                                                  commonElevatedButton(height: 50, title: CS.verify, buttonColor: colorBec3c8, onTap: () {}),
                                                 ],
-                                              ).paddingSymmetric(
-                                                  horizontal: 20);
+                                              ).paddingSymmetric(horizontal: 20);
                                             },
                                           );
                                         }),
@@ -475,10 +434,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       width: 70,
                                       height: 70,
                                       margin: const EdgeInsets.only(bottom: 20),
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(35),
-                                          color: color26569a.withOpacity(0.1)),
+                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(35), color: color26569a.withOpacity(0.1)),
                                       child: Icon(
                                         Icons.phone_iphone,
                                         color: color26569a,
@@ -522,15 +478,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 Container(
                                                     width: 70,
                                                     height: 70,
-                                                    margin:
-                                                        const EdgeInsets.only(
-                                                            bottom: 20),
-                                                    decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(35),
-                                                        color: color26569a
-                                                            .withOpacity(0.1)),
+                                                    margin: const EdgeInsets.only(bottom: 20),
+                                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(35), color: color26569a.withOpacity(0.1)),
                                                     child: Icon(
                                                       Icons.phone_iphone,
                                                       color: color26569a,
@@ -546,12 +495,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 ).paddingOnly(top: 10),
                                                 Text(
                                                   phoneController.text,
-                                                  strutStyle:
-                                                      StrutStyle(fontSize: 12),
-                                                  style: const TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.bold),
+                                                  strutStyle: StrutStyle(fontSize: 12),
+                                                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                                                 ),
                                                 commonElevatedButton(height: 50, title: CS.verify, buttonColor: colorBec3c8, onTap: () {}),
                                               ],
@@ -585,8 +530,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       const SizedBox(width: 10),
                       Text(
                         CS.myBusiness,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
+                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                     ],
                   ),
@@ -676,8 +620,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       const SizedBox(width: 10),
                       Text(
                         CS.password,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
+                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                     ],
                   ),
@@ -726,13 +669,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     controller: confirmPasswordController,
                                     labelText: CS.confirmPassword,
                                   ),
-                                  commonElevatedButton(
-                                      onTap: () {},
-                                      buttonColor: color26569a,
-                                      title: "${CS.save} ${CS.changes}",
-                                      height: 100,
-                                      textTopPadding: 50,
-                                      horizontalPadding: 50),
+                                  commonElevatedButton(onTap: () {}, buttonColor: color26569a, title: "${CS.save} ${CS.changes}", height: 100, textTopPadding: 50, horizontalPadding: 50),
                                 ],
                               ).paddingSymmetric(horizontal: 20);
                             },
@@ -767,8 +704,7 @@ Widget commonElevatedButton({height, width, title, buttonColor, textTopPadding, 
           title,
           style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
         )).paddingOnly(top: textTopPadding ?? 0),
-  ).paddingSymmetric(horizontal: horizontalPadding ?? 0).paddingOnly(
-      top: buttonTopPadding ?? 0, bottom: buttonBottomPadding ?? 0);
+  ).paddingSymmetric(horizontal: horizontalPadding ?? 0).paddingOnly(top: buttonTopPadding ?? 0, bottom: buttonBottomPadding ?? 0);
 }
 
 Widget commonOutlineButton({onTap, buttonText, width, height, textStyle, bottomPadding, topPadding, horizontalPadding}) {
@@ -785,19 +721,10 @@ Widget commonOutlineButton({onTap, buttonText, width, height, textStyle, bottomP
           buttonText ?? "",
           style: textStyle,
         )),
-  )
-      .paddingOnly(left: 20, bottom: bottomPadding ?? 0, top: topPadding ?? 0)
-      .paddingSymmetric(horizontal: horizontalPadding ?? 0);
+  ).paddingOnly(left: 20, bottom: bottomPadding ?? 0, top: topPadding ?? 0).paddingSymmetric(horizontal: horizontalPadding ?? 0);
 }
 
-Widget commonTextField(
-    {labelText,
-    controller,
-    onTap,
-    topPadding,
-    bottomPadding,
-    keyboardType,
-    border}) {
+Widget commonTextField({labelText, controller, onTap, topPadding, bottomPadding, keyboardType, border}) {
   return TextFormField(
           decoration: InputDecoration(
               labelText: labelText,
