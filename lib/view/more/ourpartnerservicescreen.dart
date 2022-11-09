@@ -30,16 +30,14 @@ class _OurPartnerServiceScreenState extends State<OurPartnerServiceScreen> {
                 return Column(
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text("Oyo  WorkSpaces"),
                         IconButton(
                             onPressed: () {}, icon: const Icon(Icons.close)),
                       ],
                     ),
-                    Container(
-                      height: 2,
-                      color: color9C9DA0,
-                    ),
+                    Divider(),
                     const Text("Significance"),
                     const Text(
                         "Rent out premium office spaces folr your business or company at affordable prices."),
