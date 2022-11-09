@@ -24,9 +24,12 @@ class CS {
   static String addEmail = "Add e-mail";
   static String addNumber = "Add Number";
   static String emailAddress = "Email Address";
+  static String emailId = "Email Id";
   static String mobileNumber = "Mobile Number";
   static String myBusiness = "My Business";
+  static String myProfile = "My Profile";
   static String myAddress = "My Address";
+  static String contactUs = "Contact us";
   static String ourServices = "Our Services";
   static String fullName = "Full Name";
   static String dob = "Date of Birth";
@@ -37,6 +40,8 @@ class CS {
   static String selectEntity = "Select Entity";
   static String whatIsTheQueryAbout = "What is the query about?";
   static String typeYourMessageHere = "Type your message here";
+  static String partnerServicesAre =
+      "Partner Services Are Displayed \nBased on State Selection";
 
   ///dummyText
   static String dEmail = "test@gmail.com";

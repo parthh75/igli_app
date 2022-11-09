@@ -36,7 +36,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: colorCustom,
       ),
-      builder: (context, widget) => ResponsiveWrapper.builder(BouncingScrollWrapper.builder(context, widget!),
+      builder: (context, widget) => ResponsiveWrapper.builder(
+          BouncingScrollWrapper.builder(context, widget!),
           maxWidth: 1200,
           minWidth: 420,
           defaultScale: true,
@@ -49,33 +50,33 @@ class MyApp extends StatelessWidget {
           ],
           background: Container(color: Colors.white)),
       debugShowCheckedModeBanner: false,
-      home: ProfileScreen(),
+      home: MyHome(),
       // home: const ProfileScreen(),
     );
   }
 }
 
-// class MyHome extends StatefulWidget {
-//   MyHome();
-//
-//   @override
-//   _MyHomeState createState() => _MyHomeState();
-// }
+class MyHome extends StatefulWidget {
+  MyHome();
 
-// class _MyHomeState extends State<MyHome> {
-//   @override
-//   void initState() {
-//     Future.delayed(const Duration(seconds: 3), () async {
-//       Get.off(() => const MainScreen());
-//
-//       // Navigator.push(context,MaterialPageRoute(builder: (context) =>GetStarted() ));
-//     });
-//     super.initState();
-//   }
+  @override
+  _MyHomeState createState() => _MyHomeState();
+}
+
+class _MyHomeState extends State<MyHome> {
+  @override
+  void initState() {
+    Future.delayed(const Duration(seconds: 3), () async {
+      Get.off(() => const MainScreen());
+
+      // Navigator.push(context,MaterialPageRoute(builder: (context) =>GetStarted() ));
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // return const SplashScreen();
-    return const ProfileScreen();
+    return const SplashScreen();
+    //return const ProfileScreen();
   }
-// }
+}
