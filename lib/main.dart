@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/utilities/string.dart';
-import 'package:igli_financial/view/main_screen.dart';
-import 'package:igli_financial/view/more/myprofile.dart';
+import 'package:igli_financial/view/login_screen.dart';
 import 'package:igli_financial/view/splash_screen.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
@@ -36,8 +35,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: colorCustom,
       ),
-      builder: (context, widget) => ResponsiveWrapper.builder(
-          BouncingScrollWrapper.builder(context, widget!),
+      builder: (context, widget) => ResponsiveWrapper.builder(BouncingScrollWrapper.builder(context, widget!),
           maxWidth: 1200,
           minWidth: 420,
           defaultScale: true,
@@ -57,19 +55,17 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHome extends StatefulWidget {
-  MyHome();
+  const MyHome({super.key});
 
   @override
-  _MyHomeState createState() => _MyHomeState();
+  MyHomeState createState() => MyHomeState();
 }
 
-class _MyHomeState extends State<MyHome> {
+class MyHomeState extends State<MyHome> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () async {
-      Get.off(() => const MainScreen());
-
-      // Navigator.push(context,MaterialPageRoute(builder: (context) =>GetStarted() ));
+      Get.off(() => const LoginScreen());
     });
     super.initState();
   }
@@ -77,6 +73,6 @@ class _MyHomeState extends State<MyHome> {
   @override
   Widget build(BuildContext context) {
     return const SplashScreen();
-    //return const ProfileScreen();
+    // return const ProfileScreen();
   }
 }
