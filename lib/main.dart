@@ -35,7 +35,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: colorCustom,
       ),
-      builder: (context, widget) => ResponsiveWrapper.builder(BouncingScrollWrapper.builder(context, widget!),
+      builder: (context, widget) => ResponsiveWrapper.builder(
+          BouncingScrollWrapper.builder(context, widget!),
           maxWidth: 1200,
           minWidth: 420,
           defaultScale: true,
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
           ],
           background: Container(color: Colors.white)),
       debugShowCheckedModeBanner: false,
-      home: const MyHome(),
+      home: MyHome(),
       // home: const ProfileScreen(),
     );
   }
