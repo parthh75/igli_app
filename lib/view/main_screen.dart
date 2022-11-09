@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/view/more/more_main.dart';
-import 'package:igli_financial/view/more/myServices.dart';
+import 'package:igli_financial/view/more/My_Services/myServices.dart';
 
 import '../utilities/colors.dart';
-import 'more/payment.dart';
+import 'more/Payment/payment.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -58,7 +58,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ]),
               height: 50,
-              width: Get.width,
+              width:double.infinity,
               child: Row(
                 children: [
                   Image.asset("assets/image/igliLogo.png", height: 30, width: 180, fit: BoxFit.fill).paddingOnly(left: 15),
