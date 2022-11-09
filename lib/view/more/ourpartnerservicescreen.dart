@@ -31,7 +31,7 @@ class _OurPartnerServiceScreenState extends State<OurPartnerServiceScreen> {
                   children: [
                     Row(
                       children: [
-                        const Text("Oyo WorkSpaces"),
+                        const Text("Oyo  WorkSpaces"),
                         IconButton(
                             onPressed: () {}, icon: const Icon(Icons.close)),
                       ],
