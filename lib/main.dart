@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/utilities/string.dart';
 import 'package:igli_financial/view/login_screen.dart';
+import 'package:igli_financial/view/more/myServices.dart';
+import 'package:igli_financial/view/more/ourpartnerservicescreen.dart';
+import 'package:igli_financial/view/more/partners_screen.dart';
 import 'package:igli_financial/view/splash_screen.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
@@ -49,31 +52,31 @@ class MyApp extends StatelessWidget {
           ],
           background: Container(color: Colors.white)),
       debugShowCheckedModeBanner: false,
-      home: MyHome(),
+      home: PartnersScreen(),
       // home: const ProfileScreen(),
     );
   }
 }
 
-class MyHome extends StatefulWidget {
-  const MyHome({super.key});
-
-  @override
-  MyHomeState createState() => MyHomeState();
-}
-
-class MyHomeState extends State<MyHome> {
-  @override
-  void initState() {
-    Future.delayed(const Duration(seconds: 3), () async {
-      Get.to(() => const LoginScreen());
-    });
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return const SplashScreen();
-    // return const ProfileScreen();
-  }
-}
+// class MyHome extends StatefulWidget {
+//   const MyHome({super.key});
+//
+//   @override
+//   MyHomeState createState() => MyHomeState();
+// }
+//
+// class MyHomeState extends State<MyHome> {
+//   @override
+//   void initState() {
+//     Future.delayed(const Duration(seconds: 3), () async {
+//       Get.to(() => const LoginScreen());
+//     });
+//     super.initState();
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return const SplashScreen();
+//     // return const ProfileScreen();
+//   }
+// }

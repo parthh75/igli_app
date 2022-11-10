@@ -81,7 +81,7 @@ class _MoreScreenState extends State<MoreScreen> {
   }
 }
 
-commonListTile({title, leadingIcon, onTap}) {
+Widget commonListTile({title, leadingIcon, onTap, shape}) {
   return ListTile(
     title: Text(title),
     trailing: const Icon(Icons.navigate_next),
@@ -89,5 +89,6 @@ commonListTile({title, leadingIcon, onTap}) {
     horizontalTitleGap: -5,
     tileColor: Colors.white,
     onTap: onTap,
+    shape: shape,
   ).paddingOnly(bottom: 6);
 }

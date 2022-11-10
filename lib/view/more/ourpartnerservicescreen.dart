@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:igli_financial/utilities/colors.dart';
-import 'package:igli_financial/view/more/myprofile.dart';
+import 'package:igli_financial/common_widgets/bottomsheet.dart';
+import 'package:igli_financial/common_widgets/done_screen.dart';
 
 class OurPartnerServiceScreen extends StatefulWidget {
-  const OurPartnerServiceScreen({Key? key}) : super(key: key);
+  String? title;
+  Function()? ontap;
+
+  OurPartnerServiceScreen(
+      {Key? key, this.title, required Function() this.ontap})
+      : super(key: key);
 
   @override
   State<OurPartnerServiceScreen> createState() =>
@@ -18,39 +23,12 @@ class _OurPartnerServiceScreenState extends State<OurPartnerServiceScreen> {
       appBar: AppBar(),
       body: Card(
         child: ListTile(
-          title: const Text(
-            "Oyo WorkSpaces",
-            style: TextStyle(fontWeight: FontWeight.normal),
-          ),
-          trailing: const Icon(Icons.navigate_next),
-          onTap: () {
-            showModalBottomSheet(
-              context: context,
-              builder: (context) {
-                return Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text("Oyo  WorkSpaces"),
-                        IconButton(
-                            onPressed: () {}, icon: const Icon(Icons.close)),
-                      ],
-                    ),
-                    Divider(),
-                    const Text("Significance"),
-                    const Text(
-                        "Rent out premium office spaces folr your business or company at affordable prices."),
-                    commonElevatedButton(
-                        title: "Request call back",
-                        buttonColor: color26569a,
-                        buttonBottomPadding: 50),
-                  ],
-                );
-              },
-            );
-          },
-        ),
+            title: Text(
+              widget.title ?? "",
+              style: TextStyle(fontWeight: FontWeight.normal),
+            ),
+            trailing: const Icon(Icons.navigate_next),
+            onTap: widget.ontap),
       ).paddingAll(10),
     );
   }

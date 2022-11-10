@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:igli_financial/common_widgets/bottomsheet.dart';
+import 'package:igli_financial/common_widgets/done_screen.dart';
 import 'package:igli_financial/utilities/colors.dart';
 import 'package:igli_financial/utilities/string.dart';
+import 'package:igli_financial/view/more/instant_loans_screen.dart';
 import 'package:igli_financial/view/more/ourpartnerservicescreen.dart';
 
 class PartnersScreen extends StatefulWidget {
@@ -58,21 +61,60 @@ class _PartnersScreenState extends State<PartnersScreen> {
                 title: "Coworking Spaces",
                 icon: Icons.person_outline,
                 ontap: () {
-                  Get.to(OurPartnerServiceScreen());
+                  Get.to(OurPartnerServiceScreen(
+                    title: "Oyo WorkSpaces",
+                    ontap: () {
+                      commonSheet(
+                        context: context,
+                        title: "Significance",
+                        headText: "Oyo WorkSpaces",
+                        discription:
+                            "Rent out premium office spaces folr your business or company at affordable prices.",
+                        onTap: () {
+                          Get.back();
+                          Get.to(const doneScreen());
+                        },
+                      );
+                    },
+                  ));
                 },
               ).paddingOnly(right: 10, left: 10),
               commonPartnersCard(
                 title: "Instant Loans",
                 icon: Icons.paste_rounded,
+                ontap: () {
+                  Get.to(InstantLoansScreen());
+                },
               ),
               commonPartnersCard(
-                title: "DIY Website",
-                icon: Icons.web_sharp,
-              ).paddingOnly(right: 10, left: 10),
+                  title: "DIY Website",
+                  icon: Icons.web_sharp,
+                  ontap: () {
+                    Get.to(OurPartnerServiceScreen(
+                      title: "Websites.co.in",
+                      ontap: () {},
+                    ));
+                  }).paddingOnly(right: 10, left: 10),
               commonPartnersCard(
-                title: "Payment Gateway",
-                icon: Icons.paypal,
-              ),
+                  title: "Payment Gateway",
+                  icon: Icons.paypal,
+                  ontap: () {
+                    Get.to(OurPartnerServiceScreen(
+                      title: "Instamojo",
+                      ontap: () {
+                        commonSheet(
+                          context: context,
+                          title: "Significance",
+                          headText: "Instamojo",
+                          discription: "Easiest way to collect your payments.",
+                          onTap: () {
+                            Get.back();
+                            Get.to(const doneScreen());
+                          },
+                        );
+                      },
+                    ));
+                  }),
             ],
           )
         ],
