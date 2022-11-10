@@ -56,19 +56,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       const SizedBox(
                         width: 10,
                       ),
-                      Text(CS.personalDetails, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                      Text(CS.personalDetails,
+                          style: const TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold)),
                     ],
                   ).paddingOnly(top: 10),
-                  const Center(child: Icon(Icons.account_circle, size: 100, color: Colors.grey)),
+                  const Center(
+                      child: Icon(Icons.account_circle,
+                          size: 100, color: Colors.grey)),
                   Center(
                       child: Text(
                     CS.dUserName,
-                    style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.bold),
                   ).paddingOnly(bottom: 2, top: 5)),
                   Center(
                       child: Text(
                     CS.dEmail,
-                    style: const TextStyle(fontWeight: FontWeight.normal, color: Colors.grey),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.normal, color: Colors.grey),
                   )),
                   commonTextField(
                     labelText: CS.fullName,
@@ -172,13 +178,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       const SizedBox(width: 10),
                       Text(
                         CS.myAddress,
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                     ],
                   ),
                   const Text(
                     "Address as mentioned in the address proof",
-                    style: TextStyle(fontSize: 12, color: Colors.grey, fontWeight: FontWeight.normal),
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.normal),
                   ).paddingOnly(left: 32, top: 2),
                   isAddAddressButton
                       ? commonTextField(
@@ -214,7 +224,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: commonOutlineButton(
                             horizontalPadding: 120,
                             buttonText: "+ Add Address",
-                            textStyle: const TextStyle(fontWeight: FontWeight.w600),
+                            textStyle:
+                                const TextStyle(fontWeight: FontWeight.w600),
                             bottomPadding: 15,
                             topPadding: 30,
                             onTap: () {
@@ -263,18 +274,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       const SizedBox(width: 10),
                       Text(
                         CS.emailAddress,
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                     ],
                   ),
                   Text(
                     "${CS.add} ${CS.emailAddress}",
-                    style: const TextStyle(fontSize: 12, color: Colors.grey, fontWeight: FontWeight.normal),
+                    style: const TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.normal),
                   ).paddingOnly(left: 32, top: 2),
                   Container(
                     height: 50,
                     width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.only(top: 15, bottom: isAddEmailAddressButton ? 0 : 20),
+                    margin: EdgeInsets.only(
+                        top: 15, bottom: isAddEmailAddressButton ? 0 : 20),
                     padding: const EdgeInsets.only(top: 15, left: 10),
                     color: color26569a.withOpacity(0.1),
                     child: Text(CS.dEmail),
@@ -292,7 +308,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             showModalBottomSheet(
                               context: context,
                               constraints: const BoxConstraints(maxHeight: 400),
-                              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20))),
+                              shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(20),
+                                      topLeft: Radius.circular(20))),
                               builder: (context) {
                                 return Column(
                                   children: [
@@ -307,8 +326,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     Container(
                                         width: 70,
                                         height: 70,
-                                        margin: const EdgeInsets.only(bottom: 20),
-                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(35), color: color26569a.withOpacity(0.1)),
+                                        margin:
+                                            const EdgeInsets.only(bottom: 20),
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(35),
+                                            color:
+                                                color26569a.withOpacity(0.1)),
                                         child: Icon(
                                           Icons.attach_email,
                                           size: 40,
@@ -316,7 +340,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         )),
                                     Text(
                                       '${CS.add} ${CS.emailId}',
-                                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                      style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                     commonTextField(
                                       controller: enterEmailIdController,
@@ -336,24 +362,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           Get.back();
                                           showModalBottomSheet(
                                             context: context,
-                                            constraints: const BoxConstraints(maxHeight: 400),
-                                            shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20))),
+                                            constraints: const BoxConstraints(
+                                                maxHeight: 400),
+                                            shape: const RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.only(
+                                                    topRight:
+                                                        Radius.circular(20),
+                                                    topLeft:
+                                                        Radius.circular(20))),
                                             builder: (context) {
                                               return Column(
                                                 children: [
                                                   Align(
-                                                    alignment: Alignment.topRight,
+                                                    alignment:
+                                                        Alignment.topRight,
                                                     child: IconButton(
                                                         onPressed: () {
                                                           Get.back();
                                                         },
-                                                        icon: const Icon(Icons.close)),
+                                                        icon: const Icon(
+                                                            Icons.close)),
                                                   ),
                                                   Container(
                                                       width: 70,
                                                       height: 70,
-                                                      margin: const EdgeInsets.only(bottom: 20),
-                                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(35), color: color26569a.withOpacity(0.1)),
+                                                      margin:
+                                                          const EdgeInsets.only(
+                                                              bottom: 20),
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(35),
+                                                          color: color26569a
+                                                              .withOpacity(
+                                                                  0.1)),
                                                       child: Icon(
                                                         Icons.attach_email,
                                                         size: 40,
@@ -361,19 +403,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                       )),
                                                   Text(
                                                     'Verify ${CS.emailId}',
-                                                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                                    style: const TextStyle(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.bold),
                                                   ),
                                                   const Text(
                                                     'Enter The OTP Sent to',
-                                                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
+                                                    style: TextStyle(
+                                                        fontSize: 15,
+                                                        fontWeight:
+                                                            FontWeight.normal),
                                                   ).paddingOnly(top: 10),
                                                   Text(
                                                     enterEmailIdController.text,
-                                                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                                    style: const TextStyle(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.bold),
                                                   ),
-                                                  commonElevatedButton(height: 50, title: CS.verify, buttonColor: colorBec3c8, onTap: () {}),
+                                                  commonElevatedButton(
+                                                      height: 50,
+                                                      title: CS.verify,
+                                                      buttonColor: colorBec3c8,
+                                                      onTap: () {}),
                                                 ],
-                                              ).paddingSymmetric(horizontal: 20);
+                                              ).paddingSymmetric(
+                                                  horizontal: 20);
                                             },
                                           );
                                         }),
@@ -398,13 +454,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       const SizedBox(width: 10),
                       Text(
                         CS.addNumber,
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                     ],
                   ),
                   const Text(
                     "Add or Remove Phone Number",
-                    style: TextStyle(fontSize: 12, color: Colors.grey, fontWeight: FontWeight.normal),
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.normal),
                   ).paddingOnly(
                     left: 32,
                     top: 2,
@@ -418,7 +478,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           showModalBottomSheet(
                             context: context,
                             constraints: const BoxConstraints(maxHeight: 400),
-                            shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20))),
+                            shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(20),
+                                    topLeft: Radius.circular(20))),
                             builder: (context) {
                               return Column(
                                 children: [
@@ -434,7 +497,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       width: 70,
                                       height: 70,
                                       margin: const EdgeInsets.only(bottom: 20),
-                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(35), color: color26569a.withOpacity(0.1)),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(35),
+                                          color: color26569a.withOpacity(0.1)),
                                       child: Icon(
                                         Icons.phone_iphone,
                                         color: color26569a,
@@ -442,7 +508,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       )),
                                   Text(
                                     '${CS.add} ${CS.mobileNumber}',
-                                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                    style: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
                                   ),
                                   commonTextField(
                                     controller: phoneController,
@@ -462,8 +530,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         Get.back();
                                         showModalBottomSheet(
                                           context: context,
-                                          constraints: const BoxConstraints(maxHeight: 400),
-                                          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20))),
+                                          constraints: const BoxConstraints(
+                                              maxHeight: 400),
+                                          shape: const RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.only(
+                                                  topRight: Radius.circular(20),
+                                                  topLeft:
+                                                      Radius.circular(20))),
                                           builder: (context) {
                                             return Column(
                                               children: [
@@ -473,13 +546,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                       onPressed: () {
                                                         Get.back();
                                                       },
-                                                      icon: const Icon(Icons.close)),
+                                                      icon: const Icon(
+                                                          Icons.close)),
                                                 ),
                                                 Container(
                                                     width: 70,
                                                     height: 70,
-                                                    margin: const EdgeInsets.only(bottom: 20),
-                                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(35), color: color26569a.withOpacity(0.1)),
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                            bottom: 20),
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(35),
+                                                        color: color26569a
+                                                            .withOpacity(0.1)),
                                                     child: Icon(
                                                       Icons.phone_iphone,
                                                       color: color26569a,
@@ -487,18 +568,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                     )),
                                                 const Text(
                                                   'Verify Mobile Number',
-                                                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.bold),
                                                 ),
                                                 const Text(
                                                   'Enter The OTP Sent to',
-                                                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
+                                                  style: TextStyle(
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.normal),
                                                 ).paddingOnly(top: 10),
                                                 Text(
                                                   phoneController.text,
-                                                  strutStyle: StrutStyle(fontSize: 12),
-                                                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                                  strutStyle: const StrutStyle(
+                                                      fontSize: 12),
+                                                  style: const TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.bold),
                                                 ),
-                                                commonElevatedButton(height: 50, title: CS.verify, buttonColor: colorBec3c8, onTap: () {}),
+                                                commonElevatedButton(
+                                                    height: 50,
+                                                    title: CS.verify,
+                                                    buttonColor: colorBec3c8,
+                                                    onTap: () {}),
                                               ],
                                             ).paddingSymmetric(horizontal: 20);
                                           },
@@ -530,16 +625,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       const SizedBox(width: 10),
                       Text(
                         CS.myBusiness,
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                     ],
                   ),
                   const Text(
                     "See business that you are part of",
-                    style: TextStyle(fontSize: 12, color: Colors.grey, fontWeight: FontWeight.normal),
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.normal),
                   ).paddingOnly(left: 32, top: 2),
                   Center(
-                    child: commonOutlineButton(width: 200, height: 40, buttonText: CS.view, textStyle: const TextStyle(fontWeight: FontWeight.w600), bottomPadding: 15, topPadding: 30),
+                    child: commonOutlineButton(
+                        width: 200,
+                        height: 40,
+                        buttonText: CS.view,
+                        textStyle: const TextStyle(fontWeight: FontWeight.w600),
+                        bottomPadding: 15,
+                        topPadding: 30),
                   ),
                 ],
               ).paddingSymmetric(horizontal: 20).paddingOnly(top: 20),
@@ -555,16 +660,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       const SizedBox(width: 10),
                       Text(
                         CS.kyc,
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                     ],
                   ),
                   const Text(
                     "Identification number as mention in the ID proof",
-                    style: TextStyle(fontSize: 12, color: Colors.grey, fontWeight: FontWeight.normal),
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.normal),
                   ).paddingOnly(left: 32, top: 2),
-                  isKYCButton ? commonTextField(controller: adharNumberController, labelText: "Aadhar No.", topPadding: 20) : const SizedBox(),
-                  isKYCButton ? commonTextField(controller: panNumberController, labelText: "PAN No.", topPadding: 15) : const SizedBox(),
+                  isKYCButton
+                      ? commonTextField(
+                          controller: adharNumberController,
+                          labelText: "Aadhar No.",
+                          topPadding: 20)
+                      : const SizedBox(),
+                  isKYCButton
+                      ? commonTextField(
+                          controller: panNumberController,
+                          labelText: "PAN No.",
+                          topPadding: 15)
+                      : const SizedBox(),
                   Center(
                     child: isKYCButton
                         ? const SizedBox()
@@ -574,8 +693,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 isKYCButton = true;
                               });
                             },
-                            buttonText: "${const Icon(Icons.add)} ${CS.add} ${CS.kyc}",
-                            textStyle: const TextStyle(fontWeight: FontWeight.w600),
+                            buttonText:
+                                "${const Icon(Icons.add)} ${CS.add} ${CS.kyc}",
+                            textStyle:
+                                const TextStyle(fontWeight: FontWeight.w600),
                             bottomPadding: 15,
                             horizontalPadding: 120,
                             topPadding: 30),
@@ -618,15 +739,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     children: [
                       Icon(Icons.key, color: color26569a),
                       const SizedBox(width: 10),
-                      Text(
+                      const Text(
                         CS.password,
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                     ],
                   ),
                   const Text(
                     "See business that you are part of",
-                    style: TextStyle(fontSize: 12, color: Colors.grey, fontWeight: FontWeight.normal),
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.normal),
                   ).paddingOnly(left: 32, top: 2),
                   Center(
                     child: commonOutlineButton(
@@ -641,7 +766,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           isButton = false;
                           showModalBottomSheet(
                             context: context,
-                            shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+                            shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    topRight: Radius.circular(20))),
                             constraints: const BoxConstraints(maxHeight: 400),
                             builder: (context) {
                               return Column(
@@ -657,10 +785,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   ),
                                   const Text(
                                     "Change Account Password",
-                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
                                   ).paddingOnly(bottom: 5),
-                                  const Text("Password must be 6-20 characters long").paddingOnly(bottom: 20),
-                                  commonTextField(controller: oldPasswordController, labelText: CS.oldPassword),
+                                  const Text(
+                                          "Password must be 6-20 characters long")
+                                      .paddingOnly(bottom: 20),
+                                  commonTextField(
+                                      controller: oldPasswordController,
+                                      labelText: CS.oldPassword),
                                   commonTextField(
                                     controller: newPasswordController,
                                     labelText: CS.newPassword,
@@ -669,7 +803,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     controller: confirmPasswordController,
                                     labelText: CS.confirmPassword,
                                   ),
-                                  commonElevatedButton(onTap: () {}, buttonColor: color26569a, title: "${CS.save} ${CS.changes}", height: 100, textTopPadding: 50, horizontalPadding: 50),
+                                  commonElevatedButton(
+                                      onTap: () {},
+                                      buttonColor: color26569a,
+                                      title: "${CS.save} ${CS.changes}",
+                                      height: 100,
+                                      textTopPadding: 50,
+                                      horizontalPadding: 50),
                                 ],
                               ).paddingSymmetric(horizontal: 20);
                             },
@@ -689,7 +829,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 }
 
-Widget commonElevatedButton({height, width, title, buttonColor, textTopPadding, onTap, horizontalPadding, buttonTopPadding, buttonBottomPadding}) {
+Widget commonElevatedButton(
+    {height,
+    width,
+    title,
+    buttonColor,
+    textTopPadding,
+    onTap,
+    horizontalPadding,
+    buttonTopPadding,
+    buttonBottomPadding}) {
   return SizedBox(
     width: width ?? Get.width,
     height: height ?? 40,
@@ -704,10 +853,19 @@ Widget commonElevatedButton({height, width, title, buttonColor, textTopPadding, 
           title,
           style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
         )).paddingOnly(top: textTopPadding ?? 0),
-  ).paddingSymmetric(horizontal: horizontalPadding ?? 0).paddingOnly(top: buttonTopPadding ?? 0, bottom: buttonBottomPadding ?? 0);
+  ).paddingSymmetric(horizontal: horizontalPadding ?? 0).paddingOnly(
+      top: buttonTopPadding ?? 0, bottom: buttonBottomPadding ?? 0);
 }
 
-Widget commonOutlineButton({onTap, buttonText, width, height, textStyle, bottomPadding, topPadding, horizontalPadding}) {
+Widget commonOutlineButton(
+    {onTap,
+    buttonText,
+    width,
+    height,
+    textStyle,
+    bottomPadding,
+    topPadding,
+    horizontalPadding}) {
   return SizedBox(
     width: width ?? Get.width,
     height: height ?? 40,
@@ -721,10 +879,19 @@ Widget commonOutlineButton({onTap, buttonText, width, height, textStyle, bottomP
           buttonText ?? "",
           style: textStyle,
         )),
-  ).paddingOnly(left: 20, bottom: bottomPadding ?? 0, top: topPadding ?? 0).paddingSymmetric(horizontal: horizontalPadding ?? 0);
+  )
+      .paddingOnly(left: 20, bottom: bottomPadding ?? 0, top: topPadding ?? 0)
+      .paddingSymmetric(horizontal: horizontalPadding ?? 0);
 }
 
-Widget commonTextField({labelText, controller, onTap, topPadding, bottomPadding, keyboardType, border}) {
+Widget commonTextField(
+    {labelText,
+    controller,
+    onTap,
+    topPadding,
+    bottomPadding,
+    keyboardType,
+    border}) {
   return TextFormField(
           decoration: InputDecoration(
               labelText: labelText,
