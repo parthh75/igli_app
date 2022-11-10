@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:igli_financial/common_widgets/bottomsheet.dart';
+import 'package:igli_financial/common_widgets/common.dart';
 import 'package:igli_financial/common_widgets/done_screen.dart';
 
 class OurPartnerServiceScreen extends StatefulWidget {

@@ -49,3 +49,33 @@ commonSheet({context, headText, title, discription, onTap}) {
     },
   );
 }
+
+Widget commonListTile({title, leadingIcon, onTap, shape}) {
+  return ListTile(
+    title: Text(title),
+    trailing: const Icon(Icons.navigate_next),
+    leading: Icon(leadingIcon, color: colorPrimary, size: 20),
+    horizontalTitleGap: -5,
+    tileColor: Colors.white,
+    onTap: onTap,
+    shape: shape,
+  ).paddingOnly(bottom: 6);
+}
+
+Widget commonExpansionTile({title, children}) {
+  return Padding(
+    padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
+    child: Card(
+      color: colorBEC3C8.withOpacity(0.1),
+      shadowColor: Colors.transparent,
+      shape: const OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.black26)),
+      child: ExpansionTile(
+        collapsedBackgroundColor: colorEAEAEA,
+        textColor: colorPrimary,
+        title: Text(title),
+        children: children ?? [],
+      ),
+    ),
+  );
+}

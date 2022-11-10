@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/utilities/string.dart';
 import 'package:igli_financial/view/login_screen.dart';
+import 'package:igli_financial/view/more/more_main.dart';
 import 'package:igli_financial/view/more/myServices.dart';
 import 'package:igli_financial/view/more/ourpartnerservicescreen.dart';
 import 'package:igli_financial/view/more/partners_screen.dart';
@@ -52,7 +53,7 @@ class MyApp extends StatelessWidget {
           ],
           background: Container(color: Colors.white)),
       debugShowCheckedModeBanner: false,
-      home: PartnersScreen(),
+      home: MoreScreen(),
       // home: const ProfileScreen(),
     );
   }

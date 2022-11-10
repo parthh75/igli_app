@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:igli_financial/common_widgets/common.dart';
 import 'package:igli_financial/utilities/string.dart';
+import 'package:igli_financial/view/more/help_screen.dart';
 import 'package:igli_financial/view/more/myprofile.dart';
 import 'package:igli_financial/view/more/partners_screen.dart';
 
@@ -53,7 +55,12 @@ class _MoreScreenState extends State<MoreScreen> {
               CS.support,
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ).paddingOnly(top: 15, bottom: 15, left: 20),
-            commonListTile(title: "Help", leadingIcon: Icons.help_outline),
+            commonListTile(
+                title: "Help",
+                leadingIcon: Icons.help_outline,
+                onTap: () {
+                  Get.to(Help());
+                }),
             commonListTile(
                 title: CS.contactUs,
                 leadingIcon: Icons.mail_outline,
@@ -79,16 +86,4 @@ class _MoreScreenState extends State<MoreScreen> {
       ),
     );
   }
-}
-
-Widget commonListTile({title, leadingIcon, onTap, shape}) {
-  return ListTile(
-    title: Text(title),
-    trailing: const Icon(Icons.navigate_next),
-    leading: Icon(leadingIcon, color: colorPrimary, size: 20),
-    horizontalTitleGap: -5,
-    tileColor: Colors.white,
-    onTap: onTap,
-    shape: shape,
-  ).paddingOnly(bottom: 6);
 }
