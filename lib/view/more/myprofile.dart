@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/utilities/colors.dart';
 import 'package:igli_financial/utilities/string.dart';
+import 'package:intl/intl.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -88,6 +89,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   commonTextField(
                     labelText: CS.dob,
                     controller: dobController,
+                    suffixIcon: Icon(Icons.date_range, color: colorPrimary),
                     onTap: () {
                       setState(
                         () async {
@@ -98,7 +100,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             firstDate: DateTime(1950),
                             lastDate: DateTime.now(),
                           ).then((value) => {
-                                // dobController.text = DateFormat.yMd().format(value!).toString(),
+                                dobController.text =
+                                    DateFormat.yMd().format(value!).toString(),
                               });
                         },
                       );
@@ -891,11 +894,15 @@ Widget commonTextField(
     topPadding,
     bottomPadding,
     keyboardType,
+    hintText,
+    suffixIcon,
     border}) {
   return TextFormField(
           decoration: InputDecoration(
               labelText: labelText,
+              hintText: hintText,
               border: border,
+              suffixIcon: suffixIcon,
               labelStyle: const TextStyle(
                 fontSize: 15,
               )),
