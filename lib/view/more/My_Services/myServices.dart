@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/utilities/colors.dart';
+import 'package:igli_financial/view/more/My_Services/All_Services/all_services.dart';
 
 class MyServicesScreen extends StatefulWidget {
   const MyServicesScreen({Key? key}) : super(key: key);
@@ -17,7 +18,12 @@ class _MyServicesScreenState extends State<MyServicesScreen> {
     Tab(child: Text("Colsed").paddingSymmetric(horizontal: 20)),
   ];
 
-  List<Widget> tabsContent = [OngoingTab(), RenewalTab(), CompletedTab(), ClosedTab()];
+  List<Widget> tabsContent = [
+    OngoingTab(),
+    RenewalTab(),
+    CompletedTab(),
+    ClosedTab()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +74,7 @@ class OngoingTab extends StatefulWidget {
 class _OngoingTabState extends State<OngoingTab> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("Ongoing"));
+    return Center(child: ElevatedButton(onPressed: (){Get.to(AllServices());},style: ButtonStyle(backgroundColor:MaterialStateProperty.all(colorPrimary) ),child: Text("Explore Services")));
   }
 }
 
