@@ -833,15 +833,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
 }
 
 Widget commonElevatedButton(
-    {height,
-    width,
-    title,
-    buttonColor,
-    textTopPadding,
-    onTap,
-    horizontalPadding,
-    buttonTopPadding,
-    buttonBottomPadding}) {
+    {double? height,
+      double? width,
+    String? title,
+    Color? buttonColor,
+      double? textTopPadding,
+    Function()? onTap,
+      double? horizontalPadding,
+      double? buttonTopPadding,
+      double? buttonBottomPadding}) {
   return SizedBox(
     width: width ?? Get.width,
     height: height ?? 40,
@@ -853,7 +853,7 @@ Widget commonElevatedButton(
             )),
         onPressed: onTap ?? () {},
         child: Text(
-          title,
+          title ?? "",
           style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 16),
         )).paddingOnly(top: textTopPadding ?? 0),
   ).paddingSymmetric(horizontal: horizontalPadding ?? 0).paddingOnly(
@@ -861,14 +861,14 @@ Widget commonElevatedButton(
 }
 
 Widget commonOutlineButton(
-    {onTap,
-    buttonText,
-    width,
-    height,
-    textStyle,
-    bottomPadding,
-    topPadding,
-    horizontalPadding}) {
+    {Function()? onTap,
+    String? buttonText,
+    double? width,
+    double? height,
+    TextStyle? textStyle,
+    double? bottomPadding,
+    double? topPadding,
+    double? horizontalPadding}) {
   return SizedBox(
     width: width ?? Get.width,
     height: height ?? 40,
@@ -888,15 +888,15 @@ Widget commonOutlineButton(
 }
 
 Widget commonTextField(
-    {labelText,
-    controller,
-    onTap,
-    topPadding,
-    bottomPadding,
-    keyboardType,
-    hintText,
-    suffixIcon,
-    border}) {
+    {String? labelText,
+    TextEditingController? controller,
+    Function()? onTap,
+    double? topPadding,
+    double? bottomPadding,
+      TextInputType? keyboardType,
+    String? hintText,
+      Widget? suffixIcon,
+      InputBorder? border}) {
   return TextFormField(
           decoration: InputDecoration(
               labelText: labelText,
