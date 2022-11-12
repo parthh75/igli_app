@@ -1,8 +1,12 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:igli_financial/view/more/My_Services/All_Services/Model/All_Services_model.dart';
 import 'package:igli_financial/view/more/My_Services/myServices.dart';
 
 import '../../../../utilities/colors.dart';
+import 'all_services_tab/Tax_compliance_Tab.dart';
+import 'all_services_tab/business_setup_tab.dart';
 
 class AllServices extends StatefulWidget {
   const AllServices({Key? key}) : super(key: key);
@@ -24,7 +28,7 @@ class _AllServicesState extends State<AllServices> {
 
   List<Widget> tabsContent = [
     BusinessSetupTab(),
-    RenewalTab(),
+    TaxComplianceTab(),
     CompletedTab(),
     ClosedTab(),
     ClosedTab(),
@@ -74,85 +78,64 @@ class _AllServicesState extends State<AllServices> {
 }
 
 
-class BusinessSetupTab extends StatelessWidget {
-  const BusinessSetupTab({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          commonListView().paddingSymmetric(vertical: 10)
-        ],
-      ),
-    );
+
+
+
+Widget commonListView(
+{
+  String? listTitle,
+  String? subListTitlePay,
+  String? pay,
+  bool isNoSubTitle = true,
   }
-}
-
-
-Widget commonListView(){
-  return Container(
-    color: colorFFFFFF,
-    padding: EdgeInsets.only(left: 15,right: 15,bottom: 20,top: 10),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    ){
+  return Stack(
+      alignment: Alignment.bottomRight,
       children: [
-        Text("Business Registration",style: TextStyle(
-          fontWeight: FontWeight.w600,
-          color: colors000000
-        )),
-        ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: 5,
-          itemBuilder: (context, index) => Stack(
-            alignment: Alignment.bottomRight,
+        Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: colorF8F8F8,
+            borderRadius:
+              BorderRadius.circular(5),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                width: double.infinity,
+                width: 5,
+                height: 75,
                 decoration: BoxDecoration(
-                  color: colorF8F8F8,
-                  borderRadius:
-                    BorderRadius.circular(5),
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                  color: colorPrimary
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+              ),
+              SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      width: 5,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(5),bottomLeft: Radius.circular(5)),
-                        color: colorPrimary
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
 
-                          Text("Private Limited Company Registration",style: TextStyle(color: colors000000,fontWeight: FontWeight.w700,fontSize: 16),).paddingSymmetric(vertical: 10),
-                          Text("\$6193/- All inclusive",style: TextStyle(color: colors000000,),).paddingOnly(bottom: 10)
+                    Text(listTitle ??"Private Limited Company Registration",style: TextStyle(color: colors000000,fontWeight: FontWeight.w700,fontSize: 16),).paddingSymmetric(vertical: 10),
 
-                        ],
-                      ),
-                    )
+                    isNoSubTitle ? Text("₹${subListTitlePay}/-All inclusive",style: TextStyle(color: colors000000,),).paddingOnly(bottom: 10) : SizedBox()
+
                   ],
                 ),
-              ).paddingOnly(top: 10),
-              Container(
-                decoration: BoxDecoration(
-                    color: colorPrimary,
-                    borderRadius: BorderRadius.only(bottomRight: Radius.circular(5))
-                ),
-                child: Text(
-                    "Pay \$499/-to get started",style: TextStyle(color: colorFFFFFF,fontSize: 13),
-                ).paddingSymmetric(vertical: 2,horizontal: 2),
-              ),
+              )
             ],
-          ),)
+          ),
+        ).paddingOnly(top: 10),
+        Container(
+          decoration: BoxDecoration(
+              color: colorPrimary,
+              borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),topLeft: Radius.circular(5))
+          ),
+          child: Text(
+              pay ??"",style: TextStyle(color: colorFFFFFF,fontSize: 12),
+          ).paddingSymmetric(vertical: 3,horizontal: 3),
+        ),
       ],
-    ),
-  );
+    );
 }

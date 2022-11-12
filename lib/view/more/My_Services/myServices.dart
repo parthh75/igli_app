@@ -74,7 +74,7 @@ class OngoingTab extends StatefulWidget {
 class _OngoingTabState extends State<OngoingTab> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("Ongoing"));
+    return Center(child: ElevatedButton(onPressed: (){Get.to(AllServices());},style: ButtonStyle(backgroundColor:MaterialStateProperty.all(colorPrimary) ),child: Text("Explore Services")));
   }
 }
 
