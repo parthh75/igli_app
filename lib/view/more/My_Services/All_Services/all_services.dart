@@ -2,11 +2,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/view/more/My_Services/All_Services/Model/All_Services_model.dart';
+import 'package:igli_financial/view/more/My_Services/All_Services/all_services_tab/fundraising_tab.dart';
+import 'package:igli_financial/view/more/My_Services/All_Services/all_services_tab/ngo_tab.dart';
+import 'package:igli_financial/view/more/My_Services/All_Services/all_services_tab/propety_renwal_tab.dart';
 import 'package:igli_financial/view/more/My_Services/myServices.dart';
 
 import '../../../../utilities/colors.dart';
 import 'all_services_tab/Tax_compliance_Tab.dart';
 import 'all_services_tab/business_setup_tab.dart';
+import 'all_services_tab/trademark_Tab.dart';
 
 class AllServices extends StatefulWidget {
   const AllServices({Key? key}) : super(key: key);
@@ -29,10 +33,10 @@ class _AllServicesState extends State<AllServices> {
   List<Widget> tabsContent = [
     BusinessSetupTab(),
     TaxComplianceTab(),
-    CompletedTab(),
-    ClosedTab(),
-    ClosedTab(),
-    ClosedTab(),
+    TrademarkTab(),
+    FundraisingTab(),
+    NgoTab(),
+    PropertyTab(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -90,52 +94,55 @@ Widget commonListView(
   bool isNoSubTitle = true,
   }
     ){
-  return Stack(
-      alignment: Alignment.bottomRight,
-      children: [
-        Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: colorF8F8F8,
-            borderRadius:
-              BorderRadius.circular(5),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                width: 5,
-                height: 75,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(5),bottomLeft: Radius.circular(5)),
-                  color: colorPrimary
+  return GestureDetector(
+
+    child: Stack(
+        alignment: Alignment.bottomRight,
+        children: [
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: colorF8F8F8,
+              borderRadius:
+                BorderRadius.circular(5),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  width: 5,
+                  height: 75,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(5),bottomLeft: Radius.circular(5)),
+                    color: colorPrimary
+                  ),
                 ),
-              ),
-              SizedBox(width: 10),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                SizedBox(width: 10),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
 
-                    Text(listTitle ??"Private Limited Company Registration",style: TextStyle(color: colors000000,fontWeight: FontWeight.w700,fontSize: 16),).paddingSymmetric(vertical: 10),
+                      Text(listTitle ??"Private Limited Company Registration",style: TextStyle(color: colors000000,fontWeight: FontWeight.w700,fontSize: 16),).paddingSymmetric(vertical: 10),
 
-                    isNoSubTitle ? Text("₹${subListTitlePay}/-All inclusive",style: TextStyle(color: colors000000,),).paddingOnly(bottom: 10) : SizedBox()
+                      isNoSubTitle ? Text("₹${subListTitlePay}/-All inclusive",style: TextStyle(color: colors000000,),).paddingOnly(bottom: 10) : SizedBox()
 
-                  ],
-                ),
-              )
-            ],
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ).paddingOnly(top: 10),
+          Container(
+            decoration: BoxDecoration(
+                color: colorPrimary,
+                borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),topLeft: Radius.circular(5))
+            ),
+            child: Text(
+                pay ??"",style: TextStyle(color: colorFFFFFF,fontSize: 12),
+            ).paddingSymmetric(vertical: 3,horizontal: 3),
           ),
-        ).paddingOnly(top: 10),
-        Container(
-          decoration: BoxDecoration(
-              color: colorPrimary,
-              borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),topLeft: Radius.circular(5))
-          ),
-          child: Text(
-              pay ??"",style: TextStyle(color: colorFFFFFF,fontSize: 12),
-          ).paddingSymmetric(vertical: 3,horizontal: 3),
-        ),
-      ],
-    );
+        ],
+      ),
+  );
 }

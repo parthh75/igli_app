@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/common_widgets/common.dart';
 import 'package:igli_financial/utilities/string.dart';
+import 'package:igli_financial/view/more/My_Services/All_Services/all_services.dart';
 import 'package:igli_financial/view/more/help_screen.dart';
 import 'package:igli_financial/view/more/myprofile.dart';
 import 'package:igli_financial/view/more/partners_screen.dart';
@@ -42,7 +43,7 @@ class _MoreScreenState extends State<MoreScreen> {
               CS.ourServices,
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ).paddingOnly(top: 15, bottom: 15, left: 20),
-            commonListTile(title: "Services", leadingIcon: Icons.paste),
+            commonListTile(title: "Services", leadingIcon: Icons.paste,onTap: (){Get.to(AllServices());}),
             // commonListTile(
             //     onTap: () {
             //       Get.to(const PartnersScreen());
