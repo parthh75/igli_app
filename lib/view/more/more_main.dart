@@ -43,7 +43,7 @@ class _MoreScreenState extends State<MoreScreen> {
               CS.ourServices,
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ).paddingOnly(top: 15, bottom: 15, left: 20),
-            commonListTile(title: "Services", leadingIcon: Icons.paste,,onTap: (){Get.to(AllServices());}),
+            commonListTile(title: "Services", leadingIcon: Icons.paste,onTap: (){Get.to(AllServices());}),
             // commonListTile(
             //     onTap: () {
             //       Get.to(const PartnersScreen());
