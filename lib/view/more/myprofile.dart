@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/utilities/colors.dart';
 import 'package:igli_financial/utilities/string.dart';
@@ -343,7 +344,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 color26569a.withOpacity(0.1)),
                                         child: Icon(
                                           Icons.attach_email,
-                                          size: 40,
+                                          size: 30,
                                           color: color26569a,
                                         )),
                                     Text(
@@ -371,7 +372,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           showModalBottomSheet(
                                             context: context,
                                             constraints: const BoxConstraints(
-                                                maxHeight: 400),
+                                                maxHeight: 450),
                                             shape: const RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.only(
                                                     topRight:
@@ -406,7 +407,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                   0.1)),
                                                       child: Icon(
                                                         Icons.attach_email,
-                                                        size: 40,
+                                                        size: 30,
                                                         color: color26569a,
                                                       )),
                                                   Text(
@@ -422,14 +423,52 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                         fontSize: 15,
                                                         fontWeight:
                                                             FontWeight.normal),
-                                                  ).paddingOnly(top: 10),
+                                                  ).paddingOnly(
+                                                      top: 10, bottom: 5),
                                                   Text(
                                                     enterEmailIdController.text,
-                                                    style: const TextStyle(
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                    style: TextStyle(
+                                                      color: colorPrimary,
+                                                    ),
                                                   ),
+                                                  OtpTextField(
+                                                    fieldWidth: 50,
+                                                    numberOfFields: 5,
+                                                    enabledBorderColor:
+                                                        colorPrimary,
+                                                    focusedBorderColor:
+                                                        Colors.grey,
+
+                                                    showFieldAsBox: true,
+
+                                                    onCodeChanged:
+                                                        (String code) {},
+
+                                                    onSubmit: (String
+                                                        verificationCode) {
+                                                      showDialog(
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return AlertDialog(
+                                                              title: const Text(
+                                                                  "Verification Code"),
+                                                              content: Text(
+                                                                  'Code entered is $verificationCode'),
+                                                            );
+                                                          });
+                                                    }, // end onSubmit
+                                                  ).paddingOnly(
+                                                      top: 20, bottom: 10),
+                                                  Center(
+                                                      child: InkWell(
+                                                    onTap: () {},
+                                                    child: Text(
+                                                      "Resend OTP",
+                                                      style: TextStyle(
+                                                          color: colorPrimary,
+                                                          fontSize: 10),
+                                                    ),
+                                                  )).paddingOnly(bottom: 40),
                                                   commonElevatedButton(
                                                       height: 50,
                                                       title: CS.verify,
@@ -593,11 +632,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   phoneController.text,
                                                   strutStyle: const StrutStyle(
                                                       fontSize: 12),
-                                                  style: const TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.bold),
+                                                  style: TextStyle(
+                                                      color: colorPrimary),
                                                 ),
+                                                OtpTextField(
+                                                  fieldWidth: 50,
+                                                  numberOfFields: 5,
+
+                                                  enabledBorderColor:
+                                                      colorPrimary,
+                                                  focusedBorderColor:
+                                                      Colors.grey,
+
+                                                  showFieldAsBox: true,
+
+                                                  onCodeChanged:
+                                                      (String code) {},
+
+                                                  onSubmit: (String
+                                                      verificationCode) {}, // end onSubmit
+                                                ).paddingOnly(
+                                                    top: 20, bottom: 10),
+                                                Center(
+                                                    child: InkWell(
+                                                  onTap: () {},
+                                                  child: Text(
+                                                    "Resend OTP",
+                                                    style: TextStyle(
+                                                        color: colorPrimary,
+                                                        fontSize: 10),
+                                                  ),
+                                                )).paddingOnly(bottom: 40),
                                                 commonElevatedButton(
                                                     height: 50,
                                                     title: CS.verify,

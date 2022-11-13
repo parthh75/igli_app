@@ -6,6 +6,7 @@ import 'package:igli_financial/view/more/My_Services/All_Services/all_services.d
 import 'package:igli_financial/view/more/help_screen.dart';
 import 'package:igli_financial/view/more/myprofile.dart';
 import 'package:igli_financial/view/more/partners_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../utilities/colors.dart';
 import 'contactus_screen.dart';
@@ -43,7 +44,12 @@ class _MoreScreenState extends State<MoreScreen> {
               CS.ourServices,
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ).paddingOnly(top: 15, bottom: 15, left: 20),
-            commonListTile(title: "Services", leadingIcon: Icons.paste,onTap: (){Get.to(AllServices());}),
+            commonListTile(
+                title: "Services",
+                leadingIcon: Icons.paste,
+                onTap: () {
+                  Get.to(const AllServices());
+                }),
             // commonListTile(
             //     onTap: () {
             //       Get.to(const PartnersScreen());
@@ -60,31 +66,98 @@ class _MoreScreenState extends State<MoreScreen> {
                 title: "Help",
                 leadingIcon: Icons.help_outline,
                 onTap: () {
-                  Get.to(Help());
+                  Get.to(const Help());
                 }),
             commonListTile(
                 title: CS.contactUs,
                 leadingIcon: Icons.mail_outline,
                 onTap: () {
-                  Get.to(ContactUs());
+                  Get.to(const ContactUs());
                 }),
             // commonListTile(
             //     title: "Read Articles", leadingIcon: Icons.file_copy_outlined),
             commonListTile(
-                title: "Legal & Terms", leadingIcon: Icons.filter_1_rounded),
+                onTap: _launchURL,
+                title: "Legal & Terms",
+                leadingIcon: Icons.filter_1_rounded),
+
             const SizedBox(
               height: 50,
             ),
             ListTile(
-              title: const Text("Sign Out"),
+              title: const Text("logOut"),
               leading: const Icon(Icons.output, color: Colors.red, size: 20),
               horizontalTitleGap: -5,
               tileColor: Colors.white,
-              onTap: () {},
+              onTap: () {
+                showModalBottomSheet(
+                  constraints: const BoxConstraints(maxHeight: 300),
+                  shape: const OutlineInputBorder(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20))),
+                  context: context,
+                  builder: (context) {
+                    return Column(
+                      children: [
+                        Container(
+                          height: 5,
+                          width: Get.width / 5,
+                          margin: EdgeInsets.only(top: 10),
+                          decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.circular(5)),
+                        ),
+                        const Icon(
+                          Icons.delete_outline,
+                          size: 80,
+                          color: Colors.red,
+                        ).paddingOnly(top: 20, bottom: 20),
+                        const Text(
+                          "Are you sure you wish to logout?",
+                          style: TextStyle(fontSize: 22),
+                        ),
+                        Spacer(),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: commonElevatedButton(
+                                  height: 40,
+                                  title: CS.no,
+                                  onTap: () {
+                                    Get.back();
+                                  },
+                                  buttonColor: colorBEC3C8,
+                                  horizontalPadding: 30),
+                            ),
+                            Expanded(
+                              child: commonElevatedButton(
+                                  height: 40,
+                                  title: CS.yes,
+                                  onTap: () {},
+                                  buttonColor: colorPrimary,
+                                  horizontalPadding: 30),
+                            ),
+                          ],
+                        ).paddingOnly(bottom: 50)
+                      ],
+                    );
+                  },
+                );
+              },
             )
           ],
         ),
       ),
     );
+  }
+}
+
+_launchURL() async {
+  const url = 'https://iglifinancial.com/terms-and-condition/';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }
