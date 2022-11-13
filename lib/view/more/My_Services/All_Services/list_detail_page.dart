@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:igli_financial/utilities/colors.dart';
 import 'package:igli_financial/view/more/My_Services/myServices.dart';
 import 'package:slide_to_confirm/slide_to_confirm.dart';
-import 'package:slider_button/slider_button.dart';
 
 
 class ListDetailPage extends StatefulWidget {

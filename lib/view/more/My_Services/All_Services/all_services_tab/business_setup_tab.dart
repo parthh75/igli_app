@@ -5,6 +5,8 @@ import 'package:igli_financial/view/more/My_Services/All_Services/Model/All_Serv
 import 'package:igli_financial/view/more/My_Services/All_Services/all_services.dart';
 import 'package:igli_financial/view/more/My_Services/All_Services/list_detail_page.dart';
 
+import '../Model/business_setup_modal.dart';
+
 class BusinessSetupTab extends StatelessWidget {
   const BusinessSetupTab({Key? key}) : super(key: key);
 
@@ -58,7 +60,9 @@ class BusinessSetupTab extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                     color: colors000000,fontSize: 18
                 )),
-                commonListView(listTitle: "USA Company Incorporation",isNoSubTitle: false)
+                GestureDetector(
+                    onTap: (){Get.to(ListDetailPage());},
+                    child: commonListView(listTitle: "USA Company Incorporation",isNoSubTitle: false))
               ],
             ),
           ),
@@ -77,10 +81,23 @@ class BusinessSetupTab extends StatelessWidget {
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount:licensesModel.length,
-                    itemBuilder: (context, index) => commonListView(
-                        listTitle: licensesModel[index].listTitle,
-                        subListTitlePay: licensesModel[index].subListTitlePay,
-                        pay: licensesModel[index].pay
+                    itemBuilder: (context, index) => GestureDetector(
+                      onTap: (){Get.to(ListDetailPage(
+                        appTitle: licensesModel[index].listTitle,
+                        onPay: licensesModel[index].subListTitlePay,
+                        index:licensesModel.length,description: licensesModel[index].description,
+                        benefits: licensesModel[index].benefits,
+                        deliverables: licensesModel[index].deliverables,
+                        deliverablesTab: licensesModel[index].deliverablesTab,
+                        documents: licensesModel[index].documents,
+                        duration: licensesModel[index].duration,
+                        penalty: licensesModel[index].penalty,
+                      ));},
+                      child: commonListView(
+                          listTitle: licensesModel[index].listTitle,
+                          subListTitlePay: licensesModel[index].subListTitlePay,
+                          pay: licensesModel[index].pay
+                      ),
                     ))
               ],
             ),

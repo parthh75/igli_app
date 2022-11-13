@@ -249,13 +249,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0"
-  shimmer:
-    dependency: transitive
-    description:
-      name: shimmer
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -268,13 +261,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
-  slider_button:
-    dependency: "direct main"
-    description:
-      name: slider_button
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   source_span:
     dependency: transitive
     description:
@@ -331,13 +317,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
-  vibration:
-    dependency: transitive
-    description:
-      name: vibration
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.7.6"
   win32:
     dependency: transitive
     description:

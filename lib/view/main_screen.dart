@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:igli_financial/view/home_screen.dart';
 import 'package:igli_financial/view/more/more_main.dart';
 import 'package:igli_financial/view/more/My_Services/myServices.dart';
 
@@ -20,7 +21,7 @@ class _MainScreenState extends State<MainScreen> {
 
   int _selectedIndex = 3;
   static const List<Widget> _widgetOptions = <Widget>[
-    Text('Home Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    HomeScreen(),
     MyServicesScreen(),
     PaymentsScreen(),
     MoreScreen()

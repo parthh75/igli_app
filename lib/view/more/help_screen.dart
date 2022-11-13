@@ -18,12 +18,8 @@ class _HelpState extends State<Help> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("FAQ123"),
-          leading: IconButton(
-              onPressed: () {
-                Get.back();
-              },
-              icon: const Icon(Icons.arrow_back_outlined)),
+          title: const Text("FAQ"),
+
         ),
         body: Column(
           children: [
