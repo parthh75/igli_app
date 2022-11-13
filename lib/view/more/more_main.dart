@@ -65,7 +65,7 @@ class _MoreScreenState extends State<MoreScreen> {
                 title: CS.contactUs,
                 leadingIcon: Icons.mail_outline,
                 onTap: () {
-                  Get.to(const ContactUs());
+                  Get.to( ContactUs());
                 }),
             commonListTile(
                 title: "Read Articles", leadingIcon: Icons.file_copy_outlined),

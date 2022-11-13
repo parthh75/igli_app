@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../utilities/colors.dart';
-import 'myServices.dart';
+import '../../../utilities/colors.dart';
+import '../My_Services/myServices.dart';
 
 class PaymentsScreen extends StatefulWidget {
   const PaymentsScreen({Key? key}) : super(key: key);
