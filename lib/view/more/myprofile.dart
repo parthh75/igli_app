@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:igli_financial/utilities/colors.dart';
 import 'package:igli_financial/utilities/string.dart';
 import 'package:intl/intl.dart';
+import '../../utilities/text_style.dart';
+import '../utilities/text_style.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -48,6 +50,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             Container(
               color: colorFFFFFF,
+              margin: const EdgeInsets.only(top: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -61,7 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.bold)),
                     ],
-                  ).paddingOnly(top: 10),
+                  ),
                   const Center(
                       child: Icon(Icons.account_circle,
                           size: 100, color: Colors.grey)),
@@ -106,7 +109,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         },
                       );
                     },
-                  ),
+                  ).paddingOnly(top: isButton ? 10 : 0),
                   Text(
                     CS.gender,
                   ).paddingOnly(top: 20),
@@ -169,7 +172,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       : const SizedBox()
                 ],
               ).paddingSymmetric(horizontal: 20).paddingOnly(top: 20),
-            ).paddingOnly(top: 15),
+            ),
             Container(
               color: colorFFFFFF,
               child: Column(
@@ -226,7 +229,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       : Center(
                           child: commonOutlineButton(
                             horizontalPadding: 120,
-                            buttonText: "+ Add Address",
+                            isIcon: true,
+                            buttonText: "Add Address",
                             textStyle:
                                 const TextStyle(fontWeight: FontWeight.w600),
                             bottomPadding: 15,
@@ -303,7 +307,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         horizontalPadding: 120,
                         topPadding: 10,
                         bottomPadding: 15,
-                        buttonText: "+ ${CS.addEmail}",
+                        isIcon: true,
+                        buttonText: CS.addEmail,
                         textStyle: const TextStyle(fontWeight: FontWeight.w600),
                         onTap: () {
                           setState(() {
@@ -342,7 +347,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           color: color26569a,
                                         )),
                                     Text(
-                                      '+ ${CS.emailId}',
+                                      CS.emailId,
                                       style: const TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold),
@@ -354,7 +359,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(10),
                                       ),
-                                      topPadding: 20,
+                                      topPadding: 30,
                                       bottomPadding: 80,
                                     ),
                                     commonElevatedButton(
@@ -475,6 +480,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Center(
                     child: commonOutlineButton(
                       horizontalPadding: 120,
+                      isIcon: true,
                       onTap: () {
                         setState(() {
                           isButton = false;
@@ -510,7 +516,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         size: 40,
                                       )),
                                   Text(
-                                    '+ ${CS.mobileNumber}',
+                                    CS.mobileNumber,
                                     style: const TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold),
@@ -696,7 +702,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 isKYCButton = true;
                               });
                             },
-                            buttonText: "+ ${CS.add} ${CS.kyc}",
+                            isIcon: true,
+                            buttonText: "${CS.add} ${CS.kyc}",
                             textStyle:
                                 const TextStyle(fontWeight: FontWeight.w600),
                             bottomPadding: 15,
@@ -833,14 +840,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
 Widget commonElevatedButton(
     {double? height,
-      double? width,
+    double? width,
     String? title,
     Color? buttonColor,
-      double? textTopPadding,
+    double? textTopPadding,
     Function()? onTap,
-      double? horizontalPadding,
-      double? buttonTopPadding,
-      double? buttonBottomPadding}) {
+    double? horizontalPadding,
+    double? buttonTopPadding,
+    double? buttonBottomPadding}) {
   return SizedBox(
     width: width ?? Get.width,
     height: height ?? 40,
@@ -867,6 +874,7 @@ Widget commonOutlineButton(
     TextStyle? textStyle,
     double? bottomPadding,
     double? topPadding,
+    bool isIcon = false,
     double? horizontalPadding}) {
   return SizedBox(
     width: width ?? Get.width,
@@ -877,9 +885,20 @@ Widget commonOutlineButton(
           borderRadius: BorderRadius.circular(30),
         )),
         onPressed: onTap ?? () {},
-        child: Text(
-          buttonText ?? "",
-          style: textStyle,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            isIcon
+                ? const Icon(
+                    Icons.add,
+                    size: 15,
+                  )
+                : const SizedBox(),
+            Text(
+              buttonText ?? "",
+              style: textStyle,
+            ),
+          ],
         )),
   )
       .paddingOnly(left: 20, bottom: bottomPadding ?? 0, top: topPadding ?? 0)
@@ -892,21 +911,22 @@ Widget commonTextField(
     Function()? onTap,
     double? topPadding,
     double? bottomPadding,
-      TextInputType? keyboardType,
+    TextInputType? keyboardType,
     String? hintText,
-      Widget? suffixIcon,
-      InputBorder? border}) {
-  return TextFormField(
-          decoration: InputDecoration(
-              labelText: labelText,
-              hintText: hintText,
-              border: border,
-              suffixIcon: suffixIcon,
-              labelStyle: const TextStyle(
-                fontSize: 15,
-              )),
-          controller: controller,
-          keyboardType: keyboardType ?? TextInputType.text,
-          onTap: onTap ?? () {})
-      .paddingOnly(top: topPadding ?? 0, bottom: bottomPadding ?? 0);
+    Widget? suffixIcon,
+    InputBorder? border}) {
+  return SizedBox(
+    // height: 38,
+    child: TextFormField(
+            decoration: InputDecoration(
+                labelText: labelText,
+                hintText: hintText,
+                border: border,
+                suffixIcon: suffixIcon,
+                labelStyle: const TextStyle(fontSize: 15, height: 0.2)),
+            controller: controller,
+            keyboardType: keyboardType ?? TextInputType.text,
+            onTap: onTap ?? () {})
+        .paddingOnly(top: topPadding ?? 0, bottom: bottomPadding ?? 0),
+  );
 }

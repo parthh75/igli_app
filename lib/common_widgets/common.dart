@@ -50,7 +50,7 @@ commonSheet({context, headText, title, discription, onTap}) {
   );
 }
 
-Widget commonListTile({title, leadingIcon, onTap, shape}) {
+Widget commonListTile({title, leadingIcon, onTap, shape, minLeadingWidth}) {
   return ListTile(
     title: Text(title),
     trailing: const Icon(Icons.navigate_next),
@@ -58,6 +58,7 @@ Widget commonListTile({title, leadingIcon, onTap, shape}) {
     horizontalTitleGap: -5,
     tileColor: Colors.white,
     onTap: onTap,
+    minLeadingWidth: minLeadingWidth,
     shape: shape,
   ).paddingOnly(bottom: 6);
 }
@@ -66,14 +67,17 @@ Widget commonExpansionTile({title, children}) {
   return Padding(
     padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
     child: Card(
-      color: colorBEC3C8.withOpacity(0.1),
       shadowColor: Colors.transparent,
       shape: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.black26)),
       child: ExpansionTile(
-        collapsedBackgroundColor: colorEAEAEA,
+        collapsedBackgroundColor: colorBEC3C8.withOpacity(0.1),
+        backgroundColor: colorBEC3C8.withOpacity(0.2),
         textColor: colorPrimary,
-        title: Text(title),
+        title: Text(
+          title,
+          style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
+        ),
         children: children ?? [],
       ),
     ),
