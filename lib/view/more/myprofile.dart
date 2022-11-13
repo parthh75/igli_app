@@ -342,7 +342,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           color: color26569a,
                                         )),
                                     Text(
-                                      '${CS.add} ${CS.emailId}',
+                                      '+ ${CS.emailId}',
                                       style: const TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold),
@@ -510,7 +510,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         size: 40,
                                       )),
                                   Text(
-                                    '${CS.add} ${CS.mobileNumber}',
+                                    '+ ${CS.mobileNumber}',
                                     style: const TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold),
@@ -696,8 +696,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 isKYCButton = true;
                               });
                             },
-                            buttonText:
-                                "${const Icon(Icons.add)} ${CS.add} ${CS.kyc}",
+                            buttonText: "+ ${CS.add} ${CS.kyc}",
                             textStyle:
                                 const TextStyle(fontWeight: FontWeight.w600),
                             bottomPadding: 15,
