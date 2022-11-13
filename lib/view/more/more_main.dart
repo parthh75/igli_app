@@ -43,12 +43,12 @@ class _MoreScreenState extends State<MoreScreen> {
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ).paddingOnly(top: 15, bottom: 15, left: 20),
             commonListTile(title: "Services", leadingIcon: Icons.paste),
-            commonListTile(
-                onTap: () {
-                  Get.to(const PartnersScreen());
-                },
-                title: "Partners",
-                leadingIcon: Icons.person_outline),
+            // commonListTile(
+            //     onTap: () {
+            //       Get.to(const PartnersScreen());
+            //     },
+            //     title: "Partners",
+            //     leadingIcon: Icons.person_outline),
             commonListTile(
                 title: "My Interests", leadingIcon: Icons.currency_rupee),
             Text(
@@ -65,10 +65,10 @@ class _MoreScreenState extends State<MoreScreen> {
                 title: CS.contactUs,
                 leadingIcon: Icons.mail_outline,
                 onTap: () {
-                  Get.to( ContactUs());
+                  Get.to(ContactUs());
                 }),
-            commonListTile(
-                title: "Read Articles", leadingIcon: Icons.file_copy_outlined),
+            // commonListTile(
+            //     title: "Read Articles", leadingIcon: Icons.file_copy_outlined),
             commonListTile(
                 title: "Legal & Terms", leadingIcon: Icons.filter_1_rounded),
             const SizedBox(

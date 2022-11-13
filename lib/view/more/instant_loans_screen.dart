@@ -122,7 +122,16 @@ class _MoneyTapScreenState extends State<MoneyTapScreen> {
   TextEditingController addressController = TextEditingController();
   TextEditingController pincodeController = TextEditingController();
   String? gender;
-  dynamic items = [
+  String? selectedJobItems;
+  String? selectedCompanyItems;
+  List<String> jobItems = [
+    'Item 1',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5',
+  ];
+  List<String> companyItems = [
     'Item 1',
     'Item 2',
     'Item 3',
@@ -136,109 +145,139 @@ class _MoneyTapScreenState extends State<MoneyTapScreen> {
       appBar: AppBar(
         title: const Text("MoneyTap"),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            "About MoneyTap",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-          ).paddingOnly(top: 20, bottom: 15),
-          const Expanded(
-            child: Text(
-              "Get a Domain of Your Own and Give Your Business a Better Reach",
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              "About MoneyTap",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            ).paddingOnly(top: 20, bottom: 15),
+            const Text(
+              "Get a Domain of Your Own and Give Your Business \na Better Reach",
+
+              /// \n changes
               style: TextStyle(fontWeight: FontWeight.normal),
             ),
-          ),
-          const Text(
-            "Few More Details Before Completion",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-          ).paddingOnly(bottom: 20),
-          const Text(
-            "Name",
-            style: TextStyle(fontWeight: FontWeight.normal),
-          ),
-          commonTextField(controller: nameController).paddingOnly(bottom: 20),
-          const Text(
-            "Pan Number",
-            style: TextStyle(fontWeight: FontWeight.normal),
-          ),
-          commonTextField(controller: panNumberController)
-              .paddingOnly(bottom: 20),
-          const Text(
-            "Date Of Birth",
-            style: TextStyle(fontWeight: FontWeight.normal),
-          ),
-          commonTextField(
-            controller: dobController,
-            suffixIcon: Icon(Icons.date_range, color: colorPrimary),
-            onTap: () {
-              setState(
-                () async {
-                  await showDatePicker(
-                    context: context,
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime(1950),
-                    lastDate: DateTime.now(),
-                  ).then((value) => {
-                        dobController.text =
-                            DateFormat.yMd().format(value!).toString(),
-                      });
-                },
-              );
-            },
-          ).paddingOnly(bottom: 20),
-          const Text("Monthly Salary"),
-          commonTextField(
-            controller: salaryController,
-          ).paddingOnly(bottom: 20),
-          const Text("Total Work Experience In Months"),
-          commonTextField(
-            controller: workExperienceController,
-          ).paddingOnly(bottom: 20),
-          Text(
-            CS.gender,
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ).paddingOnly(top: 20),
-          RadioListTile(
-            value: "male",
-            groupValue: gender,
-            onChanged: (value) {
-              setState(() {
-                gender = value.toString();
-              });
-            },
-            title: Text(CS.male),
-          ),
-          RadioListTile(
-            value: "female",
-            groupValue: gender,
-            onChanged: (value) {
-              setState(() {
-                gender = value.toString();
-              });
-            },
-            title: Text(CS.female),
-          ),
-          RadioListTile(
-            value: "other",
-            groupValue: gender,
-            onChanged: (value) {
-              setState(() {
-                gender = value.toString();
-              });
-            },
-            title: Text(CS.other),
-          ),
-          const Text("Address"),
-          commonTextField(
-            controller: addressController,
-          ).paddingOnly(bottom: 20),
-          const Text("Pincode"),
-          commonTextField(
-            controller: pincodeController,
-          ),
-        ],
-      ).paddingSymmetric(horizontal: 15),
+            const Text(
+              "Few More Details Before Completion",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            ).paddingOnly(bottom: 20, top: 20),
+            const Text(
+              "Name",
+              style: TextStyle(fontWeight: FontWeight.normal),
+            ),
+            commonTextField(controller: nameController).paddingOnly(bottom: 20),
+            const Text(
+              "Pan Number",
+              style: TextStyle(fontWeight: FontWeight.normal),
+            ),
+            commonTextField(controller: panNumberController)
+                .paddingOnly(bottom: 20),
+            const Text(
+              "Date Of Birth",
+              style: TextStyle(fontWeight: FontWeight.normal),
+            ),
+            commonTextField(
+              controller: dobController,
+              suffixIcon: Icon(Icons.date_range, color: colorPrimary),
+              onTap: () {
+                setState(
+                  () async {
+                    await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(1950),
+                      lastDate: DateTime.now(),
+                    ).then((value) => {
+                          dobController.text =
+                              DateFormat.yMd().format(value!).toString(),
+                        });
+                  },
+                );
+              },
+            ).paddingOnly(bottom: 20),
+            const Text("Monthly Salary"),
+            commonTextField(
+              controller: salaryController,
+            ).paddingOnly(bottom: 20),
+            const Text("Job Type"),
+            DropdownButton(
+              value: selectedJobItems,
+              onChanged: (String? newValue) {
+                setState(() {
+                  selectedCompanyItems = newValue;
+                });
+              },
+              items: companyItems.map((String location) {
+                return new DropdownMenuItem<String>(
+                  child: new Text(location),
+                );
+              }).toList(),
+            ),
+            const Text("Total Work Experience In Months"),
+            commonTextField(
+              controller: workExperienceController,
+            ).paddingOnly(bottom: 20),
+            const Text("Company Type"),
+            DropdownButton(
+              value: selectedCompanyItems,
+              onChanged: (String? newValue) {
+                setState(() {
+                  selectedCompanyItems = newValue;
+                });
+              },
+              items: companyItems.map((String location) {
+                return new DropdownMenuItem<String>(
+                  child: new Text(location),
+                );
+              }).toList(),
+            ),
+            Text(
+              CS.gender,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ).paddingOnly(top: 20),
+            RadioListTile(
+              value: "male",
+              groupValue: gender,
+              onChanged: (value) {
+                setState(() {
+                  gender = value.toString();
+                });
+              },
+              title: Text(CS.male),
+            ),
+            RadioListTile(
+              value: "female",
+              groupValue: gender,
+              onChanged: (value) {
+                setState(() {
+                  gender = value.toString();
+                });
+              },
+              title: Text(CS.female),
+            ),
+            RadioListTile(
+              value: "other",
+              groupValue: gender,
+              onChanged: (value) {
+                setState(() {
+                  gender = value.toString();
+                });
+              },
+              title: Text(CS.other),
+            ),
+            const Text("Address"),
+            commonTextField(
+              controller: addressController,
+            ).paddingOnly(bottom: 20),
+            const Text("Pincode"),
+            commonTextField(
+              controller: pincodeController,
+            ),
+          ],
+        ).paddingSymmetric(horizontal: 15),
+      ),
       bottomNavigationBar: commonElevatedButton(
           onTap: () {}, title: "Create Account", horizontalPadding: 150),
     );
