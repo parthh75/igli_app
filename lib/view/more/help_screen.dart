@@ -16,8 +16,7 @@ class _HelpState extends State<Help> {
     return Scaffold(
         appBar: AppBar(
           title: const Text("FAQ"),
-          leading: IconButton(
-              onPressed: () {}, icon: const Icon(Icons.arrow_back_outlined)),
+
         ),
         body: Column(
           children: [

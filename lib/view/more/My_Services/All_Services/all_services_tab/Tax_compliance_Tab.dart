@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/utilities/colors.dart';
 import 'package:igli_financial/view/more/My_Services/All_Services/Model/All_Services_model.dart';
+import 'package:igli_financial/view/more/My_Services/All_Services/Model/tax_compliance_modal.dart';
 import 'package:igli_financial/view/more/My_Services/All_Services/all_services.dart';
+import 'package:igli_financial/view/more/My_Services/All_Services/list_detail_page.dart';
 
 class TaxComplianceTab extends StatefulWidget {
   const TaxComplianceTab({Key? key}) : super(key: key);
@@ -31,10 +33,14 @@ class _TaxComplianceTabState extends State<TaxComplianceTab> {
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount:corporateModel.length,
-                    itemBuilder: (context, index) => commonListView(
-                        listTitle: corporateModel[index].listTitle,
-                        subListTitlePay: corporateModel[index].subListTitlePay,
-                        pay: corporateModel[index].pay
+                    itemBuilder: (context, index) => GestureDetector(
+                      onTap: ()=> Get.to(()=>ListDetailPage()),
+                      child: commonListView(
+
+                          listTitle: corporateModel[index].listTitle,
+                          subListTitlePay: corporateModel[index].subListTitlePay,
+                          pay: corporateModel[index].pay
+                      ),
                     ))
               ],
             ),
@@ -53,10 +59,14 @@ class _TaxComplianceTabState extends State<TaxComplianceTab> {
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount:changesPvtModel.length,
-                    itemBuilder: (context, index) => commonListView(
-                        listTitle: changesPvtModel[index].listTitle,
-                        subListTitlePay: changesPvtModel[index].subListTitlePay,
-                        pay: changesPvtModel[index].pay
+                    itemBuilder: (context, index) => GestureDetector(
+                      onTap: ()=> Get.to(()=>ListDetailPage()),
+
+                      child: commonListView(
+                          listTitle: changesPvtModel[index].listTitle,
+                          subListTitlePay: changesPvtModel[index].subListTitlePay,
+                          pay: changesPvtModel[index].pay
+                      ),
                     ))
               ],
             ),
@@ -75,11 +85,15 @@ class _TaxComplianceTabState extends State<TaxComplianceTab> {
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount:gstModel.length,
-                    itemBuilder: (context, index) => commonListView(
-                        listTitle: gstModel[index].listTitle,
-                        subListTitlePay: gstModel[index].subListTitlePay,
-                        pay: gstModel[index].pay,
-                      isNoSubTitle: index == 1 ? false : true
+                    itemBuilder: (context, index) => GestureDetector(
+                      onTap: ()=> Get.to(()=>ListDetailPage()),
+
+                      child: commonListView(
+                          listTitle: gstModel[index].listTitle,
+                          subListTitlePay: gstModel[index].subListTitlePay,
+                          pay: gstModel[index].pay,
+                        isNoSubTitle: index == 1 ? false : true
+                      ),
                     ))
               ],
             ),
@@ -100,10 +114,14 @@ class _TaxComplianceTabState extends State<TaxComplianceTab> {
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount:accountingModel.length,
-                    itemBuilder: (context, index) => commonListView(
-                        listTitle: accountingModel[index].listTitle,
-                        subListTitlePay: accountingModel[index].subListTitlePay,
-                        pay: accountingModel[index].pay
+                    itemBuilder: (context, index) => GestureDetector(
+                      onTap: ()=> Get.to(()=>ListDetailPage()),
+
+                      child: commonListView(
+                          listTitle: accountingModel[index].listTitle,
+                          subListTitlePay: accountingModel[index].subListTitlePay,
+                          pay: accountingModel[index].pay
+                      ),
                     ))
               ],
             ),
@@ -122,10 +140,14 @@ class _TaxComplianceTabState extends State<TaxComplianceTab> {
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount:labourModel.length,
-                    itemBuilder: (context, index) => commonListView(
-                        listTitle: labourModel[index].listTitle,
-                        subListTitlePay: labourModel[index].subListTitlePay,
-                        pay: labourModel[index].pay
+                    itemBuilder: (context, index) => GestureDetector(
+                      onTap: ()=> Get.to(()=>ListDetailPage()),
+
+                      child: commonListView(
+                          listTitle: labourModel[index].listTitle,
+                          subListTitlePay: labourModel[index].subListTitlePay,
+                          pay: labourModel[index].pay
+                      ),
                     ))
               ],
             ),
@@ -144,10 +166,14 @@ class _TaxComplianceTabState extends State<TaxComplianceTab> {
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount:changesLLPModel.length,
-                    itemBuilder: (context, index) => commonListView(
-                        listTitle: changesLLPModel[index].listTitle,
-                        subListTitlePay: changesLLPModel[index].subListTitlePay,
-                        pay: changesLLPModel[index].pay
+                    itemBuilder: (context, index) => GestureDetector(
+                      onTap: ()=> Get.to(()=>ListDetailPage()),
+                      child: commonListView(
+
+                          listTitle: changesLLPModel[index].listTitle,
+                          subListTitlePay: changesLLPModel[index].subListTitlePay,
+                          pay: changesLLPModel[index].pay
+                      ),
                     ))
               ],
             ),
@@ -166,10 +192,14 @@ class _TaxComplianceTabState extends State<TaxComplianceTab> {
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount:convertBusinessModel.length,
-                    itemBuilder: (context, index) => commonListView(
-                        listTitle: convertBusinessModel[index].listTitle,
-                        subListTitlePay: convertBusinessModel[index].subListTitlePay,
-                        pay: convertBusinessModel[index].pay
+                    itemBuilder: (context, index) => GestureDetector(
+                      onTap: ()=> Get.to(()=>ListDetailPage()),
+
+                      child: commonListView(
+                          listTitle: convertBusinessModel[index].listTitle,
+                          subListTitlePay: convertBusinessModel[index].subListTitlePay,
+                          pay: convertBusinessModel[index].pay
+                      ),
                     ))
               ],
             ),
