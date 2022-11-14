@@ -21,186 +21,182 @@ class _TaxComplianceTabState extends State<TaxComplianceTab> {
         children: [
           Container(
             color: colorFFFFFF,
-            padding: EdgeInsets.only(left: 15,right: 15,bottom: 20,top: 10),
+            padding: EdgeInsets.only(left: 15, right: 15, bottom: 20, top: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Corporate Compliance",style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    color: colors000000,fontSize: 18
-                )),
+                Text("Corporate Compliance",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: colors000000,
+                        fontSize: 18)),
                 ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount:corporateModel.length,
+                    itemCount: corporateModel.length,
                     itemBuilder: (context, index) => GestureDetector(
-                      onTap: ()=> Get.to(()=>ListDetailPage()),
-                      child: commonListView(
-
-                          listTitle: corporateModel[index].listTitle,
-                          subListTitlePay: corporateModel[index].subListTitlePay,
-                          pay: corporateModel[index].pay
-                      ),
-                    ))
+                          onTap: () => Get.to(() => ListDetailPage()),
+                          child: commonListView(
+                              listTitle: corporateModel[index].listTitle,
+                              subListTitleEx:
+                                  corporateModel[index].subListTitleEx,
+                              pay: corporateModel[index].pay),
+                        ))
               ],
             ),
           ).paddingSymmetric(vertical: 10),
           Container(
             color: colorFFFFFF,
-            padding: EdgeInsets.only(left: 15,right: 15,bottom: 20,top: 10),
+            padding: EdgeInsets.only(left: 15, right: 15, bottom: 20, top: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Changes in Pvt Ltd Company",style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    color: colors000000,fontSize: 18
-                )),
+                Text("Changes in Pvt Ltd Company",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: colors000000,
+                        fontSize: 18)),
                 ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount:changesPvtModel.length,
+                    itemCount: changesPvtModel.length,
                     itemBuilder: (context, index) => GestureDetector(
-                      onTap: ()=> Get.to(()=>ListDetailPage()),
-
-                      child: commonListView(
-                          listTitle: changesPvtModel[index].listTitle,
-                          subListTitlePay: changesPvtModel[index].subListTitlePay,
-                          pay: changesPvtModel[index].pay
-                      ),
-                    ))
+                          onTap: () => Get.to(() => ListDetailPage()),
+                          child: commonListView(
+                              listTitle: changesPvtModel[index].listTitle,
+                              subListTitleEx:
+                                  changesPvtModel[index].subListTitleEx,
+                              pay: changesPvtModel[index].pay),
+                        ))
               ],
             ),
           ),
           Container(
             color: colorFFFFFF,
-            padding: EdgeInsets.only(left: 15,right: 15,bottom: 20,top: 10),
+            padding: EdgeInsets.only(left: 15, right: 15, bottom: 20, top: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("GST",style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    color: colors000000,fontSize: 18
-                )),
+                Text("GST",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: colors000000,
+                        fontSize: 18)),
                 ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount:gstModel.length,
+                    itemCount: gstModel.length,
                     itemBuilder: (context, index) => GestureDetector(
-                      onTap: ()=> Get.to(()=>ListDetailPage()),
-
-                      child: commonListView(
-                          listTitle: gstModel[index].listTitle,
-                          subListTitlePay: gstModel[index].subListTitlePay,
-                          pay: gstModel[index].pay,
-                        isNoSubTitle: index == 1 ? false : true
-                      ),
-                    ))
-              ],
-            ),
-          ).paddingSymmetric(vertical: 10),
-
-
-          Container(
-            color: colorFFFFFF,
-            padding: EdgeInsets.only(left: 15,right: 15,bottom: 20,top: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Accounting & Tax",style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    color: colors000000,fontSize: 18
-                )),
-                ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount:accountingModel.length,
-                    itemBuilder: (context, index) => GestureDetector(
-                      onTap: ()=> Get.to(()=>ListDetailPage()),
-
-                      child: commonListView(
-                          listTitle: accountingModel[index].listTitle,
-                          subListTitlePay: accountingModel[index].subListTitlePay,
-                          pay: accountingModel[index].pay
-                      ),
-                    ))
-              ],
-            ),
-          ),
-          Container(
-            color: colorFFFFFF,
-            padding: EdgeInsets.only(left: 15,right: 15,bottom: 20,top: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Labour Compliance",style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    color: colors000000,fontSize: 18
-                )),
-                ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount:labourModel.length,
-                    itemBuilder: (context, index) => GestureDetector(
-                      onTap: ()=> Get.to(()=>ListDetailPage()),
-
-                      child: commonListView(
-                          listTitle: labourModel[index].listTitle,
-                          subListTitlePay: labourModel[index].subListTitlePay,
-                          pay: labourModel[index].pay
-                      ),
-                    ))
+                          onTap: () => Get.to(() => ListDetailPage()),
+                          child: commonListView(
+                              listTitle: gstModel[index].listTitle,
+                              subListTitleEx: gstModel[index].subListTitleEx,
+                              pay: gstModel[index].pay,
+                              isNoSubTitle: index == 1 ? false : true),
+                        ))
               ],
             ),
           ).paddingSymmetric(vertical: 10),
           Container(
             color: colorFFFFFF,
-            padding: EdgeInsets.only(left: 15,right: 15,bottom: 20,top: 10),
+            padding: EdgeInsets.only(left: 15, right: 15, bottom: 20, top: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Changes In Limited Liability Partnership",style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    color: colors000000,fontSize: 18
-                )),
+                Text("Accounting & Tax",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: colors000000,
+                        fontSize: 18)),
                 ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount:changesLLPModel.length,
+                    itemCount: accountingModel.length,
                     itemBuilder: (context, index) => GestureDetector(
-                      onTap: ()=> Get.to(()=>ListDetailPage()),
-                      child: commonListView(
-
-                          listTitle: changesLLPModel[index].listTitle,
-                          subListTitlePay: changesLLPModel[index].subListTitlePay,
-                          pay: changesLLPModel[index].pay
-                      ),
-                    ))
+                          onTap: () => Get.to(() => ListDetailPage()),
+                          child: commonListView(
+                              listTitle: accountingModel[index].listTitle,
+                              subListTitleEx:
+                                  accountingModel[index].subListTitleEx,
+                              pay: accountingModel[index].pay),
+                        ))
               ],
             ),
           ),
           Container(
             color: colorFFFFFF,
-            padding: EdgeInsets.only(left: 15,right: 15,bottom: 20,top: 10),
+            padding: EdgeInsets.only(left: 15, right: 15, bottom: 20, top: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Convert Your Business",style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    color: colors000000,fontSize: 18
-                )),
+                Text("Labour Compliance",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: colors000000,
+                        fontSize: 18)),
                 ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount:convertBusinessModel.length,
+                    itemCount: labourModel.length,
                     itemBuilder: (context, index) => GestureDetector(
-                      onTap: ()=> Get.to(()=>ListDetailPage()),
-
-                      child: commonListView(
-                          listTitle: convertBusinessModel[index].listTitle,
-                          subListTitlePay: convertBusinessModel[index].subListTitlePay,
-                          pay: convertBusinessModel[index].pay
-                      ),
-                    ))
+                          onTap: () => Get.to(() => ListDetailPage()),
+                          child: commonListView(
+                              listTitle: labourModel[index].listTitle,
+                              subListTitleEx: labourModel[index].subListTitleEx,
+                              pay: labourModel[index].pay),
+                        ))
+              ],
+            ),
+          ).paddingSymmetric(vertical: 10),
+          Container(
+            color: colorFFFFFF,
+            padding: EdgeInsets.only(left: 15, right: 15, bottom: 20, top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Changes In Limited Liability Partnership",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: colors000000,
+                        fontSize: 18)),
+                ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: changesLLPModel.length,
+                    itemBuilder: (context, index) => GestureDetector(
+                          onTap: () => Get.to(() => ListDetailPage()),
+                          child: commonListView(
+                              listTitle: changesLLPModel[index].listTitle,
+                              subListTitleEx:
+                                  changesLLPModel[index].subListTitleEx,
+                              pay: changesLLPModel[index].pay),
+                        ))
+              ],
+            ),
+          ),
+          Container(
+            color: colorFFFFFF,
+            padding: EdgeInsets.only(left: 15, right: 15, bottom: 20, top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Convert Your Business",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: colors000000,
+                        fontSize: 18)),
+                ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: convertBusinessModel.length,
+                    itemBuilder: (context, index) => GestureDetector(
+                          onTap: () => Get.to(() => ListDetailPage()),
+                          child: commonListView(
+                              listTitle: convertBusinessModel[index].listTitle,
+                              subListTitleEx:
+                                  convertBusinessModel[index].subListTitleEx,
+                              pay: convertBusinessModel[index].pay),
+                        ))
               ],
             ),
           ).paddingSymmetric(vertical: 10),

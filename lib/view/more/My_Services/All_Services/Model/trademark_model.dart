@@ -1,14 +1,11 @@
-
-
-
-
-
-
-
 import 'package:igli_financial/view/more/My_Services/All_Services/Model/All_Services_model.dart';
 
 List<BusinessSetupModel> trademarkModel = [
-  BusinessSetupModel(listTitle: "Trademark Registration",subListTitlePay: "6955",pay: "Pay ₹499/-to get started",
+  BusinessSetupModel(
+      listTitle: "Basic Trademark Registration",
+      subListTitleEx: "5761",
+      subListTitleIn: "5988",
+      pay: "227",
       description: "",
       duration: "",
       deliverables: "",
@@ -16,7 +13,24 @@ List<BusinessSetupModel> trademarkModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Respond to a Trademark Objection",subListTitlePay: "3539",pay: "",
+  BusinessSetupModel(
+      listTitle: "Premium Trademark Registration",
+      subListTitleEx: "11532",
+      subListTitleIn: "11988",
+      pay: "456",
+      description:
+          "Trademark Filling Under One Class For Large Enterprises not Eligible of MSME Registration.",
+      duration: "",
+      deliverables: "",
+      penalty: "",
+      benefits: "",
+      documents: "",
+      deliverablesTab: ""),
+  BusinessSetupModel(
+      listTitle: "Design Registration",
+      subListTitleEx: "6846",
+      subListTitleIn: "7899",
+      pay: "1053",
       description: "",
       duration: "",
       deliverables: "",
@@ -24,7 +38,11 @@ List<BusinessSetupModel> trademarkModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Apply for a Trademark in the U.S",subListTitlePay: "59129",pay: "",
+  BusinessSetupModel(
+      listTitle: "Provisional Patent Registration",
+      subListTitleEx: "59236",
+      subListTitleIn: "69899",
+      pay: "10663",
       description: "",
       duration: "",
       deliverables: "",
@@ -32,7 +50,24 @@ List<BusinessSetupModel> trademarkModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Logo design basic",subListTitlePay: "2950",pay: "",
+  BusinessSetupModel(
+      listTitle: "Trademark Renewal",
+      subListTitleEx: "12304",
+      subListTitleIn: "12899",
+      pay: "595",
+      description:
+          "Trademark Filling Under One Class For Proprietorship and Small Enterprises.",
+      duration: "",
+      deliverables: "",
+      penalty: "",
+      benefits: "",
+      documents: "",
+      deliverablesTab: ""),
+  BusinessSetupModel(
+      listTitle: "Patent Registration",
+      subListTitleEx: "59236",
+      subListTitleIn: "69899",
+      pay: "10663",
       description: "",
       duration: "",
       deliverables: "",
@@ -40,23 +75,11 @@ List<BusinessSetupModel> trademarkModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Trademark Watch",subListTitlePay: "1770",pay: "",
-      description: "",
-      duration: "",
-      deliverables: "",
-      penalty: "",
-      benefits: "",
-      documents: "",
-      deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Renew your Trademark",subListTitlePay: "8055",pay: "",
-      description: "",
-      duration: "",
-      deliverables: "",
-      penalty: "",
-      benefits: "",
-      documents: "",
-      deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Assign Your Trademark",subListTitlePay: "2869",pay: "",
+  BusinessSetupModel(
+      listTitle: "Copyright Registration",
+      subListTitleEx: "12304",
+      subListTitleIn: "12899",
+      pay: "595",
       description: "",
       duration: "",
       deliverables: "",
@@ -65,32 +88,3 @@ List<BusinessSetupModel> trademarkModel = [
       documents: "",
       deliverablesTab: ""),
 ];
-
-List<BusinessSetupModel> patentModel = [
-  BusinessSetupModel(listTitle: "Patent Search",subListTitlePay: "11899",pay: "",
-      description: "",
-      duration: "",
-      deliverables: "",
-      penalty: "",
-      benefits: "",
-      documents: "",
-      deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Apply for a Provisional Patent",subListTitlePay: "15957",pay: "",
-      description: "",
-      duration: "",
-      deliverables: "",
-      penalty: "",
-      benefits: "",
-      documents: "",
-      deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Apply for a Patent",subListTitlePay: "33657",pay: "Pay ₹499/-to get started",
-      description: "",
-      duration: "",
-      deliverables: "",
-      penalty: "",
-      benefits: "",
-      documents: "",
-      deliverablesTab: ""),
-
-];
-

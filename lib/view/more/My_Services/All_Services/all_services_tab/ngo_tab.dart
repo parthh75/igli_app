@@ -23,54 +23,53 @@ class _NgoTabState extends State<NgoTab> {
         children: [
           Container(
             color: colorFFFFFF,
-            padding: EdgeInsets.only(left: 15,right: 15,bottom: 20,top: 10),
+            padding: EdgeInsets.only(left: 15, right: 15, bottom: 20, top: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Registration",style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    color: colors000000,fontSize: 18
-                )),
+                Text("Registration",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: colors000000,
+                        fontSize: 18)),
                 ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount:corporateModel.length,
+                    itemCount: corporateModel.length,
                     itemBuilder: (context, index) => GestureDetector(
-                      onTap: ()=> Get.to(()=>ListDetailPage()),
-                      child: commonListView(
-
-                          listTitle: registrationModel[index].listTitle,
-                          subListTitlePay: registrationModel[index].subListTitlePay,
-                          pay: registrationModel[index].pay
-                      ),
-                    ))
+                          onTap: () => Get.to(() => ListDetailPage()),
+                          child: commonListView(
+                              listTitle: registrationModel[index].listTitle,
+                              subListTitleEx:
+                                  registrationModel[index].subListTitleEx,
+                              pay: registrationModel[index].pay),
+                        ))
               ],
             ),
           ).paddingSymmetric(vertical: 10),
           Container(
             color: colorFFFFFF,
-            padding: EdgeInsets.only(left: 15,right: 15,bottom: 20,top: 10),
+            padding: EdgeInsets.only(left: 15, right: 15, bottom: 20, top: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("NGO Compliance",style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    color: colors000000,fontSize: 18
-                )),
+                Text("NGO Compliance",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: colors000000,
+                        fontSize: 18)),
                 ListView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount:ngoModel.length,
+                    itemCount: ngoModel.length,
                     itemBuilder: (context, index) => GestureDetector(
-                      onTap: ()=> Get.to(()=>ListDetailPage()),
-
-                      child: commonListView(
-                          listTitle: ngoModel[index].listTitle,
-                          subListTitlePay: ngoModel[index].subListTitlePay,
-                          pay: ngoModel[index].pay,
-                          isNoSubTitle: index == 0 ? false : true
-                      ),
-                    ))
+                          onTap: () => Get.to(() => ListDetailPage()),
+                          child: commonListView(
+                              listTitle: ngoModel[index].listTitle,
+                              subListTitleEx: ngoModel[index].subListTitleEx,
+                              pay: ngoModel[index].pay,
+                              isNoSubTitle: index == 0 ? false : true),
+                        ))
               ],
             ),
           ),

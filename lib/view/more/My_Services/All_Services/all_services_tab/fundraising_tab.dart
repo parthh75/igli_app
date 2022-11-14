@@ -19,24 +19,24 @@ class _FundraisingTabState extends State<FundraisingTab> {
     return SingleChildScrollView(
       child: Column(
         children: [
-
           Container(
             color: colorFFFFFF,
-            padding: EdgeInsets.only(left: 15,right: 15,bottom: 20,top: 10),
+            padding: EdgeInsets.only(left: 15, right: 15, bottom: 20, top: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Fundraising",style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    color: colors000000,fontSize: 18
-                )),
+                Text("Fundraising",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: colors000000,
+                        fontSize: 18)),
                 GestureDetector(
-                  onTap: ()=>Get.to(()=>ListDetailPage()),
+                  onTap: () => Get.to(() => ListDetailPage()),
                   child: commonListView(
-
-                      pay: "Pay ₹499/-to get started",
-                      subListTitlePay: "39998",
-                      listTitle: "Fundraising",),
+                    pay: "Pay ₹499/-to get started",
+                    subListTitleEx: "39998",
+                    listTitle: "Fundraising",
+                  ),
                 )
               ],
             ),

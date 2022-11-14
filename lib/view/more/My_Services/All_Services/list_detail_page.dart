@@ -4,7 +4,6 @@ import 'package:igli_financial/utilities/colors.dart';
 import 'package:igli_financial/view/more/My_Services/myServices.dart';
 import 'package:slide_to_confirm/slide_to_confirm.dart';
 
-
 class ListDetailPage extends StatefulWidget {
   int? index;
   String? description;
@@ -15,8 +14,23 @@ class ListDetailPage extends StatefulWidget {
   String? deliverablesTab;
   String? documents;
   String? appTitle;
-  String? onPay;
-   ListDetailPage({Key? key,this.index,this.description,this.benefits,this.deliverables,this.duration,this.penalty,this.deliverablesTab,this.documents,this.appTitle,this.onPay}) : super(key: key);
+  String? subListTitleExPay;
+  String? subListTitleInPay;
+
+  ListDetailPage(
+      {Key? key,
+      this.index,
+      this.description,
+      this.benefits,
+      this.deliverables,
+      this.duration,
+      this.penalty,
+      this.deliverablesTab,
+      this.documents,
+      this.appTitle,
+      this.subListTitleExPay,
+      this.subListTitleInPay})
+      : super(key: key);
 
   @override
   State<ListDetailPage> createState() => _ListDetailPageState();
@@ -42,15 +56,22 @@ class _ListDetailPageState extends State<ListDetailPage> {
       length: tabs.length,
       child: Scaffold(
         appBar: AppBar(
-          title: Text( widget.appTitle??"Title"),
+          title: Text(widget.appTitle ?? "Title"),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text( widget.appTitle ?? "Title",style: TextStyle(color: colorPrimary,fontSize: 30,fontWeight: FontWeight.bold),).paddingSymmetric(vertical: 20,horizontal: 15),
+            Text(
+              widget.appTitle ?? "Title",
+              style: TextStyle(
+                  color: colorPrimary,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold),
+            ).paddingSymmetric(vertical: 20, horizontal: 15),
             Row(
               children: [
-                Text("₹${ widget.onPay}/-",style: TextStyle(color: colorPrimary,fontSize: 25)),
+                Text("₹${widget.subListTitleExPay}/-",
+                    style: TextStyle(color: colorPrimary, fontSize: 25)),
                 Text("All inclusive"),
               ],
             ).paddingSymmetric(horizontal: 15),
@@ -64,7 +85,9 @@ class _ListDetailPageState extends State<ListDetailPage> {
                   isScrollable: true,
                   tabs: tabs,
                   labelColor: colorFFFFFF,
-                  indicator: BoxDecoration(borderRadius: BorderRadius.circular(100), color: colorPrimary),
+                  indicator: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: colorPrimary),
                   indicatorPadding: EdgeInsets.symmetric(horizontal: 10),
                   unselectedLabelColor: colorPrimary,
                   //labelStyle: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),
@@ -75,7 +98,7 @@ class _ListDetailPageState extends State<ListDetailPage> {
               child: TabBarView(
                 children: [
                   overViewTab(
-                      description: widget.description ?? "",
+                    description: widget.description ?? "",
                     duration: widget.duration ?? "",
                     deliverables: widget.deliverables ?? "",
                     penalty: widget.penalty ?? "",
@@ -92,12 +115,18 @@ class _ListDetailPageState extends State<ListDetailPage> {
         ),
         bottomNavigationBar: ConfirmationSlider(
           text: "Purchase Now",
-          textStyle: TextStyle(color: colorPrimary,fontWeight: FontWeight.w600,fontSize: 16,decorationColor: colorPrimary,letterSpacing: 8, decorationThickness: 50),
+          textStyle: TextStyle(
+              color: colorPrimary,
+              fontWeight: FontWeight.w600,
+              fontSize: 16,
+              decorationColor: colorPrimary,
+              letterSpacing: 8,
+              decorationThickness: 50),
           onConfirmation: () {
             Get.to(PurchaseNowScreen());
-          },iconColor: colorPrimary,
-
-        ).paddingSymmetric(horizontal: 10,vertical: 20),
+          },
+          iconColor: colorPrimary,
+        ).paddingSymmetric(horizontal: 10, vertical: 20),
         // SliderButton(
         //   action: () {
         //     ///Do something here OnSlide
@@ -140,7 +169,6 @@ class _ListDetailPageState extends State<ListDetailPage> {
       ),
     );
   }
-
 }
 
 Widget overViewTab({
@@ -148,15 +176,20 @@ Widget overViewTab({
   String? duration,
   String? deliverables,
   String? penalty,
-}){
+}) {
   return SingleChildScrollView(
     child: Column(
-      crossAxisAlignment:CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        commonText(title:"Description",subTitle:description ?? "" ).paddingOnly(bottom: 15),
-        commonText(title:"Duration",subTitle:duration ?? "The process usually takes about 7-10 business days." ),
-        commonText(title:"Deliverables",subTitle: deliverables ??"" ).paddingOnly(bottom: 25,top: 15),
-        commonText(title:"Penalty",subTitle:penalty ?? "Yes" ),
+        commonText(title: "Description", subTitle: description ?? "")
+            .paddingOnly(bottom: 15),
+        commonText(
+            title: "Duration",
+            subTitle: duration ??
+                "The process usually takes about 7-10 business days."),
+        commonText(title: "Deliverables", subTitle: deliverables ?? "")
+            .paddingOnly(bottom: 25, top: 15),
+        commonText(title: "Penalty", subTitle: penalty ?? "Yes"),
       ],
     ).paddingSymmetric(horizontal: 15),
   );
@@ -164,54 +197,56 @@ Widget overViewTab({
 
 Widget benefitsTab({
   String? benefits,
-}){
+}) {
   return SingleChildScrollView(
     child: Column(
-      crossAxisAlignment:CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-         commonText(title:"Benefits",subTitle:benefits?? ""),
+        commonText(title: "Benefits", subTitle: benefits ?? ""),
       ],
     ).paddingSymmetric(horizontal: 15),
   );
 }
 
-Widget documentsTab({
-  String? documents }){
+Widget documentsTab({String? documents}) {
   return SingleChildScrollView(
     child: Column(
-      crossAxisAlignment:CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        commonText(title:"Documents",subTitle: documents ??"" ),
+        commonText(title: "Documents", subTitle: documents ?? ""),
       ],
     ).paddingSymmetric(horizontal: 15),
   );
 }
 
-Widget deliverablesTab(
-{String? deliverables}
-    ){
+Widget deliverablesTab({String? deliverables}) {
   return SingleChildScrollView(
     child: Column(
-      crossAxisAlignment:CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        commonText(title:"Deliverables",subTitle:deliverables?? "" ),
+        commonText(title: "Deliverables", subTitle: deliverables ?? ""),
       ],
     ).paddingSymmetric(horizontal: 15),
   );
 }
-Widget commonText(
-    {String? title,String? subTitle}
-    ){
+
+Widget commonText({String? title, String? subTitle}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Text(title ??"Description",style: TextStyle(fontSize: 15,color: colorPrimary,fontWeight: FontWeight.w600),),
-      Text(subTitle ??"Description",style: TextStyle(fontSize: 13,color: colors000000,fontWeight: FontWeight.w500),).paddingOnly(top: 3),
+      Text(
+        title ?? "Description",
+        style: TextStyle(
+            fontSize: 15, color: colorPrimary, fontWeight: FontWeight.w600),
+      ),
+      Text(
+        subTitle ?? "Description",
+        style: TextStyle(
+            fontSize: 13, color: colors000000, fontWeight: FontWeight.w500),
+      ).paddingOnly(top: 3),
     ],
   );
 }
-
-
 
 class PurchaseNowScreen extends StatefulWidget {
   const PurchaseNowScreen({Key? key}) : super(key: key);
@@ -223,6 +258,11 @@ class PurchaseNowScreen extends StatefulWidget {
 class _PurchaseNowScreenState extends State<PurchaseNowScreen> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("coming soon",style: TextStyle(color: colorPrimary,fontWeight: FontWeight.w600,fontSize: 16),));
+    return Center(
+        child: Text(
+      "coming soon",
+      style: TextStyle(
+          color: colorPrimary, fontWeight: FontWeight.w600, fontSize: 16),
+    ));
   }
 }
