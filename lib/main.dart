@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/utilities/string.dart';
 import 'package:igli_financial/view/login_screen.dart';
+import 'package:igli_financial/view/main_screen.dart';
 import 'package:igli_financial/view/more/more_main.dart';
 import 'package:igli_financial/view/more/myprofile.dart';
 import 'package:igli_financial/view/more/ourpartnerservicescreen.dart';
@@ -70,7 +71,7 @@ class MyHomeState extends State<MyHome> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () async {
-      Get.to(() => const MoreScreen());
+      Get.to(() => const MainScreen());
     });
     super.initState();
   }
