@@ -17,17 +17,13 @@ class BusinessSetupTab extends StatelessWidget {
         children: [
           Container(
             color: colorFFFFFF,
-            padding: EdgeInsets.only(left: 15, right: 15, bottom: 20, top: 10),
+            padding:
+                const EdgeInsets.only(left: 15, right: 15, bottom: 20, top: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Business Registration",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        color: colors000000,
-                        fontSize: 18)),
                 ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: businessSetupModel.length,
                     itemBuilder: (context, index) => GestureDetector(
@@ -36,6 +32,8 @@ class BusinessSetupTab extends StatelessWidget {
                               appTitle: businessSetupModel[index].listTitle,
                               subListTitleExPay:
                                   businessSetupModel[index].subListTitleEx,
+                              subListTitleInPay:
+                                  businessSetupModel[index].subListTitleIn,
                               index: businessSetupModel.length,
                               description:
                                   businessSetupModel[index].description,
@@ -53,69 +51,9 @@ class BusinessSetupTab extends StatelessWidget {
                               listTitle: businessSetupModel[index].listTitle,
                               subListTitleEx:
                                   businessSetupModel[index].subListTitleEx,
+                              subListTitleIn:
+                                  businessSetupModel[index].subListTitleIn,
                               pay: businessSetupModel[index].pay),
-                        ))
-              ],
-            ),
-          ).paddingSymmetric(vertical: 10),
-          Container(
-            color: colorFFFFFF,
-            padding: EdgeInsets.only(left: 15, right: 15, bottom: 20, top: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("International Business Setup",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        color: colors000000,
-                        fontSize: 18)),
-                GestureDetector(
-                    onTap: () {
-                      Get.to(ListDetailPage());
-                    },
-                    child: commonListView(
-                        listTitle: "USA Company Incorporation",
-                        isNoSubTitle: false))
-              ],
-            ),
-          ),
-          Container(
-            color: colorFFFFFF,
-            padding: EdgeInsets.only(left: 15, right: 15, bottom: 20, top: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Licenses & Registrations",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        color: colors000000,
-                        fontSize: 18)),
-                ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: licensesModel.length,
-                    itemBuilder: (context, index) => GestureDetector(
-                          onTap: () {
-                            Get.to(ListDetailPage(
-                              appTitle: licensesModel[index].listTitle,
-                              subListTitleExPay:
-                                  licensesModel[index].subListTitleEx,
-                              index: licensesModel.length,
-                              description: licensesModel[index].description,
-                              benefits: licensesModel[index].benefits,
-                              deliverables: licensesModel[index].deliverables,
-                              deliverablesTab:
-                                  licensesModel[index].deliverablesTab,
-                              documents: licensesModel[index].documents,
-                              duration: licensesModel[index].duration,
-                              penalty: licensesModel[index].penalty,
-                            ));
-                          },
-                          child: commonListView(
-                              listTitle: licensesModel[index].listTitle,
-                              subListTitleEx:
-                                  licensesModel[index].subListTitleEx,
-                              pay: licensesModel[index].pay),
                         ))
               ],
             ),

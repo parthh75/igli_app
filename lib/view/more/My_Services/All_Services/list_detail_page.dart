@@ -38,10 +38,10 @@ class ListDetailPage extends StatefulWidget {
 
 class _ListDetailPageState extends State<ListDetailPage> {
   List<Tab> tabs = [
-    Tab(child: Text("Ongoing").paddingSymmetric(horizontal: 20)),
-    Tab(child: Text("Benefits").paddingSymmetric(horizontal: 20)),
-    Tab(child: Text("Documents").paddingSymmetric(horizontal: 20)),
-    Tab(child: Text("Deliverables").paddingSymmetric(horizontal: 20)),
+    Tab(child: const Text("Ongoing").paddingSymmetric(horizontal: 20)),
+    Tab(child: const Text("Benefits").paddingSymmetric(horizontal: 20)),
+    Tab(child: const Text("Documents").paddingSymmetric(horizontal: 20)),
+    Tab(child: const Text("Deliverables").paddingSymmetric(horizontal: 20)),
   ];
 
   // List<Widget> tabsContent = [
@@ -65,19 +65,28 @@ class _ListDetailPageState extends State<ListDetailPage> {
               widget.appTitle ?? "Title",
               style: TextStyle(
                   color: colorPrimary,
-                  fontSize: 30,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold),
-            ).paddingSymmetric(vertical: 20, horizontal: 15),
+            ).paddingSymmetric(vertical: 10, horizontal: 15),
             Row(
               children: [
-                Text("₹${widget.subListTitleExPay}/-",
-                    style: TextStyle(color: colorPrimary, fontSize: 25)),
-                Text("All inclusive"),
+                Text("₹ ${widget.subListTitleExPay}/-",
+                    style: const TextStyle(color: Colors.red, fontSize: 20)),
+                const Text("Excl.GST",
+                    style: TextStyle(color: Colors.red, fontSize: 15)),
+              ],
+            ).paddingSymmetric(horizontal: 15),
+            Row(
+              children: [
+                Text("₹ ${widget.subListTitleInPay}/-",
+                    style: TextStyle(color: colorPrimary, fontSize: 20)),
+                Text("Incl.GST",
+                    style: TextStyle(color: colorPrimary, fontSize: 15)),
               ],
             ).paddingSymmetric(horizontal: 15),
             PreferredSize(
-              preferredSize: Size.fromHeight(30),
-              child: Container(
+              preferredSize: const Size.fromHeight(30),
+              child: SizedBox(
                 height: 40,
                 // color: colorFFFFFF,
                 child: TabBar(
@@ -88,7 +97,7 @@ class _ListDetailPageState extends State<ListDetailPage> {
                   indicator: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
                       color: colorPrimary),
-                  indicatorPadding: EdgeInsets.symmetric(horizontal: 10),
+                  indicatorPadding: const EdgeInsets.symmetric(horizontal: 10),
                   unselectedLabelColor: colorPrimary,
                   //labelStyle: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),
                 ),
@@ -123,7 +132,7 @@ class _ListDetailPageState extends State<ListDetailPage> {
               letterSpacing: 8,
               decorationThickness: 50),
           onConfirmation: () {
-            Get.to(PurchaseNowScreen());
+            Get.to(const PurchaseNowScreen());
           },
           iconColor: colorPrimary,
         ).paddingSymmetric(horizontal: 10, vertical: 20),

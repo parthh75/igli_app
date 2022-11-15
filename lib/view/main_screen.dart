@@ -19,7 +19,7 @@ class _MainScreenState extends State<MainScreen> {
     setState(() {});
   }
 
-  int _selectedIndex = 3;
+  int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     MyServicesScreen(),
@@ -59,10 +59,12 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ]),
               height: 50,
-              width:double.infinity,
+              width: double.infinity,
               child: Row(
                 children: [
-                  Image.asset("assets/image/igliLogo.png", height: 30, width: 180, fit: BoxFit.fill).paddingOnly(left: 15),
+                  Image.asset("assets/image/igliLogo.png",
+                          height: 30, width: 180, fit: BoxFit.fill)
+                      .paddingOnly(left: 15),
                   const Spacer(),
                   const Icon(
                     Icons.calendar_month,
@@ -87,20 +89,33 @@ class _MainScreenState extends State<MainScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home', backgroundColor: Colors.green),
-        BottomNavigationBarItem(icon: Icon(Icons.note_alt_outlined), label: 'My Services', backgroundColor: Colors.yellow),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.payment),
-          label: 'Payments',
-          backgroundColor: Colors.blue,
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.more_vert),
-          label: 'More',
-          backgroundColor: Colors.blue,
-        ),
-      ], type: BottomNavigationBarType.fixed, currentIndex: _selectedIndex, selectedItemColor: colorPrimary, iconSize: 25, onTap: _onItemTapped, elevation: 5),
+      bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+                backgroundColor: Colors.green),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.note_alt_outlined),
+                label: 'My Services',
+                backgroundColor: Colors.yellow),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.payment),
+              label: 'Payments',
+              backgroundColor: Colors.blue,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.more_vert),
+              label: 'More',
+              backgroundColor: Colors.blue,
+            ),
+          ],
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _selectedIndex,
+          selectedItemColor: colorPrimary,
+          iconSize: 25,
+          onTap: _onItemTapped,
+          elevation: 5),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',

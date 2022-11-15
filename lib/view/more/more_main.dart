@@ -5,8 +5,6 @@ import 'package:igli_financial/utilities/string.dart';
 import 'package:igli_financial/view/more/My_Services/All_Services/all_services.dart';
 import 'package:igli_financial/view/more/help_screen.dart';
 import 'package:igli_financial/view/more/myprofile.dart';
-import 'package:igli_financial/view/more/partners_screen.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../utilities/colors.dart';
 import 'contactus_screen.dart';
@@ -77,7 +75,7 @@ class _MoreScreenState extends State<MoreScreen> {
             // commonListTile(
             //     title: "Read Articles", leadingIcon: Icons.file_copy_outlined),
             commonListTile(
-                onTap: _launchURL,
+                // onTap: _launchURL,
                 title: "Legal & Terms",
                 leadingIcon: Icons.filter_1_rounded),
 
@@ -134,7 +132,9 @@ class _MoreScreenState extends State<MoreScreen> {
                               child: commonElevatedButton(
                                   height: 40,
                                   title: CS.yes,
-                                  onTap: () {},
+                                  onTap: () {
+                                    Get.back();
+                                  },
                                   buttonColor: colorPrimary,
                                   horizontalPadding: 30),
                             ),
@@ -153,11 +153,11 @@ class _MoreScreenState extends State<MoreScreen> {
   }
 }
 
-_launchURL() async {
-  const url = 'https://iglifinancial.com/terms-and-condition/';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
-  }
-}
+// _launchURL() async {
+//   const url = 'https://iglifinancial.com/terms-and-condition/';
+//   if (await canLaunch(url)) {
+//     await launch(url);
+//   } else {
+//     throw 'Could not launch $url';
+//   }
+// }

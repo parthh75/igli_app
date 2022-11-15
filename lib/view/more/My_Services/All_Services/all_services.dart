@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/view/more/My_Services/All_Services/Model/All_Services_model.dart';
-import 'package:igli_financial/view/more/My_Services/All_Services/all_services_tab/fundraising_tab.dart';
+import 'package:igli_financial/view/more/My_Services/All_Services/all_services_tab/good_Services_Tax_screen.dart';
+import 'package:igli_financial/view/more/My_Services/All_Services/all_services_tab/incometax_accounting_screen.dart';
 import 'package:igli_financial/view/more/My_Services/All_Services/all_services_tab/ngo_tab.dart';
 import 'package:igli_financial/view/more/My_Services/All_Services/all_services_tab/propety_renwal_tab.dart';
 import 'package:igli_financial/view/more/My_Services/myServices.dart';
@@ -21,22 +22,20 @@ class AllServices extends StatefulWidget {
 class _AllServicesState extends State<AllServices> {
   List<Tab> tabs = [
     Tab(child: const Text("Business Setup").paddingSymmetric(horizontal: 20)),
-    Tab(child: const Text("Tax & Compliance").paddingSymmetric(horizontal: 20)),
-    Tab(child: const Text("TradeMark & IP").paddingSymmetric(horizontal: 20)),
-    Tab(child: const Text("Fundraising").paddingSymmetric(horizontal: 20)),
-    Tab(child: const Text("NGO").paddingSymmetric(horizontal: 20)),
+    Tab(child: const Text("TRADEMARK & IP").paddingSymmetric(horizontal: 20)),
     Tab(
         child:
-            const Text("Property & Renewal").paddingSymmetric(horizontal: 20)),
+            const Text("GOOD & SERVICES TAX").paddingSymmetric(horizontal: 20)),
+    Tab(
+        child: const Text("INCOME TAX & ACCOUNTING")
+            .paddingSymmetric(horizontal: 20)),
   ];
 
   List<Widget> tabsContent = [
     const BusinessSetupTab(),
-    const TaxComplianceTab(),
     const TrademarkTab(),
-    const FundraisingTab(),
-    const NgoTab(),
-    const PropertyTab(),
+    const GoodServiceTaxScreen(),
+    const IncomeTaxScreen(),
   ];
 
   @override
@@ -125,13 +124,13 @@ Widget commonListView({
                         ? Column(
                             children: [
                               Text(
-                                "₹${subListTitleEx}/-excl.GST",
+                                "₹$subListTitleEx/-excl.GST",
                                 style: const TextStyle(
                                   color: Colors.red,
                                 ),
                               ).paddingOnly(bottom: 10),
                               Text(
-                                "₹${subListTitleIn}/-incl.GST",
+                                "₹$subListTitleIn/-incl.GST",
                                 style: TextStyle(
                                   color: colors000000,
                                 ),
@@ -152,7 +151,7 @@ Widget commonListView({
                   bottomRight: Radius.circular(5),
                   topLeft: Radius.circular(5))),
           child: Text(
-            "GST Credit ₹$pay/-",
+            "GST Credit ₹ $pay/-",
             style: TextStyle(color: colorFFFFFF, fontSize: 12),
           ).paddingSymmetric(vertical: 3, horizontal: 3),
         ),
