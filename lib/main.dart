@@ -71,7 +71,7 @@ class MyHomeState extends State<MyHome> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () async {
-      Get.to(() => const MoreScreen());
+      Get.to(() => const MainScreen());
     });
     super.initState();
   }
