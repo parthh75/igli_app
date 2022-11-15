@@ -107,6 +107,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                              height: 100,
                              width: 100,
+
+
+
                              child: Column(
                                crossAxisAlignment: CrossAxisAlignment.center,
                                mainAxisAlignment: MainAxisAlignment.center,
