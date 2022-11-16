@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/view/main_screen.dart';
@@ -18,17 +20,33 @@ class LoginScreen extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
 }
 
+FirebaseAuth _auth = FirebaseAuth.instance;
+
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
-  TextEditingController password = TextEditingController();
-
+  TextEditingController passwordController = TextEditingController();
+  int success = 1;
+  String userEmail = "";
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  void signIn() async {
+    final User? user = (await _auth.signInWithEmailAndPassword(
+            email: emailController.text, password: passwordController.text))
+        .user;
+    if (user != null) {
+      success = 2;
+      userEmail = user.email!;
+    } else {
+      success = 3;
+    }
+  }
 
   @override
   void initState() {
     emailController.text = "parth@dwarkeshgroup.com";
-    password.text = "123456";
-
+    passwordController.text = "123456";
+    FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: "parth@dwarkeshgroup.com", password: "123456");
     super.initState();
   }
 
@@ -70,14 +88,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Text(
                   CS.welcome,
-                  style: themeData.textTheme.headline1?.copyWith(color: colors000000),
+                  style: themeData.textTheme.headline1
+                      ?.copyWith(color: colors000000),
                 ),
                 const SizedBox(
                   height: 7.0,
                 ),
                 Text(
                   CS.letsLoginForExplore,
-                  style: themeData.textTheme.subtitle1?.copyWith(color: textColorPrimary),
+                  style: themeData.textTheme.subtitle1
+                      ?.copyWith(color: textColorPrimary),
                 ),
                 const SizedBox(
                   height: 60.0,
@@ -103,10 +123,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 20.0,
                 ),
                 commonTextFormField(
-                    textEditingController: password,
+                    textEditingController: passwordController,
                     hintText: "Enter password",
                     isPassword: true,
-                    textStyle: themeData.textTheme.subtitle1?.copyWith(color: colors000000),
+                    textStyle: themeData.textTheme.subtitle1
+                        ?.copyWith(color: colors000000),
                     headText: CS.password,
                     textFieldHeight: 50,
                     preFixIcon: Image.asset(
@@ -134,7 +155,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       child: Text(
                         CS.forgotPasswordq,
-                        style: themeData.textTheme.subtitle1?.copyWith(color: textColorPrimary),
+                        style: themeData.textTheme.subtitle1
+                            ?.copyWith(color: textColorPrimary),
                       ),
                     ),
                   ],
@@ -144,7 +166,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 GetButton(
                   ontap: () {
-                    Get.offAll(const MainScreen());
+                    signIn();
+                    success == 2
+                        ? Get.offAll(const MainScreen())
+                        : print("Something went wrong");
                   },
                   text: CS.signIn,
                 ),
@@ -158,7 +183,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 38.0),
                       child: Text(
                         CS.connectWith,
-                        style: themeData.textTheme.subtitle2?.copyWith(color: textColorPrimary),
+                        style: themeData.textTheme.subtitle2
+                            ?.copyWith(color: textColorPrimary),
                       ),
                     ),
                     const Expanded(child: Divider()),
@@ -170,7 +196,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 54.0),
                   child: Row(
-                    mainAxisAlignment: Platform.isIOS ? MainAxisAlignment.spaceBetween : MainAxisAlignment.spaceAround,
+                    // mainAxisAlignment: Platform.isIOS
+                    //     ? MainAxisAlignment.spaceBetween
+                    //     : MainAxisAlignment.spaceAround,
                     children: [
                       GestureDetector(
                         onTap: () {},
@@ -186,14 +214,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           scale: 3.5,
                         ),
                       ),
-                      if (Platform.isIOS)
-                        GestureDetector(
-                          onTap: () {},
-                          child: Image.asset(
-                            "assets/image/apple_circle.png",
-                            scale: 3.5,
-                          ),
+                      //if (Platform.isIOS)
+                      GestureDetector(
+                        onTap: () {},
+                        child: Image.asset(
+                          "assets/image/apple_circle.png",
+                          scale: 3.5,
                         ),
+                      ),
                     ],
                   ),
                 ),
@@ -209,9 +237,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         text: TextSpan(children: [
                       TextSpan(
                         text: CS.youDonHaveAccount,
-                        style: themeData.textTheme.subtitle1?.copyWith(color: textColorPrimary),
+                        style: themeData.textTheme.subtitle1
+                            ?.copyWith(color: textColorPrimary),
                       ),
-                      TextSpan(text: CS.register, style: themeData.textTheme.subtitle1?.copyWith(color: colors000000)),
+                      TextSpan(
+                          text: CS.register,
+                          style: themeData.textTheme.subtitle1
+                              ?.copyWith(color: colors000000)),
                     ])),
                   ),
                 ),

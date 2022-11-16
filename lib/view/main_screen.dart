@@ -63,7 +63,7 @@ class _MainScreenState extends State<MainScreen> {
               child: Row(
                 children: [
                   Image.asset("assets/image/igliLogo.png",
-                          height: 30, width: 180, fit: BoxFit.fill)
+                      height: 30, width: 180, fit: BoxFit.fill)
                       .paddingOnly(left: 15),
                   const Spacer(),
                   const Icon(
