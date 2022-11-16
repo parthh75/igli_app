@@ -203,23 +203,29 @@ class _HelpComplianceCalenderScreenState
                       title:
                           "This Version of Compliance Calender is a General Compliance Calender (Not Customised Based on Your Industry and Business).Thus,If you don't see some of the Compliance you Follow,Please write it to us at"
                           "Your Feedback will Help us to Improve our knowledge base."),
-                  TextButton(
-                      onPressed: () async {
-                        String email = 'info@iglifinancial.com';
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: TextButton(
+                        onPressed: () async {
+                          String email = 'info@iglifinancial.com';
 
-                        // if (await canLaunch(email)) {
-                        //   await launch(email);
-                        // } else {
-                        //   throw "Error occured sending an email";
-                        // }
-                      },
-                      child: Text(
-                        "info@iglifinancial.com",
-                        style: TextStyle(color: colorPrimary),
-                      )),
-                  commonText(
-                      title:
-                          "Your Feedback will Help us to Improve our knowledge base.")
+                          // if (await canLaunch(email)) {
+                          //   await launch(email);
+                          // } else {
+                          //   throw "Error occured sending an email";
+                          // }
+                        },
+                        child: Text(
+                          "info@iglifinancial.com",
+                          style: TextStyle(color: colorPrimary),
+                        )).paddingOnly(left: 15),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: commonText(
+                        title:
+                            "Your Feedback will Help us to Improve our knowledge base."),
+                  )
                 ]),
             commonExpansionTile(
                 title:

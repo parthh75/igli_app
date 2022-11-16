@@ -246,12 +246,12 @@ Widget commonText({String? title, String? subTitle}) {
       Text(
         title ?? "Description",
         style: TextStyle(
-            fontSize: 15, color: colorPrimary, fontWeight: FontWeight.w600),
+            fontSize: 16, color: colorPrimary, fontWeight: FontWeight.w600),
       ),
       Text(
         subTitle ?? "Description",
         style: TextStyle(
-            fontSize: 13, color: colors000000, fontWeight: FontWeight.w500),
+            fontSize: 15, color: colors000000, fontWeight: FontWeight.w500),
       ).paddingOnly(top: 3),
     ],
   );
