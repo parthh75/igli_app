@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:igli_financial/view/home_screen.dart';
 import 'package:igli_financial/view/more/more_main.dart';
 import 'package:igli_financial/view/more/My_Services/myServices.dart';
 
 import '../utilities/colors.dart';
 import 'more/Payment/payment.dart';
+
+final getStorage = GetStorage();
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -63,7 +66,7 @@ class _MainScreenState extends State<MainScreen> {
               child: Row(
                 children: [
                   Image.asset("assets/image/igliLogo.png",
-                      height: 30, width: 180, fit: BoxFit.fill)
+                          height: 30, width: 180, fit: BoxFit.fill)
                       .paddingOnly(left: 15),
                   const Spacer(),
                   const Icon(

@@ -74,6 +74,7 @@ class MyHome extends StatefulWidget {
 class MyHomeState extends State<MyHome> {
   @override
   void initState() {
+    getStorage.read("login");
     Future.delayed(const Duration(seconds: 3), () async {
       Get.to(() => const LoginScreen());
     });
