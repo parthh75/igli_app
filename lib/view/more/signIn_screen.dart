@@ -8,6 +8,8 @@ import 'package:igli_financial/utilities/common_button.dart';
 import 'package:igli_financial/utilities/common_taxfield.dart';
 import 'package:igli_financial/utilities/string.dart';
 import 'package:igli_financial/utilities/text_style.dart';
+import 'package:igli_financial/view/main_screen.dart';
+import 'package:igli_financial/view/phone_verification_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -27,21 +29,28 @@ class _SignInScreenState extends State<SignInScreen> {
   TextEditingController CpasswordController = TextEditingController();
   bool success = false;
   String userEmail = "";
+  String? _code;
 
   void registration() async {
     final User? user = (await _auth.createUserWithEmailAndPassword(
-            email: emailController.text, password: passwordController.text))
+        email: emailController.text, password: passwordController.text))
         .user;
-    // final User? user1 = (await _auth.signInWithPhoneNumber("${phoneController.text}")
-    //     .user;
+
     if (user != null) {
       setState(() {
         success = true;
         userEmail = user.email!;
+        getStorage.write('login', "true");
       });
     } else {
       success = false;
     }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
   }
 
   @override
@@ -92,6 +101,37 @@ class _SignInScreenState extends State<SignInScreen> {
               Icons.phone,
               color: colors000000,
             ),
+            suffixIcon: InkWell(
+              onTap: () {
+                _auth.verifyPhoneNumber(
+                    phoneNumber: phoneController.text,
+                    verificationCompleted: (PhoneAuthCredential credential) {
+                      FirebaseAuth.instance
+                          .signInWithCredential(credential)
+                          .then((value) {
+                        print("done");
+                      });
+                      Get.to(PhoneVerificationScreen(
+                        phone: phoneController.text,
+                        code: _code,
+                      ));
+                    },
+                    verificationFailed: (value) {},
+                    timeout: Duration(seconds: 60),
+                    codeSent: (String code, int? smscode) {
+                      setState(() {
+                        _code = code;
+                      });
+                    },
+                    codeAutoRetrievalTimeout: (String value) {
+                      setState(() {
+                        _code = value;
+                      });
+                    });
+              },
+              child: Text("Verifiy", style: TextStyle(color: Colors.red))
+                  .paddingOnly(top: 10, right: 10),
+            ),
             validationFunction: (String value) {
               if (value.isEmpty) {
                 return "Phone Number can't be empty";
@@ -129,7 +169,7 @@ class _SignInScreenState extends State<SignInScreen> {
               hintText: "Enter password",
               isPassword: true,
               textStyle:
-                  themeData.textTheme.subtitle1?.copyWith(color: colors000000),
+              themeData.textTheme.subtitle1?.copyWith(color: colors000000),
               headText: CS.password,
               textFieldHeight: 50,
               preFixIcon: Icon(
@@ -149,13 +189,16 @@ class _SignInScreenState extends State<SignInScreen> {
               hintText: "Enter Confirm password",
               isPassword: true,
               textStyle:
-                  themeData.textTheme.subtitle1?.copyWith(color: colors000000),
+              themeData.textTheme.subtitle1?.copyWith(color: colors000000),
               headText: CS.confirmPassword,
               textFieldHeight: 50,
               preFixIcon: Icon(
                 Icons.key,
                 color: colors000000,
               ),
+              onSavedFunction: () {
+                if (passwordController.text == CpasswordController.text) {}
+              },
               validationFunction: (String value) {
                 if (passwordController.text != CpasswordController.text) {
                   return "Password is not Match";
