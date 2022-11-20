@@ -2,9 +2,11 @@ import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/view/main_screen.dart';
+import 'package:igli_financial/view/more/signIn_screen.dart';
 
 import '../utilities/colors.dart';
 import '../utilities/common_button.dart';
@@ -43,10 +45,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    emailController.text = "parth@dwarkeshgroup.com";
-    passwordController.text = "123456";
+    // emailController.text = "parth@dwarkeshgroup.com";
+    // passwordController.text = "123456";
     FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: "parth@dwarkeshgroup.com", password: "123456");
+        email: emailController.text, password: passwordController.text);
     super.initState();
   }
 
@@ -59,30 +61,11 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Form(
             key: formKey,
-            child: ListView(
-              shrinkWrap: true,
-              physics: const ClampingScrollPhysics(),
+            child: Column(
+              // shrinkWrap: true,
+              // physics: const ClampingScrollPhysics(),
               //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 30.0,
-                ),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: SizedBox(
-                      height: 30.0,
-                      width: 30.0,
-                      child: Image.asset(
-                        "assets/image/close_circle.png",
-                        scale: 3.5,
-                      ),
-                    ),
-                  ),
-                ),
                 const SizedBox(
                   height: 30.0,
                 ),
@@ -169,68 +152,34 @@ class _LoginScreenState extends State<LoginScreen> {
                     signIn();
                     success == 2
                         ? Get.offAll(const MainScreen())
-                        : print("Something went wrong");
+                        : showFlash(
+                            context: context,
+                            duration: const Duration(seconds: 3),
+                            builder: (context, controller) {
+                              return Flash(
+                                controller: controller,
+                                position: FlashPosition.top,
+                                behavior: FlashBehavior.floating,
+                                boxShadows: kElevationToShadow[4],
+                                borderRadius: BorderRadius.circular(10),
+                                margin: const EdgeInsets.all(20),
+                                backgroundColor: colorPrimary,
+                                horizontalDismissDirection:
+                                    HorizontalDismissDirection.horizontal,
+                                child: FlashBar(
+                                  content: Text('InValid Email Id OR Password',
+                                      style: TextStyle(color: colorFFFFFF)),
+                                ),
+                              );
+                            },
+                          );
                   },
-                  text: CS.signIn,
+                  text: CS.login,
                 ),
-                const SizedBox(
-                  height: 40.0,
-                ),
-                Row(
-                  children: [
-                    const Expanded(child: Divider()),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 38.0),
-                      child: Text(
-                        CS.connectWith,
-                        style: themeData.textTheme.subtitle2
-                            ?.copyWith(color: textColorPrimary),
-                      ),
-                    ),
-                    const Expanded(child: Divider()),
-                  ],
-                ),
-                const SizedBox(
-                  height: 40.0,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 54.0),
-                  child: Row(
-                    // mainAxisAlignment: Platform.isIOS
-                    //     ? MainAxisAlignment.spaceBetween
-                    //     : MainAxisAlignment.spaceAround,
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Image.asset(
-                          "assets/image/google_circle.png",
-                          scale: 3.5,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Image.asset(
-                          "assets/image/facebook_circle.png",
-                          scale: 3.5,
-                        ),
-                      ),
-                      //if (Platform.isIOS)
-                      GestureDetector(
-                        onTap: () {},
-                        child: Image.asset(
-                          "assets/image/apple_circle.png",
-                          scale: 3.5,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 15.0,
-                ),
+                const Spacer(),
                 GestureDetector(
                   onTap: () {
-                    // Get.to(() => SignUpScreen());
+                    Get.to(() => const SignInScreen());
                   },
                   child: Center(
                     child: RichText(

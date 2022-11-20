@@ -350,59 +350,58 @@ OutlineInputBorder focusFieldBorderStyle = OutlineInputBorder(
   borderRadius: BorderRadius.circular(7),
 );
 
-Widget commonTextFormField(
-    {String? fieldTitleText,
-    TextStyle? textStyle,
-    TextStyle? prefixStyle,
-    double? borderRadius,
-    String? prefixText,
-    String? hintText,
-    bool? isErrorShow = false,
-    InputBorder? focusedBorder,
-    InputBorder? disabledBorder,
-    InputBorder? enabledBorder,
-    InputBorder? errorBorder,
-    InputBorder? focusedErrorBorder,
-    bool isPassword = false,
-    TextEditingController? textEditingController,
-    Function? validationFunction,
-    Function? onSavedFunction,
-    Function? onFieldSubmit,
-    TextInputType? keyboardType,
-    Function? onEditingComplete,
-    Function? onTapFunction,
-    Function? onChangedFunction,
-    TextAlign align = TextAlign.start,
-    TextInputAction? inputAction,
-    List<TextInputFormatter>? inputFormatter,
-    bool? isEnabled,
-    int? errorMaxLines,
-    TextStyle? errorTextStyle,
-    int? maxLine,
-    Iterable<String>? autofillHints,
-    FocusNode? textFocusNode,
-    GlobalKey<FormFieldState>? key,
-    bool isReadOnly = false,
-    Widget? suffixIcon,
-    Widget? suffix,
-    Widget? preFixIcon,
-    Color? filledColor,
-    RxBool? showPassword,
-    EdgeInsets? contentPadding,
-    ScrollController? scrollController,
-    TextStyle? hintStyle,
-    String? errorText,
-    int? maxLength,
-    int? minLines,
-    bool isExpands = false,
-    bool? isDense,
-    bool? autofocus,
-    Color? cursorColor,
-    String headText = "",
-    bool isHeadIcon = true,
-    double? textFieldHeight,
-    bool isTextFieldHeight = true,
-    double? textFieldWidth}) {
+Widget commonTextFormField({String? fieldTitleText,
+  TextStyle? textStyle,
+  TextStyle? prefixStyle,
+  double? borderRadius,
+  String? prefixText,
+  String? hintText,
+  bool? isErrorShow = false,
+  InputBorder? focusedBorder,
+  InputBorder? disabledBorder,
+  InputBorder? enabledBorder,
+  InputBorder? errorBorder,
+  InputBorder? focusedErrorBorder,
+  bool isPassword = false,
+  TextEditingController? textEditingController,
+  Function? validationFunction,
+  Function? onSavedFunction,
+  Function? onFieldSubmit,
+  TextInputType? keyboardType,
+  Function? onEditingComplete,
+  Function? onTapFunction,
+  Function? onChangedFunction,
+  TextAlign align = TextAlign.start,
+  TextInputAction? inputAction,
+  List<TextInputFormatter>? inputFormatter,
+  bool? isEnabled,
+  int? errorMaxLines,
+  TextStyle? errorTextStyle,
+  int? maxLine,
+  Iterable<String>? autofillHints,
+  FocusNode? textFocusNode,
+  GlobalKey<FormFieldState>? key,
+  bool isReadOnly = false,
+  Widget? suffixIcon,
+  Widget? suffix,
+  Widget? preFixIcon,
+  Color? filledColor,
+  RxBool? showPassword,
+  EdgeInsets? contentPadding,
+  ScrollController? scrollController,
+  TextStyle? hintStyle,
+  String? errorText,
+  int? maxLength,
+  int? minLines,
+  bool isExpands = false,
+  bool? isDense,
+  bool? autofocus,
+  Color? cursorColor,
+  String headText = "",
+  bool isHeadIcon = true,
+  double? textFieldHeight,
+  bool isTextFieldHeight = true,
+  double? textFieldWidth}) {
   bool passwordVisible = isPassword;
 
   return StatefulBuilder(builder: (context, newSetState) {
@@ -411,12 +410,16 @@ Widget commonTextFormField(
       children: [
         headText == ""
             ? const SizedBox()
-            : Text(isHeadIcon ? '$headText*' : headText, style: themeData.textTheme.subtitle1?.copyWith(fontWeight: FontWeight.w500, color: colors000000)).paddingOnly(bottom: 10, top: 15),
+            : Text(isHeadIcon ? '$headText*' : headText,
+            style: themeData.textTheme.subtitle1?.copyWith(
+                fontWeight: FontWeight.w500, color: colors000000)).paddingOnly(
+            bottom: 10, top: 15),
         SizedBox(
           height: isTextFieldHeight ? textFieldHeight ?? 35 : null,
           width: textFieldWidth,
           child: StatefulBuilder(builder: (context, snapshot) {
             return TextFormField(
+
               readOnly: isReadOnly,
               maxLength: maxLength,
               textAlign: align,
@@ -441,7 +444,9 @@ Widget commonTextFormField(
                 }
               },
               validator: (value) {
-                return validationFunction != null ? validationFunction(value) : null;
+                return validationFunction != null
+                    ? validationFunction(value)
+                    : null;
               },
               // onSaved: onSavedFunction != null ? onSavedFunction : (value) {},
               onSaved: (value) {
@@ -459,12 +464,12 @@ Widget commonTextFormField(
               expands: isExpands ? true : false,
 
               autofillHints: autofillHints ?? [],
-
               // cursorColor: color174261,
               obscureText: passwordVisible,
               textInputAction: inputAction ?? TextInputAction.next,
               autofocus: autofocus ?? false,
-              style: textStyle ?? themeData.textTheme.subtitle1?.copyWith(color: colors000000),
+              style: textStyle ??
+                  themeData.textTheme.subtitle1?.copyWith(color: colors000000),
               inputFormatters: inputFormatter,
               cursorColor: colorPrimary,
               decoration: InputDecoration(
@@ -472,13 +477,16 @@ Widget commonTextFormField(
                 // isCollapsed: true,
                 errorText: errorText,
                 hoverColor: Colors.transparent,
-                prefixStyle: prefixStyle ?? themeData.textTheme.subtitle1?.copyWith(color: colors000000),
+                prefixStyle: prefixStyle ??
+                    themeData.textTheme.subtitle1?.copyWith(
+                        color: colors000000),
                 prefixText: prefixText,
                 errorMaxLines: errorMaxLines ?? 1,
                 filled: true,
                 fillColor: filledColor ?? colorFFFFFF,
                 isDense: isDense ?? false,
-                contentPadding: contentPadding ?? const EdgeInsets.only(left: 10),
+                contentPadding: contentPadding ??
+                    const EdgeInsets.only(left: 10),
                 focusedBorder: focusedBorder ?? focusFieldBorderStyle,
                 disabledBorder: disabledBorder ?? textFieldBorderStyle,
                 enabledBorder: enabledBorder ?? textFieldBorderStyle,
@@ -489,24 +497,25 @@ Widget commonTextFormField(
                 suffixIconColor: textColorPrimary,
                 suffixIcon: isPassword
                     ? InkWell(
-                        onTap: () {
-                          newSetState(() {
-                            passwordVisible = !passwordVisible;
-                          });
-                        },
-                        child: passwordVisible
-                            ? Icon(
-                                Icons.visibility_off,
-                                color: textColorPrimary,
-                              )
-                            : Icon(
-                                Icons.visibility,
-                                color: textColorPrimary,
-                              ),
-                      )
+                  onTap: () {
+                    newSetState(() {
+                      passwordVisible = !passwordVisible;
+                    });
+                  },
+                  child: passwordVisible
+                      ? Icon(
+                    Icons.visibility_off,
+                    color: textColorPrimary,
+                  )
+                      : Icon(
+                    Icons.visibility,
+                    color: textColorPrimary,
+                  ),
+                )
                     : suffixIcon,
 
-                hintStyle: hintStyle ?? themeData.textTheme.bodyText2?.copyWith(color: color666666, fontSize: 14),
+                hintStyle: hintStyle ?? themeData.textTheme.bodyText2?.copyWith(
+                    color: color666666, fontSize: 14),
               ),
             );
           }),

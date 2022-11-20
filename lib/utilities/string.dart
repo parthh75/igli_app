@@ -7,8 +7,12 @@ class CS {
   static const String welcome = "Welcome";
   static const String letsLoginForExplore = "Let’s login for explore continues";
   static const String emailAdd = "Email Address";
-  static const String youDonHaveAccount = "You don’t have an account? "; //Don't have an account
+  static const String youDonHaveAccount =
+      "You don’t have an account? "; //Don't have an account
   static const String register = "Register";
+  static const String firstName = "First Name";
+  static const String lastName = "Last Name";
+  static const String phoneNumber = "Phone Number";
   static const String connectWith = "Connect with";
   static const String signIn = "Sign In";
   static const String signUp = "Sign Up";
@@ -17,8 +21,6 @@ class CS {
   static const String verification = "Verification";
   static const String resetPass = "Reset Password";
   static const String changePass = "Change Password";
-  static const String newPass = "New Password";
-  static const String confirmNewPass = "Confirm New Password";
   static const String done = "Done";
   static const String finish = "Finish";
   static const String preview = "Preview";
@@ -26,7 +28,9 @@ class CS {
   static const String no = "No";
   static const String forgotPasswordq = "Forgot password?";
   static const String password = "Password";
-  static const String pleaseEnterYour = "Please enter your email so we can help you recover your password. ";
+  static const String confirmPassword = "Confirm Password";
+  static const String pleaseEnterYour =
+      "Please enter your email so we can help you recover your password. ";
   static const String rememberPasswordq = "Remember Password? ";
   static const String login = "Login";
 
@@ -44,7 +48,8 @@ class CS {
   static String otp = "OTP";
   static String oldPassword = "Old Password";
   static String newPassword = "New Password";
-  static String confirmPassword = "Confirm Password";
+
+
   // static String password = "Paassword";
   // static String password = "Paassword";
   static String cPassword = "Change Paassword";

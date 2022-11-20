@@ -1,13 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:igli_financial/utilities/colors.dart';
 import 'package:igli_financial/utilities/common_button.dart';
 import 'package:igli_financial/utilities/common_taxfield.dart';
 import 'package:igli_financial/utilities/string.dart';
 import 'package:igli_financial/utilities/text_style.dart';
-import 'package:igli_financial/view/main_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -21,6 +21,10 @@ FirebaseAuth _auth = FirebaseAuth.instance;
 class _SignInScreenState extends State<SignInScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController CpasswordController = TextEditingController();
   bool success = false;
   String userEmail = "";
 
@@ -28,6 +32,8 @@ class _SignInScreenState extends State<SignInScreen> {
     final User? user = (await _auth.createUserWithEmailAndPassword(
             email: emailController.text, password: passwordController.text))
         .user;
+    // final User? user1 = (await _auth.signInWithPhoneNumber("${phoneController.text}")
+    //     .user;
     if (user != null) {
       setState(() {
         success = true;
@@ -45,10 +51,64 @@ class _SignInScreenState extends State<SignInScreen> {
       body: Column(
         children: [
           commonTextFormField(
+            textEditingController: firstNameController,
+            hintText: "Enter First Name",
+            headText: CS.firstName,
+            textFieldHeight: 50,
+            validationFunction: (String value) {
+              if (value.isEmpty) {
+                return "First Name can't be empty";
+              } else if (!GetUtils.isEmail(value)) {
+                return "Enter valid First Name!";
+              }
+            },
+          ),
+          const SizedBox(
+            height: 20.0,
+          ),
+          commonTextFormField(
+            textEditingController: lastNameController,
+            hintText: "Enter Last Name",
+            headText: CS.lastName,
+            textFieldHeight: 50,
+            validationFunction: (String value) {
+              if (value.isEmpty) {
+                return "Last Name can't be empty";
+              } else if (!GetUtils.isEmail(value)) {
+                return "Enter valid Last Name!";
+              }
+            },
+          ),
+          const SizedBox(
+            height: 20.0,
+          ),
+          commonTextFormField(
+            textEditingController: phoneController,
+            hintText: "Enter Phone Number",
+            headText: CS.phoneNumber,
+            keyboardType: TextInputType.phone,
+            textFieldHeight: 50,
+            preFixIcon: Icon(
+              Icons.phone,
+              color: colors000000,
+            ),
+            validationFunction: (String value) {
+              if (value.isEmpty) {
+                return "Phone Number can't be empty";
+              } else if (!GetUtils.isEmail(value)) {
+                return "Enter valid Phone Number!";
+              }
+            },
+          ),
+          const SizedBox(
+            height: 20.0,
+          ),
+          commonTextFormField(
             textEditingController: emailController,
             hintText: "Enter email",
             headText: CS.emailAdd,
             textFieldHeight: 50,
+            keyboardType: TextInputType.emailAddress,
             preFixIcon: Image.asset(
               "assets/image/mail.png",
               scale: 3.5,
@@ -72,13 +132,37 @@ class _SignInScreenState extends State<SignInScreen> {
                   themeData.textTheme.subtitle1?.copyWith(color: colors000000),
               headText: CS.password,
               textFieldHeight: 50,
-              preFixIcon: Image.asset(
-                "assets/image/keyboard.png",
-                scale: 3.5,
+              preFixIcon: Icon(
+                Icons.key,
+                color: colors000000,
               ),
               validationFunction: (String value) {
                 if (value.isEmpty) {
                   return "Password can't be empty";
+                }
+              }),
+          const SizedBox(
+            height: 20.0,
+          ),
+          commonTextFormField(
+              textEditingController: CpasswordController,
+              hintText: "Enter Confirm password",
+              isPassword: true,
+              textStyle:
+                  themeData.textTheme.subtitle1?.copyWith(color: colors000000),
+              headText: CS.confirmPassword,
+              textFieldHeight: 50,
+              preFixIcon: Icon(
+                Icons.key,
+                color: colors000000,
+              ),
+              validationFunction: (String value) {
+                if (passwordController.text != CpasswordController.text) {
+                  return "Password is not Match";
+                }
+
+                if (value.isEmpty) {
+                  return "Confirm Password can't be empty";
                 }
               }),
           const SizedBox(
@@ -91,7 +175,7 @@ class _SignInScreenState extends State<SignInScreen> {
             text: CS.signIn,
           ),
         ],
-      ),
+      ).paddingSymmetric(horizontal: 20),
     );
   }
 }

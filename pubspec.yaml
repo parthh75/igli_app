@@ -48,6 +48,7 @@ dependencies:
   flutter_otp_text_field: ^1.1.0+2
   carousel_slider: ^4.1.1
   firebase_auth: ^4.1.2
+  flash: ^2.0.5
 
 
 dev_dependencies:
