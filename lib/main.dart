@@ -1,10 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:igli_financial/utilities/colors.dart';
 import 'package:igli_financial/utilities/string.dart';
+import 'package:igli_financial/utilities/text_style.dart';
 import 'package:igli_financial/view/login_screen.dart';
 import 'package:igli_financial/view/main_screen.dart';
-import 'package:igli_financial/view/splash_screen.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'controller/app_binding.dart';
@@ -74,16 +76,32 @@ class MyHome extends StatefulWidget {
 class MyHomeState extends State<MyHome> {
   @override
   void initState() {
-    getStorage.read("login");
-    Future.delayed(const Duration(seconds: 3), () async {
-      Get.to(() => const LoginScreen());
-    });
+    // getStorage.read("login");
+    // Future.delayed(const Duration(seconds: 3), () async {
+    //   Get.to(() => const LoginScreen());
+    // });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return const SplashScreen();
+    return StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(color: colorPrimary),
+            );
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Text("Something Went Wrong", style: themeData.textTheme.subtitle1),
+            );
+          } else if (snapshot.hasData) {
+            return const MainScreen();
+          } else {
+            return const LoginScreen();
+          }
+        });
     // return const ProfileScreen();
   }
 }
