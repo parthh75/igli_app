@@ -29,7 +29,9 @@ class _LoginScreenState extends State<LoginScreen> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   signIn() async {
-    final User? user = (await _auth.signInWithEmailAndPassword(email: emailController.text, password: passwordController.text)).user;
+    final User? user = (await _auth.signInWithEmailAndPassword(
+            email: emailController.text, password: passwordController.text))
+        .user;
     if (user != null) {
       success.value = 2;
       userEmail = user.email!;
@@ -40,9 +42,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    emailController.text = "maruti@gmail.com";
-    passwordController.text = "1234567890";
-    // FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text, password: passwordController.text);
+    // emailController.text = "maruti@gmail.com";
+    // passwordController.text = "1234567890";
+    FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text, password: passwordController.text);
     super.initState();
   }
 
@@ -58,21 +61,23 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               // shrinkWrap: true,
               // physics: const ClampingScrollPhysics(),
-              //crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(
                   height: 30.0,
                 ),
                 Text(
                   CS.welcome,
-                  style: themeData.textTheme.headline1?.copyWith(color: colors000000),
+                  style: themeData.textTheme.headline1
+                      ?.copyWith(color: colors000000),
                 ),
                 const SizedBox(
                   height: 7.0,
                 ),
                 Text(
                   CS.letsLoginForExplore,
-                  style: themeData.textTheme.subtitle1?.copyWith(color: textColorPrimary),
+                  style: themeData.textTheme.subtitle1
+                      ?.copyWith(color: textColorPrimary),
                 ),
                 const SizedBox(
                   height: 60.0,
@@ -101,7 +106,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     textEditingController: passwordController,
                     hintText: "Enter password",
                     isPassword: true,
-                    textStyle: themeData.textTheme.subtitle1?.copyWith(color: colors000000),
+                    textStyle: themeData.textTheme.subtitle1
+                        ?.copyWith(color: colors000000),
                     headText: CS.password,
                     textFieldHeight: 50,
                     preFixIcon: Image.asset(
@@ -129,7 +135,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       child: Text(
                         CS.forgotPasswordq,
-                        style: themeData.textTheme.subtitle1?.copyWith(color: textColorPrimary),
+                        style: themeData.textTheme.subtitle1
+                            ?.copyWith(color: textColorPrimary),
                       ),
                     ),
                   ],
@@ -143,26 +150,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       return GetButton(
                         ontap: () async {
                           await signIn();
-                          print("==success==> $success");
-                          success.value == 2
-                              ? Get.offAll(() => const MainScreen())
-                              : showFlash(
-                                  context: context,
-                                  duration: const Duration(seconds: 3),
-                                  builder: (context, controller) {
-                                    return Flash(
-                                      controller: controller,
-                                      position: FlashPosition.top,
-                                      behavior: FlashBehavior.floating,
-                                      boxShadows: kElevationToShadow[4],
-                                      borderRadius: BorderRadius.circular(10),
-                                      margin: const EdgeInsets.all(20),
-                                      backgroundColor: colorPrimary,
-                                      horizontalDismissDirection: HorizontalDismissDirection.horizontal,
-                                      child: FlashBar(content: Text('InValid Email Id OR Password', style: TextStyle(color: colorFFFFFF))),
-                                    );
-                                  },
-                                );
+
+                          Get.offAll(() => const MainScreen());
                         },
                         text: CS.login,
                       );
@@ -177,9 +166,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         text: TextSpan(children: [
                       TextSpan(
                         text: CS.youDonHaveAccount,
-                        style: themeData.textTheme.subtitle1?.copyWith(color: textColorPrimary),
+                        style: themeData.textTheme.subtitle1
+                            ?.copyWith(color: textColorPrimary),
                       ),
-                      TextSpan(text: CS.register, style: themeData.textTheme.subtitle1?.copyWith(color: colors000000)),
+                      TextSpan(
+                          text: CS.register,
+                          style: themeData.textTheme.subtitle1
+                              ?.copyWith(color: colors000000)),
                     ])),
                   ),
                 ),

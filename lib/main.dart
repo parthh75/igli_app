@@ -45,7 +45,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: colorCustom,
       ),
       initialBinding: AppBinding(),
-      builder: (context, widget) => ResponsiveWrapper.builder(BouncingScrollWrapper.builder(context, widget!),
+      builder: (context, widget) => ResponsiveWrapper.builder(
+          BouncingScrollWrapper.builder(context, widget!),
           maxWidth: 1200,
           minWidth: 420,
           defaultScale: true,
@@ -74,7 +75,6 @@ class MyHome extends StatefulWidget {
 class MyHomeState extends State<MyHome> {
   @override
   void initState() {
-    getStorage.read("login");
     Future.delayed(const Duration(seconds: 3), () async {
       Get.to(() => const LoginScreen());
     });
