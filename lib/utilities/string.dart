@@ -7,8 +7,7 @@ class CS {
   static const String welcome = "Welcome";
   static const String letsLoginForExplore = "Let’s login for explore continues";
   static const String emailAdd = "Email Address";
-  static const String youDonHaveAccount =
-      "You don’t have an account? "; //Don't have an account
+  static const String youDonHaveAccount = "You don’t have an account? "; //Don't have an account
   static const String register = "Register";
   static const String firstName = "First Name";
   static const String lastName = "Last Name";
@@ -29,10 +28,16 @@ class CS {
   static const String forgotPasswordq = "Forgot password?";
   static const String password = "Password";
   static const String confirmPassword = "Confirm Password";
-  static const String pleaseEnterYour =
-      "Please enter your email so we can help you recover your password. ";
+  static const String pleaseEnterYour = "Please enter your email so we can help you recover your password. ";
   static const String rememberPasswordq = "Remember Password? ";
   static const String login = "Login";
+  static const String home = "Home";
+  static const String myServices = "My Services";
+  static const String payment = "Payment";
+  static const String more = "More";
+  static const String profile = "Profile";
+  static const String services = "Services";
+  static const String tag = "Hero";
 
   static String male = "Male";
   static String female = "Female";
@@ -48,7 +53,6 @@ class CS {
   static String otp = "OTP";
   static String oldPassword = "Old Password";
   static String newPassword = "New Password";
-
 
   // static String password = "Paassword";
   // static String password = "Paassword";
@@ -72,8 +76,7 @@ class CS {
   static String selectEntity = "Select Entity";
   static String whatIsTheQueryAbout = "What is the query about?";
   static String typeYourMessageHere = "Type your message here";
-  static String partnerServicesAre =
-      "Partner Services Are Displayed \nBased on State Selection";
+  static String partnerServicesAre = "Partner Services Are Displayed \nBased on State Selection";
 
   ///dummyText
   static String dEmail = "test@gmail.com";

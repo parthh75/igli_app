@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/utilities/string.dart';
 import 'package:igli_financial/view/login_screen.dart';
-import 'package:igli_financial/view/main_screen.dart';
 import 'package:igli_financial/view/splash_screen.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
+import 'controller/app_binding.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -44,8 +44,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: colorCustom,
       ),
-      builder: (context, widget) => ResponsiveWrapper.builder(
-          BouncingScrollWrapper.builder(context, widget!),
+      initialBinding: AppBinding(),
+      builder: (context, widget) => ResponsiveWrapper.builder(BouncingScrollWrapper.builder(context, widget!),
           maxWidth: 1200,
           minWidth: 420,
           defaultScale: true,

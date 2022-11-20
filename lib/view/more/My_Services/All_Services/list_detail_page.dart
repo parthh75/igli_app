@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/utilities/colors.dart';
-import 'package:igli_financial/view/more/My_Services/myServices.dart';
 import 'package:slide_to_confirm/slide_to_confirm.dart';
+
+import '../../../../utilities/string.dart';
 
 class ListDetailPage extends StatefulWidget {
   int? index;
@@ -52,129 +53,117 @@ class _ListDetailPageState extends State<ListDetailPage> {
   // ];
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: tabs.length,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(widget.appTitle ?? "Title"),
-        ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              widget.appTitle ?? "Title",
-              style: TextStyle(
-                  color: colorPrimary,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
-            ).paddingSymmetric(vertical: 10, horizontal: 15),
-            Row(
-              children: [
-                Text("₹ ${widget.subListTitleExPay}/-",
-                    style: const TextStyle(color: Colors.red, fontSize: 20)),
-                const Text("Excl.GST",
-                    style: TextStyle(color: Colors.red, fontSize: 15)),
-              ],
-            ).paddingSymmetric(horizontal: 15),
-            Row(
-              children: [
-                Text("₹ ${widget.subListTitleInPay}/-",
-                    style: TextStyle(color: colorPrimary, fontSize: 20)),
-                Text("Incl.GST",
-                    style: TextStyle(color: colorPrimary, fontSize: 15)),
-              ],
-            ).paddingSymmetric(horizontal: 15),
-            PreferredSize(
-              preferredSize: const Size.fromHeight(30),
-              child: SizedBox(
-                height: 40,
-                // color: colorFFFFFF,
-                child: TabBar(
-                  indicatorColor: Colors.black,
-                  isScrollable: true,
-                  tabs: tabs,
-                  labelColor: colorFFFFFF,
-                  indicator: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      color: colorPrimary),
-                  indicatorPadding: const EdgeInsets.symmetric(horizontal: 10),
-                  unselectedLabelColor: colorPrimary,
-                  //labelStyle: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),
+    return Hero(
+      tag: CS.tag,
+      child: DefaultTabController(
+        length: tabs.length,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(widget.appTitle ?? "Title"),
+          ),
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                widget.appTitle ?? "Title",
+                style: TextStyle(color: colorPrimary, fontSize: 20, fontWeight: FontWeight.bold),
+              ).paddingSymmetric(vertical: 10, horizontal: 15),
+              Row(
+                children: [
+                  Text("₹ ${widget.subListTitleExPay}/-", style: const TextStyle(color: Colors.red, fontSize: 20)),
+                  const Text("Excl.GST", style: TextStyle(color: Colors.red, fontSize: 15)),
+                ],
+              ).paddingSymmetric(horizontal: 15),
+              Row(
+                children: [
+                  Text("₹ ${widget.subListTitleInPay}/-", style: TextStyle(color: colorPrimary, fontSize: 20)),
+                  Text("Incl.GST", style: TextStyle(color: colorPrimary, fontSize: 15)),
+                ],
+              ).paddingSymmetric(horizontal: 15),
+              PreferredSize(
+                preferredSize: const Size.fromHeight(30),
+                child: SizedBox(
+                  height: 40,
+                  // color: colorFFFFFF,
+                  child: TabBar(
+                    indicatorColor: Colors.black,
+                    isScrollable: true,
+                    tabs: tabs,
+                    labelColor: colorFFFFFF,
+                    indicator: BoxDecoration(borderRadius: BorderRadius.circular(100), color: colorPrimary),
+                    indicatorPadding: const EdgeInsets.symmetric(horizontal: 10),
+                    unselectedLabelColor: colorPrimary,
+                    //labelStyle: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ).paddingSymmetric(vertical: 15),
+              Expanded(
+                child: TabBarView(
+                  children: [
+                    overViewTab(
+                      description: widget.description ?? "",
+                      duration: widget.duration ?? "",
+                      deliverables: widget.deliverables ?? "",
+                      penalty: widget.penalty ?? "",
+                    ),
+                    benefitsTab(
+                      benefits: widget.benefits ?? "",
+                    ),
+                    documentsTab(documents: widget.documents ?? ""),
+                    deliverablesTab(deliverables: widget.deliverablesTab ?? "")
+                  ],
                 ),
               ),
-            ).paddingSymmetric(vertical: 15),
-            Expanded(
-              child: TabBarView(
-                children: [
-                  overViewTab(
-                    description: widget.description ?? "",
-                    duration: widget.duration ?? "",
-                    deliverables: widget.deliverables ?? "",
-                    penalty: widget.penalty ?? "",
-                  ),
-                  benefitsTab(
-                    benefits: widget.benefits ?? "",
-                  ),
-                  documentsTab(documents: widget.documents ?? ""),
-                  deliverablesTab(deliverables: widget.deliverablesTab ?? "")
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
+          bottomNavigationBar: ConfirmationSlider(
+            text: "Purchase Now",
+            textStyle: TextStyle(color: colorPrimary, fontWeight: FontWeight.w600, fontSize: 16, decorationColor: colorPrimary, letterSpacing: 8, decorationThickness: 50),
+            onConfirmation: () {
+              Get.to(const PurchaseNowScreen());
+            },
+            iconColor: colorPrimary,
+          ).paddingSymmetric(horizontal: 10, vertical: 20),
+          // SliderButton(
+          //   action: () {
+          //     ///Do something here OnSlide
+          //     print("working");
+          //   },
+          //   ///Put label over here
+          //   label: Text(
+          //     "purchase now",
+          //     style: TextStyle(
+          //         color: Color(0xff4a4a4a),
+          //         fontWeight: FontWeight.w500,
+          //         fontSize: 17),
+          //   ),
+          //   icon: Center(
+          //       child: Icon(
+          //         Icons.power_settings_new,
+          //         color: Colors.white,
+          //         size: 40.0,
+          //         semanticLabel: 'Text to announce in accessibility modes',
+          //       )),
+          //
+          //   //Put BoxShadow here
+          //   boxShadow: BoxShadow(
+          //     color: Colors.black,
+          //     blurRadius: 4,
+          //   ),
+          //
+          //   //Adjust effects such as shimmer and flag vibration here
+          //   shimmer: true,
+          //   vibrationFlag: true,
+          //
+          //   ///Change All the color and size from here.
+          //   width: 230,
+          //   radius: 10,
+          //   buttonColor: Color(0xffd60000),
+          //   backgroundColor: Color(0xff534bae),
+          //   highlightedColor: Colors.white,
+          //   baseColor: Colors.red,
+          // ),
         ),
-        bottomNavigationBar: ConfirmationSlider(
-          text: "Purchase Now",
-          textStyle: TextStyle(
-              color: colorPrimary,
-              fontWeight: FontWeight.w600,
-              fontSize: 16,
-              decorationColor: colorPrimary,
-              letterSpacing: 8,
-              decorationThickness: 50),
-          onConfirmation: () {
-            Get.to(const PurchaseNowScreen());
-          },
-          iconColor: colorPrimary,
-        ).paddingSymmetric(horizontal: 10, vertical: 20),
-        // SliderButton(
-        //   action: () {
-        //     ///Do something here OnSlide
-        //     print("working");
-        //   },
-        //   ///Put label over here
-        //   label: Text(
-        //     "purchase now",
-        //     style: TextStyle(
-        //         color: Color(0xff4a4a4a),
-        //         fontWeight: FontWeight.w500,
-        //         fontSize: 17),
-        //   ),
-        //   icon: Center(
-        //       child: Icon(
-        //         Icons.power_settings_new,
-        //         color: Colors.white,
-        //         size: 40.0,
-        //         semanticLabel: 'Text to announce in accessibility modes',
-        //       )),
-        //
-        //   //Put BoxShadow here
-        //   boxShadow: BoxShadow(
-        //     color: Colors.black,
-        //     blurRadius: 4,
-        //   ),
-        //
-        //   //Adjust effects such as shimmer and flag vibration here
-        //   shimmer: true,
-        //   vibrationFlag: true,
-        //
-        //   ///Change All the color and size from here.
-        //   width: 230,
-        //   radius: 10,
-        //   buttonColor: Color(0xffd60000),
-        //   backgroundColor: Color(0xff534bae),
-        //   highlightedColor: Colors.white,
-        //   baseColor: Colors.red,
-        // ),
       ),
     );
   }
@@ -190,14 +179,9 @@ Widget overViewTab({
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        commonText(title: "Description", subTitle: description ?? "")
-            .paddingOnly(bottom: 15),
-        commonText(
-            title: "Duration",
-            subTitle: duration ??
-                "The process usually takes about 7-10 business days."),
-        commonText(title: "Deliverables", subTitle: deliverables ?? "")
-            .paddingOnly(bottom: 25, top: 15),
+        commonText(title: "Description", subTitle: description ?? "").paddingOnly(bottom: 15),
+        commonText(title: "Duration", subTitle: duration ?? "The process usually takes about 7-10 business days."),
+        commonText(title: "Deliverables", subTitle: deliverables ?? "").paddingOnly(bottom: 25, top: 15),
         commonText(title: "Penalty", subTitle: penalty ?? "Yes"),
       ],
     ).paddingSymmetric(horizontal: 15),
@@ -245,13 +229,11 @@ Widget commonText({String? title, String? subTitle}) {
     children: [
       Text(
         title ?? "Description",
-        style: TextStyle(
-            fontSize: 16, color: colorPrimary, fontWeight: FontWeight.w600),
+        style: TextStyle(fontSize: 16, color: colorPrimary, fontWeight: FontWeight.w600),
       ),
       Text(
         subTitle ?? "Description",
-        style: TextStyle(
-            fontSize: 15, color: colors000000, fontWeight: FontWeight.w500),
+        style: TextStyle(fontSize: 15, color: colors000000, fontWeight: FontWeight.w500),
       ).paddingOnly(top: 3),
     ],
   );
@@ -270,8 +252,7 @@ class _PurchaseNowScreenState extends State<PurchaseNowScreen> {
     return Center(
         child: Text(
       "coming soon",
-      style: TextStyle(
-          color: colorPrimary, fontWeight: FontWeight.w600, fontSize: 16),
+      style: TextStyle(color: colorPrimary, fontWeight: FontWeight.w600, fontSize: 16),
     ));
   }
 }
