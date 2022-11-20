@@ -252,6 +252,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   }),
               GetButton(
                 ontap: () {
+                  registration();
                   if (firstNameController.text.isEmpty) {
                     setState(() {
                       isFirstError = true;
@@ -297,7 +298,6 @@ class _SignInScreenState extends State<SignInScreen> {
                       isCheckPassword == true) {
                   } else {
                     Get.to(LoginScreen());
-                    registration();
                   }
                 },
                 text: CS.signIn,
