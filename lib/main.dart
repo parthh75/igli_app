@@ -47,8 +47,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: colorCustom,
       ),
       initialBinding: AppBinding(),
-      builder: (context, widget) => ResponsiveWrapper.builder(
-          BouncingScrollWrapper.builder(context, widget!),
+      builder: (context, widget) => ResponsiveWrapper.builder(BouncingScrollWrapper.builder(context, widget!),
           maxWidth: 1200,
           minWidth: 420,
           defaultScale: true,
