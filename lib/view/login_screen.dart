@@ -159,7 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const Spacer(),
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => const SignInScreen());
+                    Get.to(() => SignInScreen());
                   },
                   child: Center(
                     child: RichText(

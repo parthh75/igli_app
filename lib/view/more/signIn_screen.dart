@@ -1,8 +1,6 @@
-import 'package:email_auth/email_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:igli_financial/utilities/colors.dart';
 import 'package:igli_financial/utilities/common_button.dart';
 import 'package:igli_financial/utilities/common_taxfield.dart';
@@ -13,7 +11,8 @@ import 'package:igli_financial/view/main_screen.dart';
 import 'package:igli_financial/view/phone_verification_screen.dart';
 
 class SignInScreen extends StatefulWidget {
-  const SignInScreen({Key? key}) : super(key: key);
+  SignInScreen({Key? key}) : super(key: key);
+  String verifiy = '';
 
   @override
   State<SignInScreen> createState() => _SignInScreenState();
@@ -30,7 +29,6 @@ class _SignInScreenState extends State<SignInScreen> {
   TextEditingController cPasswordController = TextEditingController();
   bool success = false;
   String userEmail = "";
-  EmailAuth emailAuth = EmailAuth(sessionName: "Sample session");
   bool isFirstError = false;
   bool isLastError = false;
   bool isPhoneNumber = false;
@@ -38,11 +36,10 @@ class _SignInScreenState extends State<SignInScreen> {
   bool isPassword = false;
   bool isCPassword = false;
   bool isCheckPassword = false;
-  String? _code;
 
   void registration() async {
     final User? user = (await _auth.createUserWithEmailAndPassword(
-            email: emailController.text, password: passwordController.text))
+        email: emailController.text, password: passwordController.text))
         .user;
 
     if (user != null) {
@@ -127,51 +124,24 @@ class _SignInScreenState extends State<SignInScreen> {
                     color: colors000000,
                   ),
                   suffixIcon: InkWell(
-                    onTap: () {
-                      _auth.verifyPhoneNumber(
-                          phoneNumber: phoneController.text,
-                          verificationCompleted:
-                              (PhoneAuthCredential credential) async {
-                            await _auth
-                                .signInWithCredential(credential)
-                                .then((value) {
-                              print("done");
-                            });
-                            Get.to(VerificationScreen(
-                              phone: phoneController.text,
-                              code: _code,
-                            ));
-                          },
-                          verificationFailed: (FirebaseAuthException e) {
-                            if (e.code == 'invalid-phone-number') {
-                              print('The provided phone number is not valid.');
-                            }
-                          },
-                          timeout: const Duration(seconds: 60),
-                          codeSent:
-                              (String verificationId, int? resendToken) async {
-                            // Create a PhoneAuthCredential with the code
-                            PhoneAuthCredential credential =
-                                PhoneAuthProvider.credential(
-                                    verificationId: verificationId,
-                                    smsCode: _code ?? "");
-
-                            // Sign the user in (or link) with the credential
-                            await _auth.signInWithCredential(credential);
-                            setState(() {
-                              _code = verificationId;
-                              print("codesent");
-                            });
-                          },
-                          codeAutoRetrievalTimeout: (String verificationId) {
-                            setState(() {
-                              _code = verificationId;
-                              print("timeout");
-                            });
-                          });
+                    onTap: () async {
+                      await FirebaseAuth.instance.verifyPhoneNumber(
+                        phoneNumber: '+91 ${phoneController.text}',
+                        verificationCompleted:
+                            (PhoneAuthCredential credential) {},
+                        verificationFailed: (FirebaseAuthException e) {},
+                        timeout: const Duration(seconds: 60),
+                        codeSent: (String verificationId, int? resendToken) {
+                          Get.to(VerificationScreen(
+                            phone: phoneController.text,
+                            verificationId: verificationId,
+                          ));
+                        },
+                        codeAutoRetrievalTimeout: (String verificationId) {},
+                      );
                     },
                     child: const Text("Verifiy",
-                            style: TextStyle(color: Colors.red))
+                        style: TextStyle(color: Colors.red))
                         .paddingOnly(top: 10, right: 10),
                   ),
                   validationFunction: (String value) {
@@ -206,7 +176,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       ));
                     },
                     child: const Text("Verifiy",
-                            style: TextStyle(color: Colors.red))
+                        style: TextStyle(color: Colors.red))
                         .paddingOnly(top: 10, right: 10),
                   ),
                   validationFunction: (String value) {
@@ -237,7 +207,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     validationFunction: (String value) {
                       if (value.isEmpty) {
-                        return Text("Password can't be empty");
+                        return const Text("Password can't be empty");
                       }
                     }),
                 commonTextFormField(
@@ -252,8 +222,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     errorText: isCPassword
                         ? "Enter Confirm password"
                         : isCheckPassword
-                            ? "Password is not Match"
-                            : "",
+                        ? "Password is not Match"
+                        : "",
                     isPassword: true,
                     textStyle: themeData.textTheme.subtitle1
                         ?.copyWith(color: colors000000),
@@ -323,8 +293,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         isEmailNumber == true ||
                         isPassword == true ||
                         isCPassword == true ||
-                        isCheckPassword == true) {
-                    } else {
+                        isCheckPassword == true) {} else {
                       Get.to(const LoginScreen());
                       getStorage.write("emails", [emailController.text]);
                     }
