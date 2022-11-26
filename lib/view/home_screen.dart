@@ -73,8 +73,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Our Service",style: TextStyle(fontWeight: FontWeight.w700,
-                        color: colors000000,fontSize: 18 )).paddingSymmetric(vertical: 10,horizontal: 15),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text("Our Service",style: TextStyle(fontWeight: FontWeight.w700,
+                            color: colors000000,fontSize: 18 )).paddingSymmetric(vertical: 15,horizontal: 15),
+                        Spacer(),
+                        GestureDetector(
+                            onTap: (){},
+                            child: Text("All Service",style: TextStyle(color: colorPrimary,fontSize: 13),).paddingSymmetric(vertical: 15,horizontal: 15))
+                      ],
+                    ),
                     SizedBox(
                       height: 430,
                       width: double.infinity,
@@ -107,22 +116,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                              height: 100,
                              width: 100,
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                              child: Column(
                                crossAxisAlignment: CrossAxisAlignment.center,
                                mainAxisAlignment: MainAxisAlignment.center,
@@ -243,19 +236,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-              CarouselSlider(
-                items: images,
-                carouselController: _controller,
-                options: CarouselOptions(
-                    autoPlay: true,
-                    enlargeCenterPage: true,
-                    aspectRatio: 2.0,
-                    onPageChanged: (index, reason) {
-                      setState(() {
-                        _current = index;
-                      });
-                    }),
-              ).paddingSymmetric(vertical: 10),
           // Container(
           //   color: colorFFFFFF,
           //   padding: EdgeInsets.symmetric(horizontal: 10),
@@ -323,3 +303,16 @@ Widget commonImageView(
     ),
   );
 }
+
+
+class HomeGridViewList{
+  String? title;
+  String? image;
+
+  HomeGridViewList({this.title,this.image});
+}
+
+
+List<HomeGridViewList> homeGridViewList = [
+
+];
