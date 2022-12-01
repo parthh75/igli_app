@@ -3,13 +3,15 @@ import 'package:get/get.dart';
 import 'package:igli_financial/view/more/My_Services/All_Services/all_services_tab/good_Services_Tax_screen.dart';
 import 'package:igli_financial/view/more/My_Services/All_Services/all_services_tab/incometax_accounting_screen.dart';
 
+import '../../../../common_widgets/common.dart';
 import '../../../../utilities/colors.dart';
 import '../../../../utilities/string.dart';
 import 'all_services_tab/business_setup_tab.dart';
 import 'all_services_tab/trademark_Tab.dart';
 
 class AllServices extends StatefulWidget {
-  const AllServices({Key? key}) : super(key: key);
+  bool? isAppBar = false;
+   AllServices({Key? key,this.isAppBar}) : super(key: key);
 
   @override
   State<AllServices> createState() => _AllServicesState();
@@ -32,39 +34,42 @@ class _AllServicesState extends State<AllServices> {
 
   @override
   Widget build(BuildContext context) {
-    return Hero(
-      tag: CS.tag,
-      child: DefaultTabController(
-        length: tabs.length,
-        child: Scaffold(
-          // appBar: AppBar(title: const Text("All Services")),
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 20),
-              PreferredSize(
-                preferredSize: const Size.fromHeight(30),
-                child: Container(
-                  height: 40,
-                  // color: colorFFFFFF,
-                  child: TabBar(
-                    indicatorColor: Colors.black,
-                    isScrollable: true,
-                    tabs: tabs,
-                    labelColor: colorFFFFFF,
-                    indicator: BoxDecoration(borderRadius: BorderRadius.circular(100), color: colorPrimary),
-                    indicatorPadding: const EdgeInsets.symmetric(horizontal: 10),
-                    unselectedLabelColor: colorPrimary,
-                    //labelStyle: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),
+    return Scaffold(
+      appBar: widget.isAppBar == true ? CommonAppBar(title: "All Service") : null ,
+      body: Hero(
+        tag: CS.tag,
+        child: DefaultTabController(
+          length: tabs.length,
+          child: Scaffold(
+            // appBar: AppBar(title: const Text("All Services")),
+            body: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 20),
+                PreferredSize(
+                  preferredSize: const Size.fromHeight(30),
+                  child: Container(
+                    height: 40,
+                    // color: colorFFFFFF,
+                    child: TabBar(
+                      indicatorColor: Colors.black,
+                      isScrollable: true,
+                      tabs: tabs,
+                      labelColor: colorFFFFFF,
+                      indicator: BoxDecoration(borderRadius: BorderRadius.circular(100), color: colorPrimary),
+                      indicatorPadding: const EdgeInsets.symmetric(horizontal: 10),
+                      unselectedLabelColor: colorPrimary,
+                      //labelStyle: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: TabBarView(
-                  children: tabsContent,
+                Expanded(
+                  child: TabBarView(
+                    children: tabsContent,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

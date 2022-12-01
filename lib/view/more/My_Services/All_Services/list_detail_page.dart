@@ -117,6 +117,7 @@ class _ListDetailPageState extends State<ListDetailPage> {
             ],
           ),
           bottomNavigationBar: ConfirmationSlider(
+            sliderButtonContent: CircleAvatar(backgroundColor: colorPrimary,child: Icon(Icons.arrow_forward_ios,color: colorFFFFFF,)),
             text: "Purchase Now",
             textStyle: TextStyle(color: colorPrimary, fontWeight: FontWeight.w600, fontSize: 16, decorationColor: colorPrimary, letterSpacing: 8, decorationThickness: 50),
             onConfirmation: () {

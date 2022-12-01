@@ -56,6 +56,7 @@ class _SignInScreenState extends State<SignInScreen> {
       top: true,
       child: Scaffold(
         body: SingleChildScrollView(
+         physics: BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -122,24 +123,27 @@ class _SignInScreenState extends State<SignInScreen> {
                       Icons.phone,
                       color: colors000000,
                     ),
-                    suffixIcon: InkWell(
-                      onTap: () async {
-                        await FirebaseAuth.instance.verifyPhoneNumber(
-                          phoneNumber: '+91 ${phoneController.text}',
-                          verificationCompleted: (PhoneAuthCredential credential) {},
-                          verificationFailed: (FirebaseAuthException e) {},
-                          timeout: const Duration(seconds: 60),
-                          codeSent: (String verificationId, int? resendToken) {
-                            Get.to(VerificationScreen(
-                              phone: phoneController.text,
-                              verificationId: verificationId,
-                            ));
-                          },
-                          codeAutoRetrievalTimeout: (String verificationId) {},
-                        );
-                      },
-                      child: const Text("Verifiy", style: TextStyle(color: Colors.red)).paddingOnly(top: 10, right: 10),
-                    ),
+                    // suffixIcon: InkWell(
+                    //   onTap: () async {
+                    //     await FirebaseAuth.instance.verifyPhoneNumber(
+                    //       phoneNumber: '+91 ${phoneController.text}',
+                    //       verificationCompleted:
+                    //           (PhoneAuthCredential credential) {},
+                    //       verificationFailed: (FirebaseAuthException e) {},
+                    //       timeout: const Duration(seconds: 60),
+                    //       codeSent: (String verificationId, int? resendToken) {
+                    //         Get.to(VerificationScreen(
+                    //           phone: phoneController.text,
+                    //           verificationId: verificationId,
+                    //         ));
+                    //       },
+                    //       codeAutoRetrievalTimeout: (String verificationId) {},
+                    //     );
+                    //   },
+                    //   child: const Text("Verifiy",
+                    //       style: TextStyle(color: Colors.red))
+                    //       .paddingOnly(top: 10, right: 10),
+                    // ),
                     validationFunction: (String value) {
                       if (value.isEmpty) {
                         return "Phone Number can't be empty";
@@ -164,15 +168,17 @@ class _SignInScreenState extends State<SignInScreen> {
                       "assets/image/mail.png",
                       scale: 3.5,
                     ),
-                    suffixIcon: InkWell(
-                      onTap: () {
-                        Get.to(VerificationScreen(
-                          isEmail: true,
-                          emailId: emailController.text,
-                        ));
-                      },
-                      child: const Text("Verifiy", style: TextStyle(color: Colors.red)).paddingOnly(top: 10, right: 10),
-                    ),
+                    // suffixIcon: InkWell(
+                    //   onTap: () {
+                    //     Get.to(VerificationScreen(
+                    //       isEmail: true,
+                    //       emailId: emailController.text,
+                    //     ));
+                    //   },
+                    //   child: const Text("Verifiy",
+                    //       style: TextStyle(color: Colors.red))
+                    //       .paddingOnly(top: 10, right: 10),
+                    // ),
                     validationFunction: (String value) {
                       if (value.isEmpty) {
                         return "Email can't be empty";
@@ -191,7 +197,8 @@ class _SignInScreenState extends State<SignInScreen> {
                       hintText: "Enter password",
                       errorText: isPassword ? "Enter password" : "",
                       isPassword: true,
-                      textStyle: themeData.textTheme.subtitle1?.copyWith(color: colors000000),
+                      textStyle: themeData.textTheme.subtitle1
+                          ?.copyWith(color: colors000000),
                       headText: CS.password,
                       textFieldHeight: 80,
                       preFixIcon: Icon(
@@ -215,10 +222,11 @@ class _SignInScreenState extends State<SignInScreen> {
                       errorText: isCPassword
                           ? "Enter Confirm password"
                           : isCheckPassword
-                              ? "Password is not Match"
-                              : "",
+                          ? "Password is not Match"
+                          : "",
                       isPassword: true,
-                      textStyle: themeData.textTheme.subtitle1?.copyWith(color: colors000000),
+                      textStyle: themeData.textTheme.subtitle1
+                          ?.copyWith(color: colors000000),
                       headText: CS.confirmPassword,
                       textFieldHeight: 80,
                       preFixIcon: Icon(
@@ -226,7 +234,8 @@ class _SignInScreenState extends State<SignInScreen> {
                         color: colors000000,
                       ),
                       onSavedFunction: () {
-                        if (passwordController.text == cPasswordController.text) {}
+                        if (passwordController.text ==
+                            cPasswordController.text) {}
                       },
                       validationFunction: (String value) {
                         if (passwordController.text != cPasswordController.text) {

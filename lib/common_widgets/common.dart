@@ -83,3 +83,13 @@ Widget commonExpansionTile({title, children}) {
     ),
   );
 }
+
+
+AppBar CommonAppBar({
+  String? title
+}){
+  return AppBar(
+    title: Text(title ?? ""),
+  );
+
+}
