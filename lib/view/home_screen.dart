@@ -22,32 +22,32 @@ class _HomeScreenState extends State<HomeScreen> {
   final CarouselController _controller = CarouselController();
   final List<Widget> images = [
     commonImageView(onTap: () {
-      Get.to(const AllServices());
+      Get.to( AllServices());
     }),
     commonImageView(
         onTap: () {
-          Get.to(const AllServices());
+          Get.to( AllServices());
         },
         image: "https://iglifinancial.com/wp-content/uploads/2022/11/sdafffasfa-1024x683.png",
         title: "Register your Company",
         subTitle: "Incorporate your company in less than 2 weeks online through IGLI FINANCIAL."),
     commonImageView(
         onTap: () {
-          Get.to(const AllServices());
+          Get.to( AllServices());
         },
         image: "https://iglifinancial.com/wp-content/uploads/2022/11/sghejrjs-1024x683.png",
         title: "LLP Registration",
         subTitle: "LLP registration and deed drafting including Government Fee & Stamp Duty*. in just 6199/-"),
     commonImageView(
         onTap: () {
-          Get.to(const AllServices());
+          Get.to( AllServices());
         },
         image: "https://iglifinancial.com/wp-content/uploads/2022/11/scasvavwvwv-1024x683.png",
         title: "Protect Your Brand",
         subTitle: "Get a trademark registration and protect your brand from copycats."),
     commonImageView(
         onTap: () {
-          Get.to(const AllServices());
+          Get.to( AllServices());
         },
         image: "https://iglifinancial.com/wp-content/uploads/2022/11/daskdnaksa-1024x683.png",
         title: "Startup India Registration",
@@ -138,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const Spacer(),
             GestureDetector(
                 onTap: () {
-                  Get.to(() => const AllServices());
+                  Get.to(() =>  AllServices(isAppBar : true));
                 },
                 child: Text(
                   "View All",
@@ -186,7 +186,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const Spacer(),
             GestureDetector(
                 onTap: () {
-                  Get.to(() => const AllServices());
+                  Get.to(() =>  AllServices(isAppBar: true,));
                 },
                 child: Text(
                   "View All",

@@ -12,6 +12,7 @@ import '../utilities/colors.dart';
 import '../utilities/string.dart';
 import 'more/My_Services/All_Services/all_services.dart';
 import 'more/Payment/payment.dart';
+import 'my_calendar.dart';
 import 'notification_screen.dart';
 
 final getStorage = GetStorage();
@@ -31,7 +32,7 @@ class _MainScreenState extends State<MainScreen> {
     "assets/image/credit_card_alt.png",
     "assets/image/slider_03.png",
   ];
-  static const List<Widget> pageList = <Widget>[HomeScreen(), MyServicesScreen(), AllServices(), PaymentsScreen(), MoreScreen()];
+  static  List<Widget> pageList = <Widget>[HomeScreen(), MyServicesScreen(), AllServices(), PaymentsScreen(), MoreScreen()];
 
   @override
   Widget build(BuildContext context) {
@@ -67,9 +68,14 @@ class _MainScreenState extends State<MainScreen> {
                         children: [
                           Image.asset("assets/image/igliLogo.png", height: 30, width: 180, fit: BoxFit.fill).paddingOnly(left: 15),
                           const Spacer(),
-                          const Icon(
-                            Icons.calendar_month,
-                            color: Colors.black,
+                          GestureDetector(
+                            onTap: (){
+                              Get.to(()=> MyCalender());
+                            },
+                            child: const Icon(
+                              Icons.calendar_month,
+                              color: Colors.black,
+                            ),
                           ),
                           InkWell(
                             onTap: (){
