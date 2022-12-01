@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:igli_financial/utilities/text_style.dart';
 import 'package:igli_financial/view/home_screen.dart';
+import 'package:igli_financial/view/message_screen.dart';
 import 'package:igli_financial/view/more/My_Services/myServices.dart';
 import 'package:igli_financial/view/more/more_main.dart';
 
@@ -11,6 +12,7 @@ import '../utilities/colors.dart';
 import '../utilities/string.dart';
 import 'more/My_Services/All_Services/all_services.dart';
 import 'more/Payment/payment.dart';
+import 'notification_screen.dart';
 
 final getStorage = GetStorage();
 
@@ -24,7 +26,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   List<String> iconList = [
     "assets/image/home_outline.png",
-    "assets/image/ic_outfit_cart.png",
+    "assets/image/document.png",
     "assets/image/user_circle.png",
     "assets/image/credit_card_alt.png",
     "assets/image/slider_03.png",
@@ -69,14 +71,24 @@ class _MainScreenState extends State<MainScreen> {
                             Icons.calendar_month,
                             color: Colors.black,
                           ),
-                          const Icon(
-                            Icons.messenger_outline_sharp,
-                            color: Colors.black,
-                          ).paddingOnly(left: 15, right: 15),
-                          const Icon(
-                            Icons.notifications_none,
-                            color: Colors.black,
-                          ).paddingOnly(right: 15),
+                          InkWell(
+                            onTap: (){
+                              Get.to(() => const MessageScreen());
+                            },
+                            child: const Icon(
+                              Icons.messenger_outline_sharp,
+                              color: Colors.black,
+                            ).paddingOnly(left: 15, right: 15),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Get.to(() => const NotificationScreen());
+                            },
+                            child: const Icon(
+                              Icons.notifications_none,
+                              color: Colors.black,
+                            ).paddingOnly(right: 15),
+                          ),
                         ],
                       ),
                     ),
@@ -116,8 +128,8 @@ class _MainScreenState extends State<MainScreen> {
                       icon: Image.asset(
                         iconList[1],
                         color: MainScreenController.to.selectedBottomIndex.value == 1 ? colorPrimary : color808080,
-                        scale: 7,
-                      ),
+                        scale: 1.5,
+                      ).paddingOnly(bottom: 3),
                       label: CS.myServices,
                     ),
                     const BottomNavigationBarItem(

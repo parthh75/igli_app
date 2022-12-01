@@ -412,10 +412,7 @@ Widget commonTextFormField(
       children: [
         headText == ""
             ? const SizedBox()
-            : Text(isHeadIcon ? '$headText*' : headText,
-                    style: themeData.textTheme.subtitle1?.copyWith(
-                        fontWeight: FontWeight.w500, color: colors000000))
-                .paddingOnly(bottom: 10, top: 0),
+            : Text(isHeadIcon ? '$headText*' : headText, style: themeData.textTheme.subtitle1?.copyWith(fontWeight: FontWeight.w500, color: colors000000)).paddingOnly(bottom: 10, top: 0),
         SizedBox(
           height: isTextFieldHeight ? textFieldHeight ?? 35 : null,
           width: textFieldWidth,
@@ -445,9 +442,7 @@ Widget commonTextFormField(
                 }
               },
               validator: (value) {
-                return validationFunction != null
-                    ? validationFunction(value)
-                    : null;
+                return validationFunction != null ? validationFunction(value) : null;
               },
               // onSaved: onSavedFunction != null ? onSavedFunction : (value) {},
               onSaved: (value) {
@@ -469,8 +464,7 @@ Widget commonTextFormField(
               obscureText: passwordVisible,
               textInputAction: inputAction ?? TextInputAction.next,
               autofocus: autofocus ?? false,
-              style: textStyle ??
-                  themeData.textTheme.subtitle1?.copyWith(color: colors000000),
+              style: textStyle ?? themeData.textTheme.subtitle1?.copyWith(color: colors000000),
               inputFormatters: inputFormatter,
               cursorColor: colorPrimary,
               decoration: InputDecoration(
@@ -478,16 +472,13 @@ Widget commonTextFormField(
                 // isCollapsed: true,
                 errorText: errorText,
                 hoverColor: Colors.transparent,
-                prefixStyle: prefixStyle ??
-                    themeData.textTheme.subtitle1
-                        ?.copyWith(color: colors000000),
+                prefixStyle: prefixStyle ?? themeData.textTheme.subtitle1?.copyWith(color: colors000000),
                 prefixText: prefixText,
                 errorMaxLines: errorMaxLines ?? 1,
                 filled: true,
                 fillColor: filledColor ?? colorFFFFFF,
                 isDense: isDense ?? false,
-                contentPadding:
-                    contentPadding ?? const EdgeInsets.only(left: 10),
+                contentPadding: contentPadding ?? const EdgeInsets.only(left: 10),
                 focusedBorder: focusedBorder ?? focusFieldBorderStyle,
                 disabledBorder: disabledBorder ?? textFieldBorderStyle,
                 enabledBorder: enabledBorder ?? textFieldBorderStyle,
@@ -516,9 +507,7 @@ Widget commonTextFormField(
                       )
                     : suffixIcon,
 
-                hintStyle: hintStyle ??
-                    themeData.textTheme.bodyText2
-                        ?.copyWith(color: color666666, fontSize: 14),
+                hintStyle: hintStyle ?? themeData.textTheme.bodyText2?.copyWith(color: color666666, fontSize: 14),
               ),
             );
           }),

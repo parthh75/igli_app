@@ -45,14 +45,16 @@ class CommonButton extends StatelessWidget {
   final double? width;
   final Color? color;
   final bool? isLoading;
+  final BorderRadius? borderRadius;
 
-  const CommonButton(
+  CommonButton(
     this.text, {
     super.key,
     required this.onTap,
     this.height = 50.0,
     this.width,
     this.color,
+    this.borderRadius,
     this.isLoading = false,
   });
 
@@ -71,10 +73,10 @@ class CommonButton extends StatelessWidget {
                 ? null
                 : LinearGradient(
                     begin: Alignment.topLeft,
-                    colors: <Color>[Color(0xff489824), Color(0xffA7E24B)], // red to yellow
+                    colors: <Color>[colorPrimary, colorPrimary.withOpacity(0.5)], // red to yellow
                     tileMode: TileMode.repeated, // repeats the gradient over the canvas
                   ),
-            borderRadius: BorderRadius.circular(8)),
+            borderRadius: borderRadius ?? BorderRadius.circular(8)),
         child: Center(
             child: isLoading!
                 ? Container(
