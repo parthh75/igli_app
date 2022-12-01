@@ -8,7 +8,6 @@ import 'package:igli_financial/utilities/string.dart';
 import 'package:igli_financial/utilities/text_style.dart';
 import 'package:igli_financial/view/login_screen.dart';
 import 'package:igli_financial/view/main_screen.dart';
-import 'package:igli_financial/view/phone_verification_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   SignInScreen({Key? key}) : super(key: key);
@@ -56,7 +55,7 @@ class _SignInScreenState extends State<SignInScreen> {
       top: true,
       child: Scaffold(
         body: SingleChildScrollView(
-         physics: BouncingScrollPhysics(),
+          physics: BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -197,8 +196,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       hintText: "Enter password",
                       errorText: isPassword ? "Enter password" : "",
                       isPassword: true,
-                      textStyle: themeData.textTheme.subtitle1
-                          ?.copyWith(color: colors000000),
+                      textStyle: themeData.textTheme.subtitle1?.copyWith(color: colors000000),
                       headText: CS.password,
                       textFieldHeight: 80,
                       preFixIcon: Icon(
@@ -222,11 +220,10 @@ class _SignInScreenState extends State<SignInScreen> {
                       errorText: isCPassword
                           ? "Enter Confirm password"
                           : isCheckPassword
-                          ? "Password is not Match"
-                          : "",
+                              ? "Password is not Match"
+                              : "",
                       isPassword: true,
-                      textStyle: themeData.textTheme.subtitle1
-                          ?.copyWith(color: colors000000),
+                      textStyle: themeData.textTheme.subtitle1?.copyWith(color: colors000000),
                       headText: CS.confirmPassword,
                       textFieldHeight: 80,
                       preFixIcon: Icon(
@@ -234,8 +231,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         color: colors000000,
                       ),
                       onSavedFunction: () {
-                        if (passwordController.text ==
-                            cPasswordController.text) {}
+                        if (passwordController.text == cPasswordController.text) {}
                       },
                       validationFunction: (String value) {
                         if (passwordController.text != cPasswordController.text) {
