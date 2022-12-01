@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/common_widgets/common.dart';
 import 'package:igli_financial/utilities/string.dart';
+import 'package:igli_financial/view/login_screen.dart';
 import 'package:igli_financial/view/more/My_Services/All_Services/all_services.dart';
 import 'package:igli_financial/view/more/help_screen.dart';
 import 'package:igli_financial/view/more/myprofile.dart';
@@ -126,8 +127,7 @@ class _MoreScreenState extends State<MoreScreen> {
                                   title: CS.yes,
                                   onTap: () {
                                     try {
-                                      FirebaseAuth.instance.signOut();
-                                      Get.back();
+                                      FirebaseAuth.instance.signOut().then((value) => Get.offAll(const LoginScreen()));
                                     } catch (e) {
                                       print(e);
                                     }
