@@ -19,7 +19,7 @@ class _MainScreenState extends State<MainScreen> {
     setState(() {});
   }
 
-  int _selectedIndex = 3;
+  int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     MyServicesScreen(),
