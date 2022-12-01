@@ -1,10 +1,10 @@
-
-
-
 import 'package:igli_financial/view/more/My_Services/All_Services/Model/All_Services_model.dart';
 
 List<BusinessSetupModel> nameChangeModel = [
-  BusinessSetupModel(listTitle: "Apply for Name Change",subListTitlePay: "7554",pay: "Pay ₹499/-to get started",
+  BusinessSetupModel(
+      listTitle: "Apply for Name Change",
+      subListTitleEx: "7554",
+      pay: "Pay ₹499/-to get started",
       description: "",
       duration: "",
       deliverables: "",
@@ -12,7 +12,10 @@ List<BusinessSetupModel> nameChangeModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Religion change",subListTitlePay: "7330",pay: "",
+  BusinessSetupModel(
+      listTitle: "Religion change",
+      subListTitleEx: "7330",
+      pay: "",
       description: "",
       duration: "",
       deliverables: "",
@@ -20,7 +23,10 @@ List<BusinessSetupModel> nameChangeModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Gender Change",subListTitlePay: "7330",pay: "",
+  BusinessSetupModel(
+      listTitle: "Gender Change",
+      subListTitleEx: "7330",
+      pay: "",
       description: "",
       duration: "",
       deliverables: "",
@@ -31,7 +37,10 @@ List<BusinessSetupModel> nameChangeModel = [
 ];
 
 List<BusinessSetupModel> marriageModel = [
-  BusinessSetupModel(listTitle: "Apply for Marriage Certificate",subListTitlePay: "8260",pay: "Pay ₹499/-to get started",
+  BusinessSetupModel(
+      listTitle: "Apply for Marriage Certificate",
+      subListTitleEx: "8260",
+      pay: "Pay ₹499/-to get started",
       description: "",
       duration: "",
       deliverables: "",
@@ -39,7 +48,10 @@ List<BusinessSetupModel> marriageModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Court Marriage",subListTitlePay: "4720",pay: "Pay ₹499/-to get started",
+  BusinessSetupModel(
+      listTitle: "Court Marriage",
+      subListTitleEx: "4720",
+      pay: "Pay ₹499/-to get started",
       description: "",
       duration: "",
       deliverables: "",

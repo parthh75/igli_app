@@ -1,11 +1,11 @@
-
-
-
-
 import 'package:igli_financial/view/more/My_Services/All_Services/Model/All_Services_model.dart';
 
 List<BusinessSetupModel> corporateModel = [
-  BusinessSetupModel(listTitle: "Get help from a Company Secretary for your Private Limited Company",subListTitlePay: "26458",pay: "",
+  BusinessSetupModel(
+      listTitle:
+          "Get help from a Company Secretary for your Private Limited Company",
+      subListTitleEx: "26458",
+      pay: "",
       description: "",
       duration: "",
       deliverables: "",
@@ -13,7 +13,11 @@ List<BusinessSetupModel> corporateModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Get help from a Company Secretary for your Limited Liability Partnership",subListTitlePay: "5150",pay: "",
+  BusinessSetupModel(
+      listTitle:
+          "Get help from a Company Secretary for your Limited Liability Partnership",
+      subListTitleEx: "5150",
+      pay: "",
       description: "",
       duration: "",
       deliverables: "",
@@ -24,7 +28,10 @@ List<BusinessSetupModel> corporateModel = [
 ];
 
 List<BusinessSetupModel> changesPvtModel = [
-  BusinessSetupModel(listTitle: "Appointment of a Director",subListTitlePay: "4815",pay: "Pay ₹499/-to get started",
+  BusinessSetupModel(
+      listTitle: "Appointment of a Director",
+      subListTitleEx: "4815",
+      pay: "Pay ₹499/-to get started",
       description: "",
       duration: "",
       deliverables: "",
@@ -32,7 +39,10 @@ List<BusinessSetupModel> changesPvtModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Removal of a Director",subListTitlePay: "3305",pay: "Pay ₹499/-to get started",
+  BusinessSetupModel(
+      listTitle: "Removal of a Director",
+      subListTitleEx: "3305",
+      pay: "Pay ₹499/-to get started",
       description: "",
       duration: "",
       deliverables: "",
@@ -40,7 +50,10 @@ List<BusinessSetupModel> changesPvtModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Increase in Authorized Capital of your Company",subListTitlePay: "12899",pay: "Pay ₹499/-to get started",
+  BusinessSetupModel(
+      listTitle: "Increase in Authorized Capital of your Company",
+      subListTitleEx: "12899",
+      pay: "Pay ₹499/-to get started",
       description: "",
       duration: "",
       deliverables: "",
@@ -48,7 +61,10 @@ List<BusinessSetupModel> changesPvtModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Close your Private Limited Company",subListTitlePay: "21211",pay: "Pay ₹499/-to get started",
+  BusinessSetupModel(
+      listTitle: "Close your Private Limited Company",
+      subListTitleEx: "21211",
+      pay: "Pay ₹499/-to get started",
       description: "",
       duration: "",
       deliverables: "",
@@ -56,7 +72,10 @@ List<BusinessSetupModel> changesPvtModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Change the Objectives of Your Company",subListTitlePay: "6304",pay: "Pay ₹499/-to get started",
+  BusinessSetupModel(
+      listTitle: "Change the Objectives of Your Company",
+      subListTitleEx: "6304",
+      pay: "Pay ₹499/-to get started",
       description: "",
       duration: "",
       deliverables: "",
@@ -64,7 +83,10 @@ List<BusinessSetupModel> changesPvtModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Change the Official Address of Your Company(Within the City)",subListTitlePay: "4305",pay: "Pay ₹499/-to get started",
+  BusinessSetupModel(
+      listTitle: "Change the Official Address of Your Company(Within the City)",
+      subListTitleEx: "4305",
+      pay: "Pay ₹499/-to get started",
       description: "",
       duration: "",
       deliverables: "",
@@ -72,7 +94,10 @@ List<BusinessSetupModel> changesPvtModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Change your Company Name",subListTitlePay: "8551",pay: "Pay ₹499/-to get started",
+  BusinessSetupModel(
+      listTitle: "Change your Company Name",
+      subListTitleEx: "8551",
+      pay: "Pay ₹499/-to get started",
       description: "",
       duration: "",
       deliverables: "",
@@ -83,7 +108,10 @@ List<BusinessSetupModel> changesPvtModel = [
 ];
 
 List<BusinessSetupModel> gstModel = [
-  BusinessSetupModel(listTitle: "Goods & Service Tax Registration",subListTitlePay: "399",pay: "",
+  BusinessSetupModel(
+      listTitle: "Goods & Service Tax Registration",
+      subListTitleEx: "399",
+      pay: "",
       description: "",
       duration: "",
       deliverables: "",
@@ -91,7 +119,10 @@ List<BusinessSetupModel> gstModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "GST Filings",subListTitlePay: "",pay: "",
+  BusinessSetupModel(
+      listTitle: "GST Filings",
+      subListTitleEx: "",
+      pay: "",
       description: "",
       duration: "",
       deliverables: "",
@@ -100,10 +131,12 @@ List<BusinessSetupModel> gstModel = [
       documents: "",
       deliverablesTab: ""),
 ];
-
 
 List<BusinessSetupModel> accountingModel = [
-  BusinessSetupModel(listTitle: "Accounting and Book Keeping",subListTitlePay: "17994",pay: "",
+  BusinessSetupModel(
+      listTitle: "Accounting and Book Keeping",
+      subListTitleEx: "17994",
+      pay: "",
       description: "",
       duration: "",
       deliverables: "",
@@ -111,7 +144,10 @@ List<BusinessSetupModel> accountingModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Payroll Services",subListTitlePay: "20059",pay: "",
+  BusinessSetupModel(
+      listTitle: "Payroll Services",
+      subListTitleEx: "20059",
+      pay: "",
       description: "",
       duration: "",
       deliverables: "",
@@ -119,7 +155,10 @@ List<BusinessSetupModel> accountingModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "File your TDS Returns",subListTitlePay: "2949",pay: "",
+  BusinessSetupModel(
+      listTitle: "File your TDS Returns",
+      subListTitleEx: "2949",
+      pay: "",
       description: "",
       duration: "",
       deliverables: "",
@@ -127,7 +166,10 @@ List<BusinessSetupModel> accountingModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "File your Income Tax Returns",subListTitlePay: "1179",pay: "Pay ₹499/-to get started",
+  BusinessSetupModel(
+      listTitle: "File your Income Tax Returns",
+      subListTitleEx: "1179",
+      pay: "Pay ₹499/-to get started",
       description: "",
       duration: "",
       deliverables: "",
@@ -136,10 +178,12 @@ List<BusinessSetupModel> accountingModel = [
       documents: "",
       deliverablesTab: ""),
 ];
-
 
 List<BusinessSetupModel> labourModel = [
-  BusinessSetupModel(listTitle: "PF Registration",subListTitlePay: "2998",pay: "Pay ₹499/-to get started",
+  BusinessSetupModel(
+      listTitle: "PF Registration",
+      subListTitleEx: "2998",
+      pay: "Pay ₹499/-to get started",
       description: "",
       duration: "",
       deliverables: "",
@@ -147,7 +191,10 @@ List<BusinessSetupModel> labourModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "ESI Registration",subListTitlePay: "2998",pay: "",
+  BusinessSetupModel(
+      listTitle: "ESI Registration",
+      subListTitleEx: "2998",
+      pay: "",
       description: "",
       duration: "",
       deliverables: "",
@@ -155,7 +202,10 @@ List<BusinessSetupModel> labourModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Apply for Professional Tax Registration",subListTitlePay: "6219",pay: "Pay ₹499/-to get started",
+  BusinessSetupModel(
+      listTitle: "Apply for Professional Tax Registration",
+      subListTitleEx: "6219",
+      pay: "Pay ₹499/-to get started",
       description: "",
       duration: "",
       deliverables: "",
@@ -163,7 +213,10 @@ List<BusinessSetupModel> labourModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Apply for Shops and Establishment Act Registration",subListTitlePay: "5629",pay: "Pay ₹499/-to get started",
+  BusinessSetupModel(
+      listTitle: "Apply for Shops and Establishment Act Registration",
+      subListTitleEx: "5629",
+      pay: "Pay ₹499/-to get started",
       description: "",
       duration: "",
       deliverables: "",
@@ -171,7 +224,10 @@ List<BusinessSetupModel> labourModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Employee Stock Option Plan (ESOP)",subListTitlePay: "49999",pay: "",
+  BusinessSetupModel(
+      listTitle: "Employee Stock Option Plan (ESOP)",
+      subListTitleEx: "49999",
+      pay: "",
       description: "",
       duration: "",
       deliverables: "",
@@ -181,9 +237,11 @@ List<BusinessSetupModel> labourModel = [
       deliverablesTab: ""),
 ];
 
-
 List<BusinessSetupModel> changesLLPModel = [
-  BusinessSetupModel(listTitle: "Adding a Designated Partner",subListTitlePay: "3051",pay: "",
+  BusinessSetupModel(
+      listTitle: "Adding a Designated Partner",
+      subListTitleEx: "3051",
+      pay: "",
       description: "",
       duration: "",
       deliverables: "",
@@ -191,7 +249,10 @@ List<BusinessSetupModel> changesLLPModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Change LLP Agreement",subListTitlePay: "2961",pay: "",
+  BusinessSetupModel(
+      listTitle: "Change LLP Agreement",
+      subListTitleEx: "2961",
+      pay: "",
       description: "",
       duration: "",
       deliverables: "",
@@ -199,7 +260,10 @@ List<BusinessSetupModel> changesLLPModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Close your Limited Liability Partnership",subListTitlePay: "6999",pay: "",
+  BusinessSetupModel(
+      listTitle: "Close your Limited Liability Partnership",
+      subListTitleEx: "6999",
+      pay: "",
       description: "",
       duration: "",
       deliverables: "",
@@ -210,7 +274,11 @@ List<BusinessSetupModel> changesLLPModel = [
 ];
 
 List<BusinessSetupModel> convertBusinessModel = [
-  BusinessSetupModel(listTitle: "Convert your Sole Proprietorship into a Private Limited Company",subListTitlePay: "15559",pay: "",
+  BusinessSetupModel(
+      listTitle:
+          "Convert your Sole Proprietorship into a Private Limited Company",
+      subListTitleEx: "15559",
+      pay: "",
       description: "",
       duration: "",
       deliverables: "",
@@ -218,7 +286,10 @@ List<BusinessSetupModel> convertBusinessModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Due Diligence of Company",subListTitlePay: "17699",pay: "",
+  BusinessSetupModel(
+      listTitle: "Due Diligence of Company",
+      subListTitleEx: "17699",
+      pay: "",
       description: "",
       duration: "",
       deliverables: "",
@@ -226,7 +297,10 @@ List<BusinessSetupModel> convertBusinessModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Convert your Partnership into an LLP",subListTitlePay: "11800",pay: "",
+  BusinessSetupModel(
+      listTitle: "Convert your Partnership into an LLP",
+      subListTitleEx: "11800",
+      pay: "",
       description: "",
       duration: "",
       deliverables: "",
@@ -234,7 +308,11 @@ List<BusinessSetupModel> convertBusinessModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Convert your Private Limited Company into a Public Limited Company",subListTitlePay: "12072",pay: "",
+  BusinessSetupModel(
+      listTitle:
+          "Convert your Private Limited Company into a Public Limited Company",
+      subListTitleEx: "12072",
+      pay: "",
       description: "",
       duration: "",
       deliverables: "",
@@ -242,7 +320,11 @@ List<BusinessSetupModel> convertBusinessModel = [
       benefits: "",
       documents: "",
       deliverablesTab: ""),
-  BusinessSetupModel(listTitle: "Convert your Private Limited Company into an One Person Company",subListTitlePay: "13841",pay: "",
+  BusinessSetupModel(
+      listTitle:
+          "Convert your Private Limited Company into an One Person Company",
+      subListTitleEx: "13841",
+      pay: "",
       description: "",
       duration: "",
       deliverables: "",

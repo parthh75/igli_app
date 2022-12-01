@@ -1,8 +1,8 @@
-import 'dart:io';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/view/main_screen.dart';
+import 'package:igli_financial/view/more/signIn_screen.dart';
 
 import '../utilities/colors.dart';
 import '../utilities/common_button.dart';
@@ -18,17 +18,31 @@ class LoginScreen extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
 }
 
+FirebaseAuth _auth = FirebaseAuth.instance;
+
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
-  TextEditingController password = TextEditingController();
-
+  TextEditingController passwordController = TextEditingController();
+  RxInt success = 1.obs;
+  String userEmail = "";
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  signIn() async {
+    final User? user = (await _auth.signInWithEmailAndPassword(email: emailController.text, password: passwordController.text)).user;
+    if (user != null) {
+      success.value = 2;
+      userEmail = user.email!;
+    } else {
+      success.value = 3;
+    }
+  }
 
   @override
   void initState() {
-    emailController.text = "parth@dwarkeshgroup.com";
-    password.text = "123456";
-
+    emailController.text = "maruti@gmail.com";
+    passwordController.text = "1234567890";
+    // FirebaseAuth.instance.createUserWithEmailAndPassword(
+    //     email: emailController.text, password: passwordController.text);
     super.initState();
   }
 
@@ -41,32 +55,13 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Form(
             key: formKey,
-            child: ListView(
-              shrinkWrap: true,
-              physics: const ClampingScrollPhysics(),
-              //crossAxisAlignment: CrossAxisAlignment.start,
+            child: Column(
+              // shrinkWrap: true,
+              // physics: const ClampingScrollPhysics(),
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(
-                  height: 30.0,
-                ),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: SizedBox(
-                      height: 30.0,
-                      width: 30.0,
-                      child: Image.asset(
-                        "assets/image/close_circle.png",
-                        scale: 3.5,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 30.0,
+                  height: 100.0,
                 ),
                 Text(
                   CS.welcome,
@@ -103,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 20.0,
                 ),
                 commonTextFormField(
-                    textEditingController: password,
+                    textEditingController: passwordController,
                     hintText: "Enter password",
                     isPassword: true,
                     textStyle: themeData.textTheme.subtitle1?.copyWith(color: colors000000),
@@ -142,67 +137,22 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 60.0,
                 ),
-                GetButton(
-                  ontap: () {
-                    Get.offAll(const MainScreen());
-                  },
-                  text: CS.signIn,
-                ),
-                const SizedBox(
-                  height: 40.0,
-                ),
-                Row(
-                  children: [
-                    const Expanded(child: Divider()),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 38.0),
-                      child: Text(
-                        CS.connectWith,
-                        style: themeData.textTheme.subtitle2?.copyWith(color: textColorPrimary),
-                      ),
-                    ),
-                    const Expanded(child: Divider()),
-                  ],
-                ),
-                const SizedBox(
-                  height: 40.0,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 54.0),
-                  child: Row(
-                    mainAxisAlignment: Platform.isIOS ? MainAxisAlignment.spaceBetween : MainAxisAlignment.spaceAround,
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: Image.asset(
-                          "assets/image/google_circle.png",
-                          scale: 3.5,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Image.asset(
-                          "assets/image/facebook_circle.png",
-                          scale: 3.5,
-                        ),
-                      ),
-                      if (Platform.isIOS)
-                        GestureDetector(
-                          onTap: () {},
-                          child: Image.asset(
-                            "assets/image/apple_circle.png",
-                            scale: 3.5,
-                          ),
-                        ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 15.0,
-                ),
+                StreamBuilder(
+                    stream: success.stream,
+                    builder: (context, snapshot) {
+                      return GetButton(
+                        ontap: () async {
+                          await signIn();
+
+                          Get.offAll(() => const MainScreen());
+                        },
+                        text: CS.login,
+                      );
+                    }),
+                const Spacer(),
                 GestureDetector(
                   onTap: () {
-                    // Get.to(() => SignUpScreen());
+                    Get.to(() => SignInScreen());
                   },
                   child: Center(
                     child: RichText(

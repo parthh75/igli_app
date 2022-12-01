@@ -31,7 +31,7 @@ class _ContactUsState extends State<ContactUs> {
             Container(
               height: 160,
               margin: const EdgeInsets.symmetric(vertical: 20),
-              color: color26569a.withOpacity(0.2),
+              color: color26569a.withOpacity(0.1),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

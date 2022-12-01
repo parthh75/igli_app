@@ -1,11 +1,9 @@
-
-
-
 import 'package:igli_financial/utilities/string.dart';
 
 class BusinessSetupModel {
   String? listTitle;
-  String? subListTitlePay;
+  String? subListTitleEx;
+  String? subListTitleIn;
   String? pay;
   String? description;
   String? duration;
@@ -15,5 +13,16 @@ class BusinessSetupModel {
   String? deliverablesTab;
   String? documents;
 
-  BusinessSetupModel({this.listTitle,this.subListTitlePay,this.pay,this.description,this.duration,this.deliverables,this.penalty,this.deliverablesTab,this.documents,this.benefits});
+  BusinessSetupModel(
+      {this.listTitle,
+      this.subListTitleEx,
+      this.subListTitleIn,
+      this.pay,
+      this.description,
+      this.duration,
+      this.deliverables,
+      this.penalty,
+      this.deliverablesTab,
+      this.documents,
+      this.benefits});
 }

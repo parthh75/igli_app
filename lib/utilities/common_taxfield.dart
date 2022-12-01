@@ -356,6 +356,7 @@ Widget commonTextFormField(
     TextStyle? prefixStyle,
     double? borderRadius,
     String? prefixText,
+    String? counterText,
     String? hintText,
     bool? isErrorShow = false,
     InputBorder? focusedBorder,
@@ -411,7 +412,7 @@ Widget commonTextFormField(
       children: [
         headText == ""
             ? const SizedBox()
-            : Text(isHeadIcon ? '$headText*' : headText, style: themeData.textTheme.subtitle1?.copyWith(fontWeight: FontWeight.w500, color: colors000000)).paddingOnly(bottom: 10, top: 15),
+            : Text(isHeadIcon ? '$headText*' : headText, style: themeData.textTheme.subtitle1?.copyWith(fontWeight: FontWeight.w500, color: colors000000)).paddingOnly(bottom: 10, top: 0),
         SizedBox(
           height: isTextFieldHeight ? textFieldHeight ?? 35 : null,
           width: textFieldWidth,
@@ -459,7 +460,6 @@ Widget commonTextFormField(
               expands: isExpands ? true : false,
 
               autofillHints: autofillHints ?? [],
-
               // cursorColor: color174261,
               obscureText: passwordVisible,
               textInputAction: inputAction ?? TextInputAction.next,
@@ -484,6 +484,7 @@ Widget commonTextFormField(
                 enabledBorder: enabledBorder ?? textFieldBorderStyle,
                 errorBorder: errorBorder ?? textFieldBorderStyle,
                 focusedErrorBorder: focusedErrorBorder ?? textFieldBorderStyle,
+                counterText: counterText ?? "",
                 hintText: hintText ?? '',
                 prefixIcon: preFixIcon,
                 suffixIconColor: textColorPrimary,
