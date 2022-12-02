@@ -28,7 +28,9 @@ class _SignInScreenState extends State<SignInScreen> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController cPasswordController = TextEditingController();
   bool success = false;
+  bool isVerification = false;
   String userEmail = "";
+  String phoneNumber = "";
   bool isFirstError = false;
   bool isLastError = false;
   bool isPhoneNumber = false;
@@ -36,19 +38,44 @@ class _SignInScreenState extends State<SignInScreen> {
   bool isPassword = false;
   bool isCPassword = false;
   bool isCheckPassword = false;
+  bool isAlreadyLogin = false;
 
-  void registration() async {
-    final User? user = (await _auth.createUserWithEmailAndPassword(
-        email: emailController.text, password: passwordController.text))
-        .user;
+  // final User? user = (await _auth.createUserWithEmailAndPassword(
+  //         email: emailController.text, password: passwordController.text))
+  //     .user;
 
-    if (user != null) {
-      setState(() {
-        success = true;
-        userEmail = user.email!;
-      });
-    } else {
-      success = false;
+  SignUp() async {
+    try {
+      UserCredential result = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: emailController.text, password: passwordController.text);
+      User? user = result.user;
+
+      if (user != null) {
+        setState(() {
+          success = true;
+          userEmail = user.email!;
+        });
+      } else {
+        success = false;
+      }
+      return user;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        setState(() {
+          isAlreadyLogin = true;
+        });
+        print('The account already exists for that email.');
+      } else if (e.code == 'operation-not-allowed') {
+        print('There is a problem with auth service config :/');
+      } else if (e.code == 'weak-password') {
+        print('Please type stronger password');
+      } else {
+        print('auth error ' + e.toString());
+        rethrow;
+      }
     }
   }
 
@@ -113,6 +140,11 @@ class _SignInScreenState extends State<SignInScreen> {
                       isPhoneNumber = false;
                     });
                   },
+                  onChangedFunction: (value) {
+                    setState(() {
+                      phoneNumber = value;
+                    });
+                  },
                   textEditingController: phoneController,
                   hintText: "Enter Phone Number",
                   headText: CS.phoneNumber,
@@ -131,18 +163,29 @@ class _SignInScreenState extends State<SignInScreen> {
                             (PhoneAuthCredential credential) {},
                         verificationFailed: (FirebaseAuthException e) {},
                         timeout: const Duration(seconds: 60),
-                        codeSent: (String verificationId, int? resendToken) {
-                          Get.to(VerificationScreen(
-                            phone: phoneController.text,
+                        codeSent:
+                            (String verificationId, int? resendToken) async {
+                          final result = await Get.to(VerificationScreen(
+                            phone: phoneNumber,
                             verificationId: verificationId,
                           ));
+                          if (result != null) {
+                            setState(() {
+                              isVerification = true;
+                            });
+                          }
                         },
                         codeAutoRetrievalTimeout: (String verificationId) {},
                       );
                     },
-                    child: const Text("Verifiy",
-                        style: TextStyle(color: Colors.red))
-                        .paddingOnly(top: 10, right: 10),
+                    child: isVerification
+                        ? const Icon(
+                            Icons.check_circle,
+                            color: Colors.green,
+                          )
+                        : const Text("Verifiy",
+                                style: TextStyle(color: Colors.red))
+                            .paddingOnly(top: 10, right: 10),
                   ),
                   validationFunction: (String value) {
                     if (value.isEmpty) {
@@ -176,7 +219,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       ));
                     },
                     child: const Text("Verifiy",
-                        style: TextStyle(color: Colors.red))
+                            style: TextStyle(color: Colors.red))
                         .paddingOnly(top: 10, right: 10),
                   ),
                   validationFunction: (String value) {
@@ -222,8 +265,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     errorText: isCPassword
                         ? "Enter Confirm password"
                         : isCheckPassword
-                        ? "Password is not Match"
-                        : "",
+                            ? "Password is not Match"
+                            : "",
                     isPassword: true,
                     textStyle: themeData.textTheme.subtitle1
                         ?.copyWith(color: colors000000),
@@ -250,7 +293,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     }),
                 GetButton(
                   ontap: () {
-                    registration();
+                    SignUp();
                     if (firstNameController.text.isEmpty) {
                       setState(() {
                         isFirstError = true;
@@ -293,9 +336,22 @@ class _SignInScreenState extends State<SignInScreen> {
                         isEmailNumber == true ||
                         isPassword == true ||
                         isCPassword == true ||
-                        isCheckPassword == true) {} else {
-                      Get.to(const LoginScreen());
-                      getStorage.write("emails", [emailController.text]);
+                        isCheckPassword == true ||
+                        isAlreadyLogin == true) {
+                      if (isAlreadyLogin == true) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: const Text(
+                              'The account already exists for that email'),
+                          action: SnackBarAction(
+                            label: 'Undo',
+                            onPressed: () {
+                              // Some code to undo the change.
+                            },
+                          ),
+                        ));
+                      }
+                    } else {
+                      isAlreadyLogin ? Get.to(const LoginScreen()) : null;
                     }
                   },
                   text: CS.signIn,
