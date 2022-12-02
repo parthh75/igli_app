@@ -598,13 +598,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     style: TextStyle(fontSize: 12, color: Colors.grey, fontWeight: FontWeight.normal),
                   ).paddingOnly(left: 32, top: 2),
                   Center(
-                    child: commonOutlineButton(
-                        height: 40,
-                        horizontalPadding: 80,
-                        buttonText: CS.view,
-                        textStyle: const TextStyle(fontWeight: FontWeight.w600),
-                        bottomPadding: 15,
-                        topPadding: 30),
+                    child: commonOutlineButton(height: 40, horizontalPadding: 80, buttonText: CS.view, textStyle: const TextStyle(fontWeight: FontWeight.w600), bottomPadding: 15, topPadding: 30),
                   ),
                 ],
               ).paddingSymmetric(horizontal: 20).paddingOnly(top: 20),

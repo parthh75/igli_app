@@ -7,7 +7,6 @@ import 'package:igli_financial/utilities/common_taxfield.dart';
 import 'package:igli_financial/utilities/string.dart';
 import 'package:igli_financial/utilities/text_style.dart';
 import 'package:igli_financial/view/login_screen.dart';
-import 'package:igli_financial/view/main_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   SignInScreen({Key? key}) : super(key: key);
@@ -45,9 +44,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
   SignUp() async {
     try {
-      UserCredential result = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-              email: emailController.text, password: passwordController.text);
+      UserCredential result = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text, password: passwordController.text);
       User? user = result.user;
 
       if (user != null) {
@@ -158,12 +155,10 @@ class _SignInScreenState extends State<SignInScreen> {
                     onTap: () async {
                       await FirebaseAuth.instance.verifyPhoneNumber(
                         phoneNumber: '+91 ${phoneController.text}',
-                        verificationCompleted:
-                            (PhoneAuthCredential credential) {},
+                        verificationCompleted: (PhoneAuthCredential credential) {},
                         verificationFailed: (FirebaseAuthException e) {},
                         timeout: const Duration(seconds: 60),
-                        codeSent:
-                            (String verificationId, int? resendToken) async {
+                        codeSent: (String verificationId, int? resendToken) async {
                           final result = await Get.to(VerificationScreen(
                             phone: phoneNumber,
                             verificationId: verificationId,
@@ -182,9 +177,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             Icons.check_circle,
                             color: Colors.green,
                           )
-                        : const Text("Verifiy",
-                                style: TextStyle(color: Colors.red))
-                            .paddingOnly(top: 10, right: 10),
+                        : const Text("Verifiy", style: TextStyle(color: Colors.red)).paddingOnly(top: 10, right: 10),
                   ),
                   validationFunction: (String value) {
                     if (value.isEmpty) {
@@ -217,9 +210,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         emailId: emailController.text,
                       ));
                     },
-                    child: const Text("Verifiy",
-                            style: TextStyle(color: Colors.red))
-                        .paddingOnly(top: 10, right: 10),
+                    child: const Text("Verifiy", style: TextStyle(color: Colors.red)).paddingOnly(top: 10, right: 10),
                   ),
                   validationFunction: (String value) {
                     if (value.isEmpty) {
@@ -239,8 +230,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     hintText: "Enter password",
                     errorText: isPassword ? "Enter password" : "",
                     isPassword: true,
-                    textStyle: themeData.textTheme.subtitle1
-                        ?.copyWith(color: colors000000),
+                    textStyle: themeData.textTheme.subtitle1?.copyWith(color: colors000000),
                     headText: CS.password,
                     textFieldHeight: 80,
                     preFixIcon: Icon(
@@ -267,8 +257,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             ? "Password is not Match"
                             : "",
                     isPassword: true,
-                    textStyle: themeData.textTheme.subtitle1
-                        ?.copyWith(color: colors000000),
+                    textStyle: themeData.textTheme.subtitle1?.copyWith(color: colors000000),
                     headText: CS.confirmPassword,
                     textFieldHeight: 80,
                     preFixIcon: Icon(
@@ -276,8 +265,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       color: colors000000,
                     ),
                     onSavedFunction: () {
-                      if (passwordController.text ==
-                          cPasswordController.text) {}
+                      if (passwordController.text == cPasswordController.text) {}
                     },
                     validationFunction: (String value) {
                       if (passwordController.text != cPasswordController.text) {
@@ -339,8 +327,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         isAlreadyLogin == true) {
                       if (isAlreadyLogin == true) {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: const Text(
-                              'The account already exists for that email'),
+                          content: const Text('The account already exists for that email'),
                           action: SnackBarAction(
                             label: 'Undo',
                             onPressed: () {
