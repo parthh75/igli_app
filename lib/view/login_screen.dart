@@ -40,8 +40,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    emailController.text = "maruti@gmail.com";
-    passwordController.text = "1234567890";
+    emailController.text = "parth@dwarkeshgroup.com";
+    passwordController.text = "123456";
     // FirebaseAuth.instance.createUserWithEmailAndPassword(
     //     email: emailController.text, password: passwordController.text);
     super.initState();
