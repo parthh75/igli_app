@@ -29,7 +29,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
   final defaultPinTheme = PinTheme(
     width: 56,
     height: 56,
-    textStyle: TextStyle(
+    textStyle: const TextStyle(
         fontSize: 20,
         color: Color.fromRGBO(30, 60, 87, 1),
         fontWeight: FontWeight.w600),
@@ -43,7 +43,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Verification"),
+        title: const Text("Verification"),
         leading: IconButton(
             onPressed: () {
               Get.back();
@@ -80,7 +80,20 @@ class _VerificationScreenState extends State<VerificationScreen> {
             children: [
               Expanded(
                   child: commonElevatedButton(
-                      title: "Resend", horizontalPadding: 20)),
+                      onTap: () async {
+                        await FirebaseAuth.instance.verifyPhoneNumber(
+                          phoneNumber: '+91 ${widget.phone}',
+                          verificationCompleted:
+                              (PhoneAuthCredential credential) {},
+                          verificationFailed: (FirebaseAuthException e) {},
+                          timeout: const Duration(seconds: 60),
+                          codeSent:
+                              (String verificationId, int? resendToken) {},
+                          codeAutoRetrievalTimeout: (String verificationId) {},
+                        );
+                      },
+                      title: "Resend",
+                      horizontalPadding: 20)),
               Expanded(
                   child: commonElevatedButton(
                       onTap: () async {
@@ -91,13 +104,13 @@ class _VerificationScreenState extends State<VerificationScreen> {
                                   smsCode: otp);
 
                           await _auth.signInWithCredential(credential);
-                          Get.back();
+                          Get.back(result: true);
                         } catch (e) {
                           showFlash(
                             context: context,
-                            duration: Duration(seconds: 2),
+                            duration: const Duration(seconds: 2),
                             builder: (context, controller) {
-                              return FlashBar(content: Text("Wrong OTP"));
+                              return FlashBar(content: const Text("Wrong OTP"));
                             },
                           );
                         }

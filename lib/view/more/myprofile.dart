@@ -144,7 +144,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           children: [
                             Flexible(
                               child: commonOutlineButton(
-                                  horizontalPadding: 30,
+                                  horizontalPadding: 10,
                                   buttonText: CS.cancle,
                                   onTap: () {
                                     setState(() {
@@ -154,7 +154,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                             Flexible(
                               child: commonElevatedButton(
-                                horizontalPadding: 40,
+                                horizontalPadding: 20,
                                 title: CS.save,
                                 onTap: () {},
                               ),
@@ -216,7 +216,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ? const SizedBox()
                       : Center(
                           child: commonOutlineButton(
-                            horizontalPadding: 120,
+                            horizontalPadding: 80,
                             isIcon: true,
                             buttonText: "Add Address",
                             textStyle: const TextStyle(fontWeight: FontWeight.w600),
@@ -235,7 +235,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           children: [
                             Flexible(
                               child: commonOutlineButton(
-                                horizontalPadding: 30,
+                                horizontalPadding: 10,
                                 buttonText: CS.cancle,
                                 onTap: () {
                                   setState(() {
@@ -246,7 +246,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                             Flexible(
                               child: commonElevatedButton(
-                                horizontalPadding: 40,
+                                horizontalPadding: 20,
                                 title: CS.save,
                                 onTap: () {},
                               ),
@@ -286,7 +286,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   Center(
                     child: commonOutlineButton(
-                        horizontalPadding: 120,
+                        horizontalPadding: 80,
                         topPadding: 10,
                         bottomPadding: 15,
                         isIcon: true,
@@ -448,7 +448,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   Center(
                     child: commonOutlineButton(
-                      horizontalPadding: 120,
+                      horizontalPadding: 80,
                       isIcon: true,
                       onTap: () {
                         setState(() {
@@ -598,7 +598,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     style: TextStyle(fontSize: 12, color: Colors.grey, fontWeight: FontWeight.normal),
                   ).paddingOnly(left: 32, top: 2),
                   Center(
-                    child: commonOutlineButton(width: 200, height: 40, buttonText: CS.view, textStyle: const TextStyle(fontWeight: FontWeight.w600), bottomPadding: 15, topPadding: 30),
+                    child: commonOutlineButton(
+                        height: 40,
+                        horizontalPadding: 80,
+                        buttonText: CS.view,
+                        textStyle: const TextStyle(fontWeight: FontWeight.w600),
+                        bottomPadding: 15,
+                        topPadding: 30),
                   ),
                 ],
               ).paddingSymmetric(horizontal: 20).paddingOnly(top: 20),
@@ -637,7 +643,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             buttonText: "${CS.add} ${CS.kyc}",
                             textStyle: const TextStyle(fontWeight: FontWeight.w600),
                             bottomPadding: 15,
-                            horizontalPadding: 120,
+                            horizontalPadding: 80,
                             topPadding: 30),
                   ),
                   if (isKYCButton)
@@ -646,7 +652,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       children: [
                         Flexible(
                           child: commonOutlineButton(
-                            horizontalPadding: 30,
+                            horizontalPadding: 10,
                             buttonText: CS.cancle,
                             onTap: () {
                               setState(() {
@@ -657,7 +663,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         Flexible(
                           child: commonElevatedButton(
-                            horizontalPadding: 40,
+                            horizontalPadding: 20,
                             title: CS.save,
                             onTap: () {},
                           ),
@@ -690,9 +696,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ).paddingOnly(left: 32, top: 2),
                   Center(
                     child: commonOutlineButton(
-                      width: Get.width,
                       height: 40,
-                      horizontalPadding: 120,
+                      horizontalPadding: 80,
                       buttonText: CS.cPassword,
                       textStyle: const TextStyle(fontWeight: FontWeight.w600),
                       bottomPadding: 15,
