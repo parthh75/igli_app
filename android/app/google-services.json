@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "536331531815",
+    "firebase_url": "https://iglifinancial-730f4-default-rtdb.firebaseio.com",
     "project_id": "iglifinancial-730f4",
     "storage_bucket": "iglifinancial-730f4.appspot.com"
   },
@@ -29,6 +30,13 @@
             {
               "client_id": "536331531815-mqc0cve7fvptgt8epe34h1h9d4gaufi3.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "536331531815-d8d92mbu2ns6csm1tj62apbsl5bb2u17.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.igliFinancial"
+              }
             }
           ]
         }

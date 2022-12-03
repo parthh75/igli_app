@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:igli_financial/utilities/colors.dart';
@@ -7,6 +9,8 @@ import 'package:igli_financial/utilities/common_taxfield.dart';
 import 'package:igli_financial/utilities/string.dart';
 import 'package:igli_financial/utilities/text_style.dart';
 import 'package:igli_financial/view/login_screen.dart';
+import 'package:igli_financial/view/phone_verification_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SignInScreen extends StatefulWidget {
   SignInScreen({Key? key}) : super(key: key);
@@ -15,8 +19,6 @@ class SignInScreen extends StatefulWidget {
   @override
   State<SignInScreen> createState() => _SignInScreenState();
 }
-
-FirebaseAuth _auth = FirebaseAuth.instance;
 
 class _SignInScreenState extends State<SignInScreen> {
   TextEditingController emailController = TextEditingController();
@@ -36,7 +38,9 @@ class _SignInScreenState extends State<SignInScreen> {
   bool isPassword = false;
   bool isCPassword = false;
   bool isCheckPassword = false;
-  bool isAlreadyLogin = false;
+  DatabaseReference? ref;
+
+  FirebaseDatabase database = FirebaseDatabase.instance;
 
   // final User? user = (await _auth.createUserWithEmailAndPassword(
   //         email: emailController.text, password: passwordController.text))
@@ -44,7 +48,9 @@ class _SignInScreenState extends State<SignInScreen> {
 
   SignUp() async {
     try {
-      UserCredential result = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text, password: passwordController.text);
+      UserCredential result = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: emailController.text, password: passwordController.text);
       User? user = result.user;
 
       if (user != null) {
@@ -57,22 +63,42 @@ class _SignInScreenState extends State<SignInScreen> {
       }
       return user;
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        setState(() {
-          isAlreadyLogin = true;
-        });
-        print('The account already exists for that email.');
-      } else if (e.code == 'operation-not-allowed') {
-        print('There is a problem with auth service config :/');
-      } else if (e.code == 'weak-password') {
-        print('Please type stronger password');
-      } else {
-        print('auth error ' + e.toString());
-        rethrow;
+      if (e.code == 'email-already-in-use') {
+        showFlash(
+          context: context,
+          duration: const Duration(seconds: 3),
+          builder: (context, controller) {
+            return Flash(
+              controller: controller,
+              position: FlashPosition.top,
+              behavior: FlashBehavior.floating,
+              boxShadows: kElevationToShadow[4],
+              borderRadius: BorderRadius.circular(10),
+              margin: const EdgeInsets.all(20),
+              backgroundColor: colorFF0000,
+              horizontalDismissDirection: HorizontalDismissDirection.horizontal,
+              child: FlashBar(
+                content: Text('The account already exists for that email',
+                    style: TextStyle(color: colorFFFFFF)),
+              ),
+            );
+          },
+        );
       }
     }
+  }
+
+  Future<void> addUser() {
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
+    return users
+        .add({
+          'first_name': firstNameController.text,
+          'last_name': lastNameController.text,
+          'email': emailController.text, // Stokes and Sons
+          'phone_number': phoneController.text
+        })
+        .then((value) => print("User Added"))
+        .catchError((error) => print("Failed to add user: $error"));
   }
 
   @override
@@ -144,6 +170,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   textEditingController: phoneController,
                   hintText: "Enter Phone Number",
                   headText: CS.phoneNumber,
+                  maxLength: 10,
                   keyboardType: TextInputType.phone,
                   textFieldHeight: 80,
                   errorText: isPhoneNumber ? "Enter Phone Number" : "",
@@ -155,10 +182,12 @@ class _SignInScreenState extends State<SignInScreen> {
                     onTap: () async {
                       await FirebaseAuth.instance.verifyPhoneNumber(
                         phoneNumber: '+91 ${phoneController.text}',
-                        verificationCompleted: (PhoneAuthCredential credential) {},
+                        verificationCompleted:
+                            (PhoneAuthCredential credential) {},
                         verificationFailed: (FirebaseAuthException e) {},
                         timeout: const Duration(seconds: 60),
-                        codeSent: (String verificationId, int? resendToken) async {
+                        codeSent:
+                            (String verificationId, int? resendToken) async {
                           final result = await Get.to(VerificationScreen(
                             phone: phoneNumber,
                             verificationId: verificationId,
@@ -177,7 +206,9 @@ class _SignInScreenState extends State<SignInScreen> {
                             Icons.check_circle,
                             color: Colors.green,
                           )
-                        : const Text("Verifiy", style: TextStyle(color: Colors.red)).paddingOnly(top: 10, right: 10),
+                        : const Text("Verifiy",
+                                style: TextStyle(color: Colors.red))
+                            .paddingOnly(top: 10, right: 10),
                   ),
                   validationFunction: (String value) {
                     if (value.isEmpty) {
@@ -210,15 +241,10 @@ class _SignInScreenState extends State<SignInScreen> {
                         emailId: emailController.text,
                       ));
                     },
-                    child: const Text("Verifiy", style: TextStyle(color: Colors.red)).paddingOnly(top: 10, right: 10),
+                    child: const Text("Verifiy",
+                            style: TextStyle(color: Colors.red))
+                        .paddingOnly(top: 10, right: 10),
                   ),
-                  validationFunction: (String value) {
-                    if (value.isEmpty) {
-                      return "Email can't be empty";
-                    } else if (!GetUtils.isEmail(value)) {
-                      return "Enter valid email address!";
-                    }
-                  },
                 ),
                 commonTextFormField(
                     onTapFunction: () {
@@ -230,7 +256,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     hintText: "Enter password",
                     errorText: isPassword ? "Enter password" : "",
                     isPassword: true,
-                    textStyle: themeData.textTheme.subtitle1?.copyWith(color: colors000000),
+                    textStyle: themeData.textTheme.subtitle1
+                        ?.copyWith(color: colors000000),
                     headText: CS.password,
                     textFieldHeight: 80,
                     preFixIcon: Icon(
@@ -257,7 +284,8 @@ class _SignInScreenState extends State<SignInScreen> {
                             ? "Password is not Match"
                             : "",
                     isPassword: true,
-                    textStyle: themeData.textTheme.subtitle1?.copyWith(color: colors000000),
+                    textStyle: themeData.textTheme.subtitle1
+                        ?.copyWith(color: colors000000),
                     headText: CS.confirmPassword,
                     textFieldHeight: 80,
                     preFixIcon: Icon(
@@ -265,7 +293,8 @@ class _SignInScreenState extends State<SignInScreen> {
                       color: colors000000,
                     ),
                     onSavedFunction: () {
-                      if (passwordController.text == cPasswordController.text) {}
+                      if (passwordController.text ==
+                          cPasswordController.text) {}
                     },
                     validationFunction: (String value) {
                       if (passwordController.text != cPasswordController.text) {
@@ -279,8 +308,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       }
                     }),
                 GetButton(
-                  ontap: () {
-                    SignUp();
+                  ontap: () async {
                     if (firstNameController.text.isEmpty) {
                       setState(() {
                         isFirstError = true;
@@ -317,27 +345,35 @@ class _SignInScreenState extends State<SignInScreen> {
                         isCheckPassword = true;
                       });
                     }
+
                     if (isFirstError == true ||
                         isLastError == true ||
                         isPhoneNumber == true ||
                         isEmailNumber == true ||
                         isPassword == true ||
                         isCPassword == true ||
-                        isCheckPassword == true ||
-                        isAlreadyLogin == true) {
-                      if (isAlreadyLogin == true) {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: const Text('The account already exists for that email'),
-                          action: SnackBarAction(
-                            label: 'Undo',
-                            onPressed: () {
-                              // Some code to undo the change.
-                            },
-                          ),
-                        ));
-                      }
+                        isCheckPassword == true) {
                     } else {
-                      isAlreadyLogin ? Get.to(const LoginScreen()) : null;
+                      SignUp();
+                      //
+                      // Future.delayed(Duration(seconds: 2), () async {
+                      //   return await Get.to(const LoginScreen());
+                      // });
+                      Future.delayed(Duration(seconds: 2), () async {
+                        return await Get.to(
+                            UserInformation(emai: emailController.text));
+                      });
+                      addUser();
+                      // ref = FirebaseDatabase.instance
+                      //     .ref("users")
+                      //     .child("${emailController.text}");
+                      //
+                      // await ref?.set({
+                      //   "firstName": firstNameController.text,
+                      //   "lastName": lastNameController.text,
+                      //   "email": emailController.text,
+                      //   "phoneNumber": phoneController.text,
+                      // });
                     }
                   },
                   text: CS.signIn,
@@ -348,5 +384,44 @@ class _SignInScreenState extends State<SignInScreen> {
         ),
       ),
     );
+  }
+}
+
+class UserInformation extends StatefulWidget {
+  String? emai;
+
+  UserInformation({Key? key, this.emai}) : super(key: key);
+
+  @override
+  State<UserInformation> createState() => _UserInformationState();
+}
+
+class _UserInformationState extends State<UserInformation> {
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(),
+        body: StreamBuilder(
+          stream: users.snapshots(),
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.hasData) {
+              return ListView(
+                children: snapshot.data!.docs.map((DocumentSnapshot document) {
+                  Map<String, dynamic> data =
+                      document.data()! as Map<String, dynamic>;
+                  if (widget.emai == data["email"]) {}
+                  return ListTile(
+                    title: Text("${data["email"]}"),
+                  );
+                }).toList(),
+              );
+            } else {
+              return CircularProgressIndicator();
+            }
+          },
+        ));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -24,16 +25,22 @@ FirebaseAuth _auth = FirebaseAuth.instance;
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  RxInt success = 1.obs;
   RxBool loading = false.obs;
+  String userEmail = "";
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   signIn() async {
     loading.value = true;
-    final User? user = (await _auth.signInWithEmailAndPassword(email: emailController.text, password: passwordController.text)).user;
+    final User? user = (await _auth.signInWithEmailAndPassword(
+            email: emailController.text, password: passwordController.text))
+        .user;
     if (user != null) {
+      success.value = 2;
       loading.value = false;
       Get.offAll(() => const MainScreen());
     } else {
+      success.value = 3;
       loading.value = false;
     }
   }
@@ -84,14 +91,16 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             Text(
                               CS.welcome,
-                              style: themeData.textTheme.headline1?.copyWith(color: colors000000),
+                              style: themeData.textTheme.headline1
+                                  ?.copyWith(color: colors000000),
                             ),
                             const SizedBox(
                               height: 7.0,
                             ),
                             Text(
                               CS.letsLoginForExplore,
-                              style: themeData.textTheme.subtitle1?.copyWith(color: textColorPrimary),
+                              style: themeData.textTheme.subtitle1
+                                  ?.copyWith(color: textColorPrimary),
                             ),
                             const SizedBox(
                               height: 60.0,
@@ -120,7 +129,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 textEditingController: passwordController,
                                 hintText: "Enter password",
                                 isPassword: true,
-                                textStyle: themeData.textTheme.subtitle1?.copyWith(color: colors000000),
+                                textStyle: themeData.textTheme.subtitle1
+                                    ?.copyWith(color: colors000000),
                                 headText: CS.password,
                                 textFieldHeight: 50,
                                 preFixIcon: Image.asset(
@@ -148,7 +158,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   },
                                   child: Text(
                                     CS.forgotPasswordq,
-                                    style: themeData.textTheme.subtitle1?.copyWith(color: textColorPrimary),
+                                    style: themeData.textTheme.subtitle1
+                                        ?.copyWith(color: textColorPrimary),
                                   ),
                                 ),
                               ],
@@ -159,6 +170,32 @@ class _LoginScreenState extends State<LoginScreen> {
                             GetButton(
                               ontap: () async {
                                 await signIn();
+                                success.value == 2
+                                    ? Get.offAll(() => const MainScreen())
+                                    : showFlash(
+                                        context: context,
+                                        duration: const Duration(seconds: 3),
+                                        builder: (context, controller) {
+                                          return Flash(
+                                            controller: controller,
+                                            position: FlashPosition.top,
+                                            behavior: FlashBehavior.floating,
+                                            boxShadows: kElevationToShadow[4],
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            margin: const EdgeInsets.all(20),
+                                            backgroundColor: colorPrimary,
+                                            horizontalDismissDirection:
+                                                HorizontalDismissDirection
+                                                    .horizontal,
+                                            child: FlashBar(
+                                                content: Text(
+                                                    'InValid Email Id OR Password',
+                                                    style: TextStyle(
+                                                        color: colorFFFFFF))),
+                                          );
+                                        },
+                                      );
                               },
                               text: CS.login,
                             ),
@@ -172,9 +209,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                     text: TextSpan(children: [
                                   TextSpan(
                                     text: CS.youDonHaveAccount,
-                                    style: themeData.textTheme.subtitle1?.copyWith(color: textColorPrimary),
+                                    style: themeData.textTheme.subtitle1
+                                        ?.copyWith(color: textColorPrimary),
                                   ),
-                                  TextSpan(text: CS.register, style: themeData.textTheme.subtitle1?.copyWith(color: colors000000)),
+                                  TextSpan(
+                                      text: CS.register,
+                                      style: themeData.textTheme.subtitle1
+                                          ?.copyWith(color: colors000000)),
                                 ])),
                               ),
                             ),
