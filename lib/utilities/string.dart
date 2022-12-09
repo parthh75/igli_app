@@ -84,7 +84,11 @@ class CS {
   static String dEmail = "test@gmail.com";
   static String dUserName = "Test12345";
 }
-
+ String  basicUri = "https://iglifinancial.online/api/";
+class ApiConfig{
+  static String loginToken = "loginToken";
+  static String home = basicUri +"home";
+}
 class MCS {
   //api
   static const String lastNameRequired = 'please enter last name';
