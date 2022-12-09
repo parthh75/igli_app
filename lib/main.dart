@@ -1,20 +1,22 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:igli_financial/utilities/string.dart';
 import 'package:igli_financial/view/splash_screen.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
+import 'app_binding.dart';
 import 'controller/app_binding.dart';
 import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
+  getPreference.write(ApiConfig.loginToken,"bdd59caedb8ed270b4a2b3274c4c6133f9ce8c6afe0ef8d4c862bded7e3324fa");
   runApp(const MyApp());
 }
-
+GetStorage getPreference = GetStorage();
 Map<int, Color> color = {
   50: const Color.fromRGBO(0, 64, 134, .1),
   100: const Color.fromRGBO(0, 64, 134, .2),
