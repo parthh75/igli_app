@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,7 +13,7 @@ import 'package:igli_financial/utilities/string.dart';
 import 'package:igli_financial/utilities/text_style.dart';
 import 'package:igli_financial/view/login_screen.dart';
 import 'package:igli_financial/view/phone_verification_screen.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class SignInScreen extends StatefulWidget {
   SignInScreen({Key? key}) : super(key: key);
