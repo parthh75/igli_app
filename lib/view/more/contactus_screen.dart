@@ -65,7 +65,7 @@ class _ContactUsState extends State<ContactUs> {
                         ],
                       )),
                   Text(CS.weWillBeHappyToAssistYou)
-                      .paddingOnly(left: 10, top: 10),
+                      .paddingOnly(left: 10, top: 10, bottom: 10),
                 ],
               ),
             ),

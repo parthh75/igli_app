@@ -2,6 +2,8 @@ class CS {
   String igli = "IGLI";
   static String igliFinancial = "IGLI Financial";
 
+
+  static String registerApi = "register";
   static String save = "Save";
   static String changes = "Changes";
   static const String welcome = "Welcome";

@@ -3,6 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:igli_financial/utilities/colors.dart';
 import 'package:igli_financial/utilities/common_button.dart';
 import 'package:igli_financial/utilities/common_taxfield.dart';
@@ -355,25 +356,12 @@ class _SignInScreenState extends State<SignInScreen> {
                         isCheckPassword == true) {
                     } else {
                       SignUp();
-                      //
-                      // Future.delayed(Duration(seconds: 2), () async {
-                      //   return await Get.to(const LoginScreen());
-                      // });
+
                       Future.delayed(Duration(seconds: 2), () async {
-                        return await Get.to(
-                            UserInformation(emai: emailController.text));
+                        return await Get.to(const LoginScreen());
                       });
+
                       addUser();
-                      // ref = FirebaseDatabase.instance
-                      //     .ref("users")
-                      //     .child("${emailController.text}");
-                      //
-                      // await ref?.set({
-                      //   "firstName": firstNameController.text,
-                      //   "lastName": lastNameController.text,
-                      //   "email": emailController.text,
-                      //   "phoneNumber": phoneController.text,
-                      // });
                     }
                   },
                   text: CS.signIn,
