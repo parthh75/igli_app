@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:igli_financial/model/home_page/home_contrroler.dart';
 import 'package:igli_financial/utilities/colors.dart';
 import 'package:igli_financial/utilities/common_button.dart';
 import 'package:igli_financial/view/contactus_screen.dart';
@@ -17,16 +16,11 @@ class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
+
 class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-   HomePageController.to.homePageCall({},callBack: (){});
-    super.initState();
-  }
   int _current = 0;
   final CarouselController _controller = CarouselController();
-  final List<Widget> images =
-  [
+  final List<Widget> images = [
     commonImageView(onTap: () {
       Get.to( AllServices());
     }),
@@ -101,14 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         children: [
           CarouselSlider(
-            items:List.generate(HomePageController.to.homePageModal.value.data?.banners?.length?? 0, (index) => commonImageView(
-                onTap: () {
-                  Get.to( AllServices());
-                },
-                image:HomePageController.to.homePageModal.value.data?.banners?[index].image,
-                title: "Register your Company",
-                subTitle: "Incorporate your company in less than 2 weeks online through IGLI FINANCIAL."),
-            ),
+            items: images,
             carouselController: _controller,
             options: CarouselOptions(
                 autoPlay: true,
@@ -303,14 +290,10 @@ Widget commonImageView({
   String? image,
   String? title,
   String? subTitle,
-  Function? onTap,
+  Function()? onTap,
 }) {
   return GestureDetector(
-    onTap: (){
-      if(onTap!=null){
-        onTap();
-      }
-    },
+    onTap: onTap,
     child: ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: Container(
